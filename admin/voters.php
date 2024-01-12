@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Upload CSV";
+$breadCrumbName = "Voter List";
 ?>
 <?php include('../common/local/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,7 +16,7 @@ $breadCrumbName = "Upload CSV";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Voter List</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Voters</h6>
                 </div>
                 <div class="col-lg-4 d-flex justify-content-between">
                    <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Serarch by Name or Epic No." />

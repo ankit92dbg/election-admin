@@ -19,9 +19,9 @@ include ('../config/conn.php');
  $slNo = (($page*$record_per_page)-$record_per_page)+1;
  $start_from = ($page - 1)*$record_per_page;  
  if($search_str==''){
-    $query = "SELECT * FROM voters_data ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM user_tbl WHERE user_type=1 ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }else{
-    $query = "SELECT * FROM voters_data WHERE FM_NAME_EN LIKE '%".$search_str."%' OR LASTNAME_EN LIKE '%".$search_str."%' OR EPIC_NO LIKE '%".$search_str."%' ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM user_tbl WHERE user_type=1 AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }
  $result = mysqli_query($conn, $query);  
  $output .= "  
@@ -32,37 +32,32 @@ include ('../config/conn.php');
                 <th>AC_NO</th>
                 <th>PART_NO</th>
                 <th>SECTION_NO</th>
-                <th>SLNOINPART</th>
-                <th>C_HOUSE_NO</th>
-                <th>C_HOUSE_NO_V1</th>
-                <th>FM_NAME_EN</th>
-                <th>LASTNAME_EN</th>
-                <th>FM_NAME_V1</th>
-                <th>LASTNAME_V1</th>
-                <th>RLN_TYPE</th>
-                <th>RLN_FM_NM_EN</th>
-                <th>RLN_L_NM_EN</th>
-                <th>RLN_FM_NM_V1</th>
-                <th>RLN_L_NM_V1</th>
-                <th>EPIC_NO</th>
-                <th>GENDER</th>
-                <th>AGE</th>
-                <th>DOB</th>
-                <th>MOBILE_NO</th>
-                <th>AC_NAME_EN</th>
-                <th>AC_NAME_V1</th>
-                <th>SECTION_NAME_EN</th>
-                <th>SECTION_NAME_V1</th>
-                <th>PSBUILDING_NAME_EN</th>
-                <th>PSBUILDING_NAME_V1</th>
-                <th>PART_NAME_EN</th>
-                <th>PART_NAME_V1</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Designation</th>
+                <th>Phone</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Status</th>
+                <th>Created On</th>
+                <th>Action</th>
             </tr>
         </thead> 
         <tbody>
  ";  
  while($row = mysqli_fetch_array($result))  
  {  
+    $boothQuery = "select * from user_assigned_booth where user_id=".$row['id'];
+    $boothRes = mysqli_query($conn,$boothQuery);
+    $boothId = [];
+    while($boothRow = mysqli_fetch_array($boothRes))  
+    { 
+        array_push($boothId,$boothRow['SECTION_NO']);
+    }
+
       $output .= '  
       <tr>
         <td class="align-middle text-center">
@@ -75,84 +70,61 @@ include ('../config/conn.php');
             '.$row['PART_NO'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['SECTION_NO'].'
+            '.implode(',',$boothId).'
         </td>
         <td class="align-middle text-center">
-            '.$row['SLNOINPART'].'
+            <img style="width: 50px;
+            height: 50px;
+            border-radius: 50%;" src="../uploads/'.$row['profile_image'].'" />
+            <p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].'</p>
         </td>
         <td class="align-middle text-center">
-            '.$row['C_HOUSE_NO'].'
+            '.$row['l_name'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['C_HOUSE_NO_V1'].'
+            '.$row['email'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['FM_NAME_EN'].'
+            '.$row['designation'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['LASTNAME_EN'].'
+            '.$row['phone'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['FM_NAME_V1'].'
+            '.$row['age'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['LASTNAME_V1'].'
+            '.$row['address'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['RLN_TYPE'].'
+            '.$row['city'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['RLN_FM_NM_EN'].'
+            '.$row['state'].'
+        </td>';
+        if($row['isActive']=='1'){
+            $output .= '<td class="align-middle text-center"><span class="btn btn-sm btn-success">Active</span></td>';
+        }
+        if($row['isActive']=='0'){
+            $output .= '<td class="align-middle text-center"><span class="btn btn-sm btn-danger">Inactive</span></td>';
+        }
+        $output .=  '<td class="align-middle text-center">
+            '.$row['created_at'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['RLN_L_NM_EN'].'
+            <div class="dp">
+                <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                </a>
+                <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                    <li><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'">Edit</a></li>
+                    <li><a class="dropdown-item" onclick="changeStatus('.$row['id'].');" href="javascript:void(0);">'.($row['isActive']==0 ? "Enable" : "Disable").'</a></li>
+                    <li><a class="dropdown-item text-danger" onclick="deleteUser('.$row['id'].');" href="javascript:void(0);">Delete</a></li>
+                </ul>
+            </div>
         </td>
-        <td class="align-middle text-center">
-            '.$row['RLN_FM_NM_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['RLN_L_NM_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['EPIC_NO'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['GENDER'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['AGE'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['DOB'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['MOBILE_NO'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['AC_NAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['AC_NAME_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['SECTION_NAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['SECTION_NAME_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PSBUILDING_NAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PSBUILDING_NAME_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PART_NAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PART_NAME_V1'].'
-        </td>
-       
     </tr>
       ';  
       $slNo++;
@@ -162,13 +134,17 @@ include ('../config/conn.php');
 //  $output .= '<nav aria-label="Page navigation example">';
 //  $output .= ' <ul class="pagination">';
 if($search_str==''){
- $page_query = "SELECT * FROM voters_data ORDER BY id DESC";  
+ $page_query = "SELECT * FROM user_tbl WHERE user_type=1 ORDER BY id DESC";  
 }else{
- $page_query = "SELECT * FROM voters_data WHERE FM_NAME_EN LIKE '%".$search_str."%' OR LASTNAME_EN LIKE '%".$search_str."%' OR EPIC_NO LIKE '%".$search_str."%' ORDER BY id DESC";  
+ $page_query = "SELECT * FROM  user_tbl WHERE user_type=1 AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC";  
 }
  $page_result = mysqli_query($conn, $page_query);  
  $total_records = mysqli_num_rows($page_result);  
- $total_pages = ceil($total_records/$record_per_page);  
+ if($total_records==0){
+    $total_pages=0;
+ }else{
+    $total_pages = ceil($total_records/$record_per_page);  
+ }
 //  $counter = 1;
 //  for($i=1; $i<=$total_pages; $i++)  
 //  {  
@@ -187,15 +163,18 @@ if($search_str==''){
 $output .= '
   		<ul class="pagination">
 	';
-
-	$total_links = ceil($total_records/$record_per_page);
+    if($total_records==0){
+        $total_links=0;
+     }else{
+	    $total_links = ceil($total_records/$record_per_page);
+     }
 
 	$previous_link = '';
 
 	$next_link = '';
 
 	$page_link = '';
-
+    $page_array = []; 
 	if($total_links > 4)
 	{
 		if($page < 5)

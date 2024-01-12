@@ -195,6 +195,7 @@ $output .= '
 	$next_link = '';
 
 	$page_link = '';
+    $page_array = []; 
 
 	if($total_links > 4)
 	{

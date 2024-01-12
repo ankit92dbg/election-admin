@@ -1,3 +1,9 @@
+<?php
+$url = $_SERVER['REQUEST_URI'];
+$endPart = end(explode('/', rtrim($url, '/')));
+$endPart = str_replace(' ', '', $endPart);
+$endPart = explode('.',$endPart);
+?>
 <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -10,7 +16,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="dashboard.php">
+          <a class="nav-link <?php echo ($endPart[0]=='dashboard') ? 'active' : ''; ?>" href="dashboard.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -44,7 +50,7 @@
           </ul>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link " href="leaders.php">
+          <a class="nav-link <?php echo ($endPart[0]=='leaders' || $endPart[0]=='add-leaders' || $endPart[0]=='edit-leaders') ? 'active' : ''; ?>" href="leaders.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-user-secret text-warning text-sm opacity-10"></i>
             </div>
@@ -60,7 +66,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="voters.php">
+          <a class="nav-link <?php echo ($endPart=='voters.php') ? 'active' : ''; ?>" href="voters.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-address-book text-danger text-sm opacity-10"></i>
             </div>
@@ -68,7 +74,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="upload-csv.php">
+          <a class="nav-link <?php echo ($endPart=='upload-csv.php') ? 'active' : ''; ?>" href="upload-csv.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-upload text-info text-sm opacity-10"></i>
             </div>
