@@ -88,7 +88,7 @@ if(mysqli_num_rows($result)==0){
 
     
 }else{
-    $response->error = "User already exists!";
+    $response->error = "User already exists! Please use unique email id and mobile no.";
 }
 echo json_encode($response);
 ?>

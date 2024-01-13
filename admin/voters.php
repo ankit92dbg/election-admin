@@ -19,7 +19,7 @@ $breadCrumbName = "Voter List";
                     <h6 class="mb-2" style="margin-top:5%;">Voters</h6>
                 </div>
                 <div class="col-lg-4 d-flex justify-content-between">
-                   <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Serarch by Name or Epic No." />
+                   <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by Name or Epic No." />
                 </div>
                 <div class="col-lg-2 justify-content-between">
                     <p style="float:right;margin-top:5%">Show Result :</p>

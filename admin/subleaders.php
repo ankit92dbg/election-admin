@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Leaders";
+$breadCrumbName = "SubLeaders";
 ?>
 <?php include('../common/local/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,7 +16,7 @@ $breadCrumbName = "Leaders";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Leader List</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">SubLeader List</h6>
                 </div>
                 <div class="col-lg-4 d-flex justify-content-between">
                    <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by First Name, Last Name, Email or Phone No." />
@@ -32,7 +32,7 @@ $breadCrumbName = "Leaders";
                         </select>    
                 </div>
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <a class="btn btn-primary" href="add-leaders.php">Add Leader</a>
+                    <a class="btn btn-primary" href="add-subleaders.php">Add SubLeader</a>
                 </div>    
               </div>
             </div>
@@ -57,7 +57,6 @@ $breadCrumbName = "Leaders";
                   <div class="modal-body">
                     <input type="hidden" id="delete_id" value="" />
                     <p><strong>Are you sure, you want to delete this leader?</strong></p>
-                    <p>If you delete this leader then the subleader of the respective leader will be also deleted.</p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
@@ -103,7 +102,7 @@ $breadCrumbName = "Leaders";
         let total_records = $('#total_records').val()
         let search_str = $('#search_str').val()
            $.ajax({  
-                url:"../ajax/leaders.php",  
+                url:"../ajax/subleaders.php",  
                 method:"POST",  
                 data:{page:page,total_records:total_records,search_str:search_str},  
                 success:function(data){  

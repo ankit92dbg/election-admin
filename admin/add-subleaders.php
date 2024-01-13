@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Add Leaders";
+$breadCrumbName = "Add SubLeaders";
 ?>
 <?php include('../common/local/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -15,8 +15,8 @@ $breadCrumbName = "Add Leaders";
           <div class="card ">
             <div class="card-header pb-0 p-3">
               <div class="row">
-                <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Create New Leader</h6>
+                <div class="col-lg-3 d-flex justify-content-between">
+                    <h6 class="mb-2" style="margin-top:5%;">Create New SubLeader</h6>
                 </div>   
               </div>
             </div>
@@ -28,24 +28,8 @@ $breadCrumbName = "Add Leaders";
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
-                            <label class="label">AC_NO</label>
-                            <select id="AC_NO" onchange="load_part_no(this.value)" name="AC_NO" class="form-select" required>
-                                <option value="" selected>Please Select</option>
-                            </select>   
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="mb-3">
-                            <label class="label">PART_NO</label>
-                            <select id="PART_NO" onchange="load_section_no(this.value)" name="PART_NO" class="form-select" required>
-                                <option value="" selected>Please Select</option>
-                            </select>   
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="mb-3">
-                            <label class="label">SECTION_NO</label>
-                            <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;" required>
+                            <label class="label">Select Leader</label>
+                            <select id="leader_id" name="leader_id" class="form-select" required>
                                 <option value="" selected>Please Select</option>
                             </select>   
                         </div>
@@ -120,12 +104,11 @@ $breadCrumbName = "Add Leaders";
                             <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" required>
                         </div>
                     </div>
-                    <div class="col-4"></div>
                     <div class="col-4">
                         <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Submit</button>
                     </div>
                     <div class="col-4">
-                        <a href="leaders.php" class="btn btn-lg btn-secondary btn-lg w-100 mt-4 mb-0">Back</a>
+                        <a href="subleaders.php" class="btn btn-lg btn-secondary btn-lg w-100 mt-4 mb-0">Back</a>
                     </div>
                 </div>
               </form>
@@ -147,7 +130,7 @@ $breadCrumbName = "Add Leaders";
             $('#message').html('');
             event.preventDefault();
             $.ajax({
-                url:"../ajax/add-leaders.php",
+                url:"../ajax/add-subleaders.php",
                 method:"POST",
                 data: new FormData(this),
                 dataType:"json",
@@ -167,7 +150,7 @@ $breadCrumbName = "Add Leaders";
                     if(!data.error)
                     {
                         $('#total_data').text(data.total_line);
-                        $('#message').html('<div class="alert alert-success" style="color:#fff">Leader Created Successfully.</div>');
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">SubLeader Created Successfully.</div>');
                     }
                     if(data.error)
                     {
@@ -186,64 +169,25 @@ $breadCrumbName = "Add Leaders";
            $.ajax({  
                 url:"../ajax/master-data.php",  
                 method:"POST",  
-                // data:{page:page,total_records:total_records,search_str:search_str},  
+                data:{action:'leader_list'},  
                 success:function(data){  
                     let option = [];
                     let optionState = [];
                     optionState += '<option value="" selected>Please Select</option>'
                     option += '<option value="" selected>Please Select</option>'
-                    for(let i=0; i < data.AC_NO.length; i++){
-                        option += `<option value="${data.AC_NO[i].AC_NO}">${data.AC_NO[i].AC_NO}</option>`
+                    for(let i=0; i < data.leader_list.length; i++){
+                        option += `<option value="${data.leader_list[i].id}">${data.leader_list[i].f_name} ${data.leader_list[i].l_name}</option>`
                     }
                     for(let j=0; i < data.state.length; i++){
                         optionState += `<option value="${data.state[i].id}">${data.state[i].name}</option>`
                     }
-                    $('#AC_NO').html(option)
+                    $('#leader_id').html(option)
                     $('#state').html(optionState)
                     $('#overlay').hide()
                 }  
            })  
       } 
 
-      function load_part_no(val)  
-      {  
-        $('#overlay').show()
-           $.ajax({  
-                url:"../ajax/master-data.php",  
-                method:"POST",  
-                data:{AC_NO:val},  
-                success:function(data){  
-                    let option = [];
-                    option += '<option value="" selected>Please Select</option>'
-                    for(let i=0; i < data.PART_NO.length; i++){
-                        option += `<option value="${data.PART_NO[i].PART_NO}">${data.PART_NO[i].PART_NO}</option>`
-                    }
-                    $('#PART_NO').html(option)
-                    if(data.PART_NO.length==0){
-                     $('#SECTION_NO').html(option)
-                    }
-                    $('#overlay').hide()
-                }  
-           })  
-      } 
-
-      function load_section_no(val)  
-      {  
-        $('#overlay').show()
-           $.ajax({  
-                url:"../ajax/master-data.php",  
-                method:"POST",  
-                data:{AC_NO:$('#AC_NO').val(), PART_NO:val},  
-                success:function(data){  
-                    let option = [];
-                    for(let i=0; i < data.SECTION_NO.length; i++){
-                        option += `<option value="${data.SECTION_NO[i].SECTION_NO}">${data.SECTION_NO[i].SECTION_NO}</option>`
-                    }
-                    $('#SECTION_NO').html(option)
-                    $('#overlay').hide()
-                }  
-           }) 
-      } 
 
       function load_city(val)  
       {  

@@ -16,7 +16,7 @@ $breadCrumbName = "Add Leaders";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Create New Leader</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Update Leader</h6>
                 </div>   
               </div>
             </div>
@@ -165,7 +165,7 @@ $breadCrumbName = "Add Leaders";
                     if(!data.error)
                     {
                         $('#total_data').text(data.total_line);
-                        $('#message').html('<div class="alert alert-success" style="color:#fff">User Updated Successfully.</div>');
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">Leader Updated Successfully.</div>');
                     }
                     if(data.error)
                     {

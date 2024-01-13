@@ -133,6 +133,15 @@ if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='user_data'){
      
  }
 
+ $leader_list = [];
+if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='leader_list'){
+    $q1 = "SELECT * FROM user_tbl WHERE user_type=1";
+     $r1 = mysqli_query($conn,$q1);
+     while($row1 = mysqli_fetch_assoc($r1)){
+     $leader_list[] = $row1;
+     }
+}     
+
 
 
 
@@ -141,5 +150,6 @@ $output->PART_NO = $PART_NO;
 $output->SECTION_NO = $SECTION_NO;
 $output->state = $state;
 $output->city= $city;
+$output->leader_list= $leader_list;
 echo json_encode($output);
 ?>

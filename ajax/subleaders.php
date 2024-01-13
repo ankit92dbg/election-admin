@@ -19,9 +19,9 @@ include ('../config/conn.php');
  $slNo = (($page*$record_per_page)-$record_per_page)+1;
  $start_from = ($page - 1)*$record_per_page;  
  if($search_str==''){
-    $query = "SELECT * FROM user_tbl WHERE user_type=1 ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM user_tbl WHERE user_type=2 ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }else{
-    $query = "SELECT * FROM user_tbl WHERE user_type=1 AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM user_tbl WHERE user_type=2 AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }
  $result = mysqli_query($conn, $query);  
  $output .= "  
@@ -29,9 +29,7 @@ include ('../config/conn.php');
         <thead>
             <tr>
                 <th>Sl No.</th>
-                <th>AC_NO</th>
-                <th>PART_NO</th>
-                <th>SECTION_NO</th>
+                <th>Leader Name</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Designation</th>
@@ -49,13 +47,10 @@ include ('../config/conn.php');
  ";  
  while($row = mysqli_fetch_array($result))  
  {  
-    $boothQuery = "select * from user_assigned_booth where user_id=".$row['id'];
-    $boothRes = mysqli_query($conn,$boothQuery);
-    $boothId = [];
-    while($boothRow = mysqli_fetch_array($boothRes))  
-    { 
-        array_push($boothId,$boothRow['SECTION_NO']);
-    }
+    $leaderQuery = "select * from user_tbl where id=".$row['leader_id'];
+    $leaderResult = mysqli_query($conn,$leaderQuery);
+	$leaderRow = mysqli_fetch_assoc($leaderResult);
+	$leaderName = $leaderRow['f_name'].' '.$leaderRow['l_name'];
 	$profile_image = $row['profile_image'];
 
       $output .= '  
@@ -64,18 +59,12 @@ include ('../config/conn.php');
             '.$slNo.'
         </td>
         <td class="align-middle text-center">
-            '.$row['AC_NO'].'
+            <a href="edit-leaders.php?id='.$row['leader_id'].'">'.$leaderName.'</a>
         </td>
         <td class="align-middle text-center">
-            '.$row['PART_NO'].'
-        </td>
-        <td class="align-middle text-center">
-            '.implode(',',$boothId).'
-        </td>
-        <td class="align-middle text-center">
-		<img style="width: 50px;
-		height: 50px;
-		border-radius: 50%;" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
+            <img style="width: 50px;
+            height: 50px;
+            border-radius: 50%;" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
             <p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].' '.$row['l_name'].'</p>
         </td>
         <td class="align-middle text-center">
@@ -116,7 +105,7 @@ include ('../config/conn.php');
                     </svg>
                 </a>
                 <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
-                    <li><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'">Edit</a></li>
+                    <li><a class="dropdown-item" href="edit-subleaders.php?id='.$row['id'].'">Edit</a></li>
                     <li><a class="dropdown-item" onclick="changeStatus('.$row['id'].');" href="javascript:void(0);">'.($row['isActive']==0 ? "Enable" : "Disable").'</a></li>
                     <li><a class="dropdown-item text-danger" onclick="deleteUser('.$row['id'].');" href="javascript:void(0);">Delete</a></li>
                 </ul>
@@ -131,9 +120,9 @@ include ('../config/conn.php');
 //  $output .= '<nav aria-label="Page navigation example">';
 //  $output .= ' <ul class="pagination">';
 if($search_str==''){
- $page_query = "SELECT * FROM user_tbl WHERE user_type=1 ORDER BY id DESC";  
+ $page_query = "SELECT * FROM user_tbl WHERE user_type=2 ORDER BY id DESC";  
 }else{
- $page_query = "SELECT * FROM  user_tbl WHERE user_type=1 AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC";  
+ $page_query = "SELECT * FROM  user_tbl WHERE user_type=2 AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC";  
 }
  $page_result = mysqli_query($conn, $page_query);  
  $total_records = mysqli_num_rows($page_result);  

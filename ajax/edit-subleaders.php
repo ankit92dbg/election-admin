@@ -4,8 +4,7 @@ include ('../config/conn.php');
 $error = '';
 
 $user_id = $_POST['user_id'];
-$AC_NO = $_POST['AC_NO'];
-$PART_NO = $_POST['PART_NO'];
+$leader_id = $_POST['leader_id'];
 $SECTION_NO = $_POST['SECTION_NO'];
 $f_name = $_POST['f_name'];
 $l_name = $_POST['l_name'];
@@ -30,9 +29,6 @@ if(mysqli_num_rows($result)==1){
         $password = $row['password'];
     }
 
-    //delete old booth
-    $boothQuery = "DELETE from user_assigned_booth WHERE user_id='$user_id'";
-    mysqli_query($conn,$boothQuery);
 
     if($_FILES['profile_image']['name'] != '')
     {
@@ -50,51 +46,35 @@ if(mysqli_num_rows($result)==1){
             $file = "../uploads/{$basename}";  
             move_uploaded_file($_FILES['profile_image']['tmp_name'],$file);
 
-            $query = "UPDATE `user_tbl` SET `AC_NO`='$AC_NO',`PART_NO`='$PART_NO',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
+            $query = "UPDATE `user_tbl` SET `leader_id`='$leader_id',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
             `age`='$age',`designation`='$designation',`city`='$city',`state`='$state',`address`='$address',`password`='$password',`profile_image`='$basename'
             WHERE `id`='$user_id'";
             $result = mysqli_query($conn,$query);
 
 
-            //insert booth
-            for($i=0;$i<count($SECTION_NO);$i++){
-                $newSec = $SECTION_NO[$i];
-                $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$user_id','$newSec')";
-                mysqli_query($conn,$boothQuery);
-            }
-
 
 
             $response->error = "";
-            $response->message = "Leader updated successfully.";
+            $response->message = "SubLeader updated successfully.";
         }else{
             $response->error = 'Not a valid image file.';
         }
     }else{
-        $query = "UPDATE `user_tbl` SET `AC_NO`='$AC_NO',`PART_NO`='$PART_NO',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
+        $query = "UPDATE `user_tbl` SET `leader_id`='$leader_id',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
             `age`='$age',`designation`='$designation',`city`='$city',`state`='$state',`address`='$address',`password`='$password'
             WHERE `id`='$user_id'";
         $result = mysqli_query($conn,$query);
 
-         //insert booth
-         $queryCheck = "select * from user_tbl order by id desc";
-         $resultCheck = mysqli_query($conn,$queryCheck);
-         $rowsCheck = mysqli_fetch_assoc($resultCheck);
-         $insert_id = $rowsCheck['id'];
-         for($i=0;$i<count($SECTION_NO);$i++){
-             $newSec = $SECTION_NO[$i];
-             $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
-             mysqli_query($conn,$boothQuery);
-         }
+    
 
         $response->error = "";
-        $response->message = "Leader updated successfully.";
+        $response->message = "SubLeader updated successfully.";
     }
 
 
     
 }else{
-    $response->error = "Leader not found!";
+    $response->error = "SubLeader not found!";
 }
 echo json_encode($response);
 ?>
