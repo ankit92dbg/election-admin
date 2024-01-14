@@ -140,7 +140,27 @@ if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='leader_list'){
      while($row1 = mysqli_fetch_assoc($r1)){
      $leader_list[] = $row1;
      }
-}     
+}  
+
+$dashboardData = new stdClass();
+if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='dashboard_data'){
+    //total booth workers :
+    $q1 = "SELECT * FROM user_tbl WHERE user_type!=0";
+     $r1 = mysqli_query($conn,$q1);
+     $dashboardData->totalBoothWorkers=mysqli_num_rows($r1);
+    //total polling booth :
+    $q1 = "SELECT DISTINCT SECTION_NO FROM `voters_data`";
+    $r1 = mysqli_query($conn,$q1);
+    $dashboardData->totalPollingBooth=mysqli_num_rows($r1);
+     //total male voters :
+     $q1 = "SELECT * FROM `voters_data` WHERE GENDER='M'";
+     $r1 = mysqli_query($conn,$q1);
+     $dashboardData->totalMaleVoters=mysqli_num_rows($r1);
+     //total female voters :
+     $q1 = "SELECT * FROM `voters_data` WHERE GENDER='F'";
+     $r1 = mysqli_query($conn,$q1);
+     $dashboardData->totalFemaleVoters=mysqli_num_rows($r1);
+}  
 
 
 
@@ -151,5 +171,6 @@ $output->SECTION_NO = $SECTION_NO;
 $output->state = $state;
 $output->city= $city;
 $output->leader_list= $leader_list;
+$output->dashboardData= $dashboardData;
 echo json_encode($output);
 ?>

@@ -18,8 +18,8 @@ $breadCrumbName = "Dashboard";
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Booth Workers</p>
-                    <h5 class="font-weight-bolder">
-                      1000
+                    <h5 class="font-weight-bolder" id="totalBoothWorkers">
+                      0
                     </h5>
                     <!-- <p class="mb-0">
                       <span class="text-success text-sm font-weight-bolder">+55%</span>
@@ -43,8 +43,8 @@ $breadCrumbName = "Dashboard";
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Polling Booth</p>
-                    <h5 class="font-weight-bolder">
-                      7
+                    <h5 class="font-weight-bolder" id="totalPollingBooth">
+                      0
                     </h5>
                     <!-- <p class="mb-0">
                       <span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -68,8 +68,8 @@ $breadCrumbName = "Dashboard";
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Male <br/>Voters</p>
-                    <h5 class="font-weight-bolder">
-                      6677
+                    <h5 class="font-weight-bolder" id="totalMaleVoters">
+                      0
                     </h5>
                     <!-- <p class="mb-0">
                       <span class="text-danger text-sm font-weight-bolder">-2%</span>
@@ -93,8 +93,8 @@ $breadCrumbName = "Dashboard";
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Female <br/>Voters</p>
-                    <h5 class="font-weight-bolder">
-                      3499
+                    <h5 class="font-weight-bolder" id="totalFemaleVoters">
+                      0
                     </h5>
                     <!-- <p class="mb-0">
                       <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
@@ -180,11 +180,11 @@ $breadCrumbName = "Dashboard";
           <div class="card ">
             <div class="card-header pb-0 p-3">
               <div class="d-flex justify-content-between">
-                <h6 class="mb-2">Sales by Country</h6>
+                <h6 class="mb-2">Latest 10 uploaded voters :</h6>
               </div>
             </div>
             <div class="table-responsive">
-              <table class="table align-items-center ">
+              <!-- <table class="table align-items-center ">
                 <tbody>
                   <tr>
                     <td class="w-30">
@@ -311,74 +311,18 @@ $breadCrumbName = "Dashboard";
                     </td>
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
+              <div class="table-responsive" id="dataVotersTbl"></div>
             </div>
           </div>
         </div>
         <div class="col-lg-5">
           <div class="card">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-0">Categories</h6>
+              <h6 class="mb-0">Leaders List(latest 10) :</h6>
             </div>
             <div class="card-body p-3">
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i class="ni ni-mobile-button text-white opacity-10"></i>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Devices</h6>
-                      <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i class="ni ni-tag text-white opacity-10"></i>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Tickets</h6>
-                      <span class="text-xs">123 closed, <span class="font-weight-bold">15 open</span></span>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i class="ni ni-box-2 text-white opacity-10"></i>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Error logs</h6>
-                      <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i class="ni ni-satisfied text-white opacity-10"></i>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Happy users</h6>
-                      <span class="text-xs font-weight-bold">+ 430</span>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-              </ul>
+            <div class="table-responsive" id="dataLeadersTbl"></div>
             </div>
           </div>
         </div>
@@ -388,3 +332,58 @@ $breadCrumbName = "Dashboard";
   </main>
   </body>
 <?php include('../common/local/footer-links.php') ?>
+
+<script>
+ $(document).ready(function(){  
+      load_voters(); 
+      load_leaders(); 
+      loadDashboardData();  
+ }); 
+ function load_voters()  
+      {  
+          $('#overlay').show()
+          let total_records = $('#total_records').val()
+          let search_str = $('#search_str').val()
+            $.ajax({  
+                  url:"../ajax/dashboard-voters.php",  
+                  method:"POST",  
+                  // data:{page:page,total_records:total_records,search_str:search_str},  
+                  success:function(data){  
+                      $('#dataVotersTbl').html(data);  
+                      $('#overlay').hide()
+                  }  
+            })  
+      } 
+      function load_leaders()  
+      {  
+          $('#overlay').show()
+          let total_records = $('#total_records').val()
+          let search_str = $('#search_str').val()
+            $.ajax({  
+                  url:"../ajax/dashboard-leaders.php",  
+                  method:"POST",  
+                  // data:{page:page,total_records:total_records,search_str:search_str},  
+                  success:function(data){  
+                      $('#dataLeadersTbl').html(data);  
+                      $('#overlay').hide()
+                  }  
+            })  
+       
+      } 
+      function loadDashboardData(val)  
+      {  
+        $('#overlay').show()
+           $.ajax({  
+                url:"../ajax/master-data.php",  
+                method:"POST",  
+                data:{action:"dashboard_data"},  
+                success:function(data){  
+                  $('#totalBoothWorkers').html(data.dashboardData.totalBoothWorkers)
+                  $('#totalPollingBooth').html(data.dashboardData.totalPollingBooth)
+                  $('#totalMaleVoters').html(data.dashboardData.totalMaleVoters)
+                  $('#totalFemaleVoters').html(data.dashboardData.totalFemaleVoters)
+                      $('#overlay').hide()
+                }  
+           })  
+      }
+</script>
