@@ -66,6 +66,12 @@
                   if(resp.user_type==0){
                     window.location.href="admin/dashboard.php";
                   }
+                  if(resp.user_type==1){
+                    window.location.href="leader/dashboard.php";
+                  }
+                  if(resp.user_type==2){
+                    window.location.href="subleader/dashboard.php";
+                  }
                 }else{
                   $('#warningMsg').html(resp.message)
                   $('#warningMsg').show()

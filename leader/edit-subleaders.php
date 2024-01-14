@@ -1,13 +1,13 @@
 <?php
 $breadCrumbName = "Add SubLeaders";
 ?>
-<?php include('../common/local/head.php'); ?>
+<?php include('../common/leader/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
   <div class="min-height-300 bg-primary position-absolute w-100"></div>
-<?php include('../common/local/aside.php'); ?>
+<?php include('../common/leader/aside.php'); ?>
   <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
-    <?php include('../common/local/header.php'); ?>
+    <?php include('../common/leader/header.php'); ?>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       <div class="row mt-4">
@@ -26,14 +26,6 @@ $breadCrumbName = "Add SubLeaders";
                 <div class="row">
                     <div class="col-12">
                         <span id="message"></span>
-                    </div>
-                    <div class="col-4">
-                        <div class="mb-3">
-                            <label class="label">Select Leader</label>
-                            <select id="leader_id" name="leader_id" class="form-select" required>
-                                <option value="" selected>Please Select</option>
-                            </select>   
-                        </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
@@ -105,6 +97,7 @@ $breadCrumbName = "Add SubLeaders";
                             <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" >
                         </div>
                     </div>
+                    <div class="col-4"></div>
                     <div class="col-4">
                         <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Submit</button>
                     </div>
@@ -118,11 +111,11 @@ $breadCrumbName = "Add SubLeaders";
           </div>
         </div>
       </div>
-      <?php include('../common/local/footer.php'); ?>
+      <?php include('../common/leader/footer.php'); ?>
     </div>
   </main>
   </body>
-<?php include('../common/local/footer-links.php') ?>
+<?php include('../common/leader/footer-links.php') ?>
 <script>
  $(document).ready(function(){  
       load_leader_data();
@@ -132,7 +125,7 @@ $breadCrumbName = "Add SubLeaders";
             $('#message').html('');
             event.preventDefault();
             $.ajax({
-                url:"../ajax/edit-subleaders.php",
+                url:"../ajax/leader/edit-subleaders.php",
                 method:"POST",
                 data: new FormData(this),
                 dataType:"json",
@@ -166,7 +159,7 @@ $breadCrumbName = "Add SubLeaders";
       {  
         $('#overlay').show()
            $.ajax({  
-                url:"../ajax/master-data.php",  
+                url:"../ajax/leader/master-data.php",  
                 method:"POST",  
                 data:{action:"user_data",user_id:"<?php echo $_GET['id']; ?>"},  
                 success:function(data){  
@@ -196,7 +189,7 @@ $breadCrumbName = "Add SubLeaders";
                     $('#designation').val(data.userData.designation)
                     $('#state option[value="'+data.userData.state+'"]').attr("selected", "selected");
                     $('#city option[value="'+data.userData.city+'"]').attr("selected", "selected");
-                    $('#leader_id option[value="'+data.userData.leader_id+'"]').attr("selected", "selected");
+                    // $('#leader_id option[value="'+data.userData.leader_id+'"]').attr("selected", "selected");
 
 
                     $('#overlay').hide()
@@ -208,7 +201,7 @@ $breadCrumbName = "Add SubLeaders";
       {  
         $('#overlay').show()
            $.ajax({  
-                url:"../ajax/master-data.php",  
+                url:"../ajax/leader/master-data.php",  
                 method:"POST",  
                 data:{action:'leader_list'},  
                 success:function(data){  
@@ -229,7 +222,7 @@ $breadCrumbName = "Add SubLeaders";
       {  
         $('#overlay').show()
            $.ajax({  
-                url:"../ajax/master-data.php",  
+                url:"../ajax/leader/master-data.php",  
                 method:"POST",  
                 data:{state:val},   
                 success:function(data){  

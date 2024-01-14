@@ -1,17 +1,18 @@
 <?php  
  session_start();
-include ('../config/conn.php');
+include ('../../config/conn.php');
 $slNo=1;
-$query = "SELECT * FROM user_tbl WHERE user_type=1 ORDER BY id DESC LIMIT 10";  
+$uq = "SELECT * FROM user_tbl WHERE id=".$_SESSION['user_id'];
+    $ur = mysqli_query($conn, $uq);  
+    $urow = mysqli_fetch_array($ur);
+    $leader_id = $urow['leader_id'];
+$query = "SELECT * FROM user_tbl WHERE leader_id=".$leader_id." ORDER BY id DESC LIMIT 10";  
  $result = mysqli_query($conn, $query);  
  $output .= "  
       <table class='table align-items-center mb-0'>  
         <thead>
             <tr>
                 <th>Sl No.</th>
-                <th>AC_NO</th>
-                <th>PART_NO</th>
-                <th>SECTION_NO</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Designation</th>
@@ -41,15 +42,6 @@ $query = "SELECT * FROM user_tbl WHERE user_type=1 ORDER BY id DESC LIMIT 10";
       <tr>
         <td class="align-middle text-center">
             '.$slNo.'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['AC_NO'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PART_NO'].'
-        </td>
-        <td class="align-middle text-center">
-            '.implode(',',$boothId).'
         </td>
         <td class="align-middle text-center">
 		<img style="width: 50px;

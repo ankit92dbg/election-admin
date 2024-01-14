@@ -1,13 +1,13 @@
 <?php
-$breadCrumbName = "Add SubLeaders";
+$breadCrumbName = "Add Leaders";
 ?>
-<?php include('../common/local/head.php'); ?>
+<?php include('../common/subleader/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
   <div class="min-height-300 bg-primary position-absolute w-100"></div>
-<?php include('../common/local/aside.php'); ?>
+<?php include('../common/subleader/aside.php'); ?>
   <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
-    <?php include('../common/local/header.php'); ?>
+    <?php include('../common/subleader/header.php'); ?>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       <div class="row mt-4">
@@ -16,21 +16,36 @@ $breadCrumbName = "Add SubLeaders";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Update SubLeader</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Create New Leader</h6>
                 </div>   
               </div>
             </div>
             <div class="card-body p-3">
               <form  id="userForm" enctype="multipart/form-data" role="form" method="post">
-                <input type="hidden" name="user_id" value="<?php echo $_GET['id']; ?>" />
                 <div class="row">
                     <div class="col-12">
                         <span id="message"></span>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
-                            <label class="label">Select Leader</label>
-                            <select id="leader_id" name="leader_id" class="form-select" required>
+                            <label class="label">AC_NO</label>
+                            <select id="AC_NO" onchange="load_part_no(this.value)" name="AC_NO" class="form-select" required>
+                                <option value="" selected>Please Select</option>
+                            </select>   
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label class="label">PART_NO</label>
+                            <select id="PART_NO" onchange="load_section_no(this.value)" name="PART_NO" class="form-select" required>
+                                <option value="" selected>Please Select</option>
+                            </select>   
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label class="label">SECTION_NO</label>
+                            <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;" required>
                                 <option value="" selected>Please Select</option>
                             </select>   
                         </div>
@@ -38,37 +53,37 @@ $breadCrumbName = "Add SubLeaders";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">First Name</label>
-                            <input type="text" id="f_name" name="f_name" class="form-control form-control-lg" placeholder="First Name" aria-label="Email" required>
+                            <input type="text" name="f_name" class="form-control form-control-lg" placeholder="First Name" aria-label="Email" required>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Last Name</label>
-                            <input type="text" id="l_name" name="l_name" class="form-control form-control-lg" placeholder="Last Name" aria-label="Password" required>
+                            <input type="text" name="l_name" class="form-control form-control-lg" placeholder="Last Name" aria-label="Password" required>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="Password" required readonly>
+                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="Password" required>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Phone No.</label>
-                            <input type="number" id="phone" name="phone" class="form-control form-control-lg" placeholder="Email" aria-label="Password" required readonly>
+                            <input type="number" name="phone" class="form-control form-control-lg" placeholder="Phone Number" aria-label="Password" required>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Age</label>
-                            <input type="number" id="age" name="age" class="form-control form-control-lg" placeholder="Age" aria-label="Password" required>
+                            <input type="number" name="age" class="form-control form-control-lg" placeholder="Age" aria-label="Password" required>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Desgination</label>
-                            <input type="text" id="designation" name="designation" class="form-control form-control-lg" placeholder="Desgination" aria-label="Password" required>
+                            <input type="text" name="designation" class="form-control form-control-lg" placeholder="Desgination" aria-label="Password" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -90,7 +105,7 @@ $breadCrumbName = "Add SubLeaders";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Address</label>
-                            <textarea name="address" id="address" class="form-control form-control-lg" required></textarea>
+                            <textarea name="address" class="form-control form-control-lg" required></textarea>
                         </div>
                     </div>
                     <div class="col-4">
@@ -102,14 +117,15 @@ $breadCrumbName = "Add SubLeaders";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Password</label>
-                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" >
+                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" required>
                         </div>
                     </div>
+                    <div class="col-4"></div>
                     <div class="col-4">
                         <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Submit</button>
                     </div>
                     <div class="col-4">
-                        <a href="subleaders.php" class="btn btn-lg btn-secondary btn-lg w-100 mt-4 mb-0">Back</a>
+                        <a href="leaders.php" class="btn btn-lg btn-secondary btn-lg w-100 mt-4 mb-0">Back</a>
                     </div>
                 </div>
               </form>
@@ -118,21 +134,20 @@ $breadCrumbName = "Add SubLeaders";
           </div>
         </div>
       </div>
-      <?php include('../common/local/footer.php'); ?>
+      <?php include('../common/subleader/footer.php'); ?>
     </div>
   </main>
   </body>
-<?php include('../common/local/footer-links.php') ?>
+<?php include('../common/subleader/footer-links.php') ?>
 <script>
  $(document).ready(function(){  
-      load_leader_data();
-        
+      load_data();  
       $('#userForm').on('submit', function(event){
             $('#overlay').show()
             $('#message').html('');
             event.preventDefault();
             $.ajax({
-                url:"../ajax/edit-subleaders.php",
+                url:"../ajax/leader/add-leaders.php",
                 method:"POST",
                 data: new FormData(this),
                 dataType:"json",
@@ -146,10 +161,13 @@ $breadCrumbName = "Add SubLeaders";
                 success:function(data)
                 {
                     $('#overlay').hide()
+                    if(data.error==''){
+                        $('#userForm')[0].reset();
+                    }
                     if(!data.error)
                     {
                         $('#total_data').text(data.total_line);
-                        $('#message').html('<div class="alert alert-success" style="color:#fff">SubLeader Updated Successfully.</div>');
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">Leader Created Successfully.</div>');
                     }
                     if(data.error)
                     {
@@ -166,70 +184,72 @@ $breadCrumbName = "Add SubLeaders";
       {  
         $('#overlay').show()
            $.ajax({  
-                url:"../ajax/master-data.php",  
+                url:"../ajax/leader/master-data.php",  
                 method:"POST",  
-                data:{action:"user_data",user_id:"<?php echo $_GET['id']; ?>"},  
+                // data:{page:page,total_records:total_records,search_str:search_str},  
                 success:function(data){  
-                    //AC_NO
+                    let option = [];
                     let optionState = [];
                     optionState += '<option value="" selected>Please Select</option>'
+                    option += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.AC_NO.length; i++){
+                        option += `<option value="${data.AC_NO[i].AC_NO}">${data.AC_NO[i].AC_NO}</option>`
+                    }
                     for(let j=0; i < data.state.length; i++){
                         optionState += `<option value="${data.state[i].id}">${data.state[i].name}</option>`
                     }
-
-           
-
-                    //City
-                    let option_city = [];
-                    option_city += '<option value="" selected>Please Select</option>'
-                    for(let i=0; i < data.city.length; i++){
-                        option_city += `<option value="${data.city[i].id}">${data.city[i].city}</option>`
-                    }
-                    $('#city').html(option_city)
+                    $('#AC_NO').html(option)
                     $('#state').html(optionState)
-                    $('#f_name').val(data.userData.f_name)
-                    $('#l_name').val(data.userData.l_name)
-                    $('#email').val(data.userData.email)
-                    $('#phone').val(data.userData.phone)
-                    $('#age').val(data.userData.age)
-                    $('#address').val(data.userData.address)
-                    $('#designation').val(data.userData.designation)
-                    $('#state option[value="'+data.userData.state+'"]').attr("selected", "selected");
-                    $('#city option[value="'+data.userData.city+'"]').attr("selected", "selected");
-                    $('#leader_id option[value="'+data.userData.leader_id+'"]').attr("selected", "selected");
-
-
                     $('#overlay').hide()
                 }  
            })  
       } 
 
-      function load_leader_data()  
+      function load_part_no(val)  
       {  
         $('#overlay').show()
            $.ajax({  
-                url:"../ajax/master-data.php",  
+                url:"../ajax/leader/master-data.php",  
                 method:"POST",  
-                data:{action:'leader_list'},  
+                data:{AC_NO:val},  
                 success:function(data){  
                     let option = [];
                     option += '<option value="" selected>Please Select</option>'
-                    for(let i=0; i < data.leader_list.length; i++){
-                        option += `<option value="${data.leader_list[i].id}">${data.leader_list[i].f_name} ${data.leader_list[i].l_name}</option>`
+                    for(let i=0; i < data.PART_NO.length; i++){
+                        option += `<option value="${data.PART_NO[i].PART_NO}">${data.PART_NO[i].PART_NO}</option>`
                     }
-                    $('#leader_id').html(option)
+                    $('#PART_NO').html(option)
+                    if(data.PART_NO.length==0){
+                     $('#SECTION_NO').html(option)
+                    }
                     $('#overlay').hide()
-                    load_data();
                 }  
            })  
       } 
 
+      function load_section_no(val)  
+      {  
+        $('#overlay').show()
+           $.ajax({  
+                url:"../ajax/leader/master-data.php",  
+                method:"POST",  
+                data:{AC_NO:$('#AC_NO').val(), PART_NO:val},  
+                success:function(data){  
+                    let option = [];
+                    for(let i=0; i < data.SECTION_NO.length; i++){
+                        option += `<option value="${data.SECTION_NO[i].SECTION_NO}">${data.SECTION_NO[i].SECTION_NO}</option>`
+                    }
+                    $('#SECTION_NO').html(option)
+                    $('#overlay').hide()
+                }  
+           }) 
+      } 
 
       function load_city(val)  
       {  
         $('#overlay').show()
            $.ajax({  
-                url:"../ajax/master-data.php",  
+                url:"../ajax/leader/master-data.php",  
                 method:"POST",  
                 data:{state:val},   
                 success:function(data){  
