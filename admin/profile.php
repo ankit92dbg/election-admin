@@ -241,8 +241,6 @@ $breadCrumbName = "Profile";
 <script>
    $(document).ready(function(){  
       load_data();  
-      $(document).ready(function(){  
-      load_leader_data();
         
       $('#userForm').on('submit', function(event){
             $('#overlay').show()
@@ -277,7 +275,6 @@ $breadCrumbName = "Profile";
                 }
             })
         });
- }); 
    })   
  function load_data()  
       {  
@@ -322,7 +319,7 @@ $breadCrumbName = "Profile";
                     $('#u_address').html('<i class="fa fa-location-arrow mr-2"></i> '+$('#state').find('option:selected').text()+','+$('#city').find('option:selected').text())
                     $('#u_designation').html('<i class="fa fa-briefcase mr-2"></i> '+data.userData.designation)
                     if(data.userData.profile_image!=null){
-                      $(".prof-image").attr("src",data.userData.profile_image);
+                      $(".prof-image").attr("src","../uploads/"+data.userData.profile_image);
                     }
                     $('#overlay').hide()
                 }  
