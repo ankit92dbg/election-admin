@@ -66,7 +66,7 @@ $endPart = explode('.',$endPart);
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo ($endPart=='voters') ? 'active' : ''; ?>" href="voters.php">
+          <a class="nav-link <?php echo ($endPart[0]=='voters') ? 'active' : ''; ?>" href="voters.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-address-book text-danger text-sm opacity-10"></i>
             </div>
@@ -74,7 +74,7 @@ $endPart = explode('.',$endPart);
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo ($endPart=='upload-csv') ? 'active' : ''; ?>" href="upload-csv.php">
+          <a class="nav-link <?php echo ($endPart[0]=='upload-csv') ? 'active' : ''; ?>" href="upload-csv.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-upload text-info text-sm opacity-10"></i>
             </div>
@@ -93,7 +93,7 @@ $endPart = explode('.',$endPart);
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo ($endPart=='profile') ? 'active' : ''; ?>" href="profile.php">
+          <a class="nav-link <?php echo ($endPart[0]=='profile') ? 'active' : ''; ?>" href="profile.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
             </div>

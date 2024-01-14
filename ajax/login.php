@@ -11,6 +11,7 @@ if($row){
     if($row['isActive']==0){
         $response->message = "Your account is deactive, please contact your admin. Thanks!!";
     }else{
+        $_SESSION['user_id'] = $row['id'];
         $_SESSION['f_name'] = $row['f_name'];
         $_SESSION['l_name'] = $row['l_name'];
         $_SESSION['email'] = $row['email'];

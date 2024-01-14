@@ -98,18 +98,20 @@ $breadCrumbName = "SubLeaders";
  }); 
  function load_data(page)  
       {  
-        $('#overlay').show()
-        let total_records = $('#total_records').val()
-        let search_str = $('#search_str').val()
-           $.ajax({  
-                url:"../ajax/subleaders.php",  
-                method:"POST",  
-                data:{page:page,total_records:total_records,search_str:search_str},  
-                success:function(data){  
-                    $('#dataTbl').html(data);  
-                    $('#overlay').hide()
-                }  
-           })  
+        if(page!=''){
+          $('#overlay').show()
+          let total_records = $('#total_records').val()
+          let search_str = $('#search_str').val()
+            $.ajax({  
+                  url:"../ajax/subleaders.php",  
+                  method:"POST",  
+                  data:{page:page,total_records:total_records,search_str:search_str},  
+                  success:function(data){  
+                      $('#dataTbl').html(data);  
+                      $('#overlay').hide()
+                  }  
+            })  
+          }   
       } 
 
  function changeStatus(val)  
