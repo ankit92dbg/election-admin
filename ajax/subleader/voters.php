@@ -66,6 +66,7 @@ $PART_NO = $urow['PART_NO'];
                 <th>PSBUILDING_NAME_V1</th>
                 <th>PART_NAME_EN</th>
                 <th>PART_NAME_V1</th>
+                <th>Action</th>
             </tr>
         </thead> 
         <tbody>
@@ -161,7 +162,18 @@ $PART_NO = $urow['PART_NO'];
         <td class="align-middle text-center">
             '.$row['PART_NAME_V1'].'
         </td>
-       
+        <td class="align-middle text-center">
+            <div class="dp">
+                <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                </a>
+                <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                    <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'">Edit</a></li>
+                </ul>
+            </div>
+        </td>
     </tr>
       ';  
       $slNo++;

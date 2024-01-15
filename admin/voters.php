@@ -57,6 +57,10 @@ $breadCrumbName = "Voter List";
            var page = $(this).attr("id");  
            load_data(page);  
       });  
+      $(document).on('click', '.dp-menu', function(event) {
+        $(this).next('.drop-menu').toggle();
+        event.stopPropagation();
+      }); 
  }); 
  function load_data(page)  
       {  
@@ -75,5 +79,18 @@ $breadCrumbName = "Voter List";
             })  
         }
        
-      } 
+      }
+      
+      function delUser(){
+        $('#overlay').show()
+        $('#exampleModal').modal('hide');          
+        $.ajax({  
+                url:"../ajax/master-data.php",  
+                method:"POST",  
+                data:{user_id:$('#delete_id').val(),action:"delete_user"},  
+                success:function(data){  
+                    load_data()
+                }  
+           }) 
+      }
 </script>

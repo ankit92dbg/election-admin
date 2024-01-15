@@ -36,6 +36,7 @@ if(isset($_POST) && $_POST['AC_NO']!='' && $_POST['PART_NO']!=''){
     }
 }
 
+
 //fetch state
 $q1 = "SELECT * from states";
 $r1 = mysqli_query($conn,$q1);
@@ -162,15 +163,56 @@ if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='dashboard_data'){
      $dashboardData->totalFemaleVoters=mysqli_num_rows($r1);
 }  
 
+$voterData = new stdClass();
+$SLNOINPART = [];
+if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='voter_data'){
+    $q1 = "SELECT * FROM voters_data WHERE id=".$_POST['voter_id'];
+     $r1 = mysqli_query($conn,$q1);
+     while($row1 = mysqli_fetch_assoc($r1)){
+     $voterData = $row1;
+     }
+
+     $q1 = "SELECT DISTINCT PART_NO from voters_data WHERE AC_NO='".$voterData['AC_NO']."'";
+     $r1 = mysqli_query($conn,$q1);
+     while($row1 = mysqli_fetch_assoc($r1)){
+         $PART_NO[] = $row1;
+     }
+
+    $q1 = "SELECT DISTINCT SECTION_NO from voters_data WHERE AC_NO='".$voterData['AC_NO']."' AND PART_NO='".$voterData['PART_NO']."'";
+    $r1 = mysqli_query($conn,$q1);
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $SECTION_NO[] = $row1;
+    }
+    $q1 = "SELECT DISTINCT SLNOINPART from voters_data WHERE AC_NO='".$voterData['AC_NO']."' AND PART_NO='".$voterData['PART_NO']."' AND SECTION_NO='".$voterData['SECTION_NO']."'";
+    $r1 = mysqli_query($conn,$q1);
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $SLNOINPART[] = $row1;
+    }
+
+     $output = new stdClass();
+     $output->voterData = $voterData;
+     
+ }
+
+ //fetch SLNOINPART
+if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='SLNOINPART'){
+    $q1 = "SELECT DISTINCT SLNOINPART from voters_data WHERE AC_NO='".$_POST['acNo']."' AND PART_NO='".$_POST['partNo']."' AND SECTION_NO='".$_POST['sectionNo']."'";
+    $r1 = mysqli_query($conn,$q1);
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $SLNOINPART[] = $row1;
+    }
+}
 
 
 
 $output->AC_NO = $AC_NO;
 $output->PART_NO = $PART_NO;
 $output->SECTION_NO = $SECTION_NO;
+$output->SLNOINPART = $SLNOINPART;
 $output->state = $state;
 $output->city= $city;
 $output->leader_list= $leader_list;
 $output->dashboardData= $dashboardData;
+$output->voterData= $voterData;
 echo json_encode($output);
 ?>

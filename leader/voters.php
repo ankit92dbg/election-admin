@@ -57,6 +57,10 @@ $breadCrumbName = "Voter List";
            var page = $(this).attr("id");  
            load_data(page);  
       });  
+      $(document).on('click', '.dp-menu', function(event) {
+        $(this).next('.drop-menu').toggle();
+        event.stopPropagation();
+      }); 
  }); 
  function load_data(page)  
       {  
