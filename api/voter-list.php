@@ -250,7 +250,7 @@ $page_query = "";
     if($SEARCH_ADDRESS!=''){
         $WHERE .= " AND voters_data.PSBUILDING_NAME_EN LIKE '%$SEARCH_ADDRESS%'";
     }
-    $query = "SELECT voters_data.PART_NO,voters_data.PSBUILDING_NAME_EN,voters_data.PSBUILDING_NAME_V1, COUNT(CASE WHEN GENDER = 'M' THEN id END) AS males, COUNT(CASE WHEN GENDER = 'F' THEN id END) AS females, COUNT(*) AS Total FROM `voters_data` WHERE $WHERE GROUP BY voters_data.PSBUILDING_NAME_EN $start_from, $record_per_page";
+    $query = "SELECT voters_data.PART_NO,voters_data.PSBUILDING_NAME_EN,voters_data.PSBUILDING_NAME_V1, COUNT(CASE WHEN GENDER = 'M' THEN id END) AS males, COUNT(CASE WHEN GENDER = 'F' THEN id END) AS females, COUNT(*) AS Total FROM `voters_data` WHERE $WHERE GROUP BY voters_data.PSBUILDING_NAME_EN LIMIT $start_from, $record_per_page";
     $page_query = "SELECT voters_data.PART_NO,voters_data.PSBUILDING_NAME_EN,voters_data.PSBUILDING_NAME_V1, COUNT(CASE WHEN GENDER = 'M' THEN id END) AS males, COUNT(CASE WHEN GENDER = 'F' THEN id END) AS females, COUNT(*) AS Total FROM `voters_data` WHERE $WHERE GROUP BY voters_data.PSBUILDING_NAME_EN;";
  }else if(isset($_POST['action']) && $_POST['action']=='surnameTab'){
     $WHERE = "";
