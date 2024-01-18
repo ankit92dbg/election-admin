@@ -1,10 +1,12 @@
 <?php
  session_start();
-include ('../config/conn.php');
+include ('../../config/conn.php');
+
 if(isset($_FILES['file']['name']))
 {
  $error = '';
  $total_line = 0;
+ $leader_id = $_SESSION['user_id'];
  if($_FILES['file']['name'] != '')
  {
   $allowed_extension = array('csv');
@@ -12,9 +14,7 @@ if(isset($_FILES['file']['name']))
   $extension = end($file_array);
   if(in_array($extension, $allowed_extension))
   {
-//    $new_file_name = rand() . '.' . $extension;
-//    move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/'.$new_file_name);
-   
+
 
 
    $filename   = uniqid() . "-csv-file-" . time();
@@ -23,13 +23,13 @@ if(isset($_FILES['file']['name']))
    $file_size =$_FILES['file']['size'];
    $file_tmp =$_FILES['file']['tmp_name'];
    $file_type=$_FILES['file']['type']; 
-   $file = "../uploads/{$basename}";  
+   $file = "../../uploads/{$basename}";  
    move_uploaded_file($_FILES['file']['tmp_name'],$file);
-   $file_content = file('../uploads/'. $file, FILE_SKIP_EMPTY_LINES);
+   $file_content = file($file, FILE_SKIP_EMPTY_LINES);
    $total_line = count($file_content);
 
    //make db entry :
-   $file_data = fopen('../uploads/'.$file, 'r');
+   $file_data = fopen($file, 'r');
 
    fgetcsv($file_data);
   
@@ -100,8 +100,9 @@ if(isset($_FILES['file']['name']))
         SLNOINPART = '$SLNOINPART'
         ";
     }else{
-        $query = "
+       $query = "
         INSERT INTO voters_data (
+        leader_id,    
         AC_NO, 
         PART_NO,
         SECTION_NO,
@@ -132,6 +133,7 @@ if(isset($_FILES['file']['name']))
         PART_NAME_V1
         ) 
         VALUES (
+            '$leader_id', 
             '$AC_NO', 
             '$PART_NO',
             '$SECTION_NO',

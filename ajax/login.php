@@ -15,6 +15,7 @@ if($row){
         $_SESSION['f_name'] = $row['f_name'];
         $_SESSION['l_name'] = $row['l_name'];
         $_SESSION['email'] = $row['email'];
+        $_SESSION['leader_id'] = $row['leader_id'];
         $_SESSION['user_type'] = $row['user_type'];
         if($row['user_type']==0){
             $_SESSION['title'] = "Admin Panel";

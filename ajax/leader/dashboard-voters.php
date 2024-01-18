@@ -7,7 +7,7 @@ $ur = mysqli_query($conn, $uq);
 $urow = mysqli_fetch_array($ur);
 $AC_NO = $urow['AC_NO'];
 $PART_NO = $urow['PART_NO'];
- $query = "SELECT * FROM voters_data WHERE AC_NO='$AC_NO' AND PART_NO='$PART_NO' ORDER BY id DESC LIMIT 10";  
+ $query = "SELECT * FROM voters_data WHERE leader_id=".$_SESSION['user_id']." ORDER BY id DESC LIMIT 10";  
  $result = mysqli_query($conn, $query);  
  $output .= "  
       <table class='table align-items-center mb-0'>  

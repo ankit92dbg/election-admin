@@ -136,7 +136,7 @@ $breadCrumbName = "Upload CSV";
         $('#message').html('');
         event.preventDefault();
         $.ajax({
-            url:"../ajax/upload-csv.php",
+            url:"../ajax/leader/upload-csv.php",
             method:"POST",
             data: new FormData(this),
             dataType:"json",

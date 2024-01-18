@@ -28,9 +28,9 @@ $urow = mysqli_fetch_array($ur);
 $AC_NO = $urow['AC_NO'];
 $PART_NO = $urow['PART_NO'];
  if($search_str==''){
-    $query = "SELECT * FROM voters_data WHERE AC_NO='$AC_NO' AND PART_NO='$PART_NO' ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM voters_data WHERE leader_id='$leader_id' ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }else{
-    $query = "SELECT * FROM voters_data WHERE AC_NO='$AC_NO' AND PART_NO='$PART_NO' AND FM_NAME_EN LIKE '%".$search_str."%' OR LASTNAME_EN LIKE '%".$search_str."%' OR EPIC_NO LIKE '%".$search_str."%' ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM voters_data WHERE leader_id='$leader_id' AND FM_NAME_EN LIKE '%".$search_str."%' OR LASTNAME_EN LIKE '%".$search_str."%' OR EPIC_NO LIKE '%".$search_str."%' ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }
  $result = mysqli_query($conn, $query);  
  $output .= "  

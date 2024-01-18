@@ -65,22 +65,22 @@ $endPart = explode('.',$endPart);
             <span class="nav-link-text ms-1">Subleader</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link <?php echo ($endPart[0]=='voters') ? 'active' : ''; ?>" href="voters.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-address-book text-danger text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Voters</span>
           </a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link <?php echo ($endPart[0]=='upload-csv') ? 'active' : ''; ?>" href="upload-csv.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-upload text-info text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Upload CSV</span>
           </a>
-        </li>
+        </li> -->
         <!-- <li class="nav-item">
           <a class="nav-link " href="./pages/rtl.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

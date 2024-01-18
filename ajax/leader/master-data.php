@@ -151,19 +151,19 @@ if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='dashboard_data'){
     $AC_NO = $urow['AC_NO'];
     $PART_NO = $urow['PART_NO'];
     //total booth workers :
-    $q1 = "SELECT * FROM user_tbl WHERE (AC_NO='$AC_NO' AND PART_NO='$PART_NO') OR leader_id=".$_SESSION['user_id']." AND user_type!=0";
+    $q1 = "SELECT * FROM user_tbl WHERE leader_id=".$_SESSION['user_id']." AND user_type!=0";
      $r1 = mysqli_query($conn,$q1);
      $dashboardData->totalBoothWorkers=mysqli_num_rows($r1);
     //total polling booth :
-    $q1 = "SELECT DISTINCT SECTION_NO FROM `voters_data` WHERE AC_NO='$AC_NO' AND PART_NO='$PART_NO'";
+    $q1 = "SELECT DISTINCT SECTION_NO FROM `voters_data` WHERE leader_id=".$_SESSION['user_id'];
     $r1 = mysqli_query($conn,$q1);
     $dashboardData->totalPollingBooth=mysqli_num_rows($r1);
      //total male voters :
-     $q1 = "SELECT * FROM `voters_data` WHERE AC_NO='$AC_NO' AND PART_NO='$PART_NO' AND GENDER='M'";
+     $q1 = "SELECT * FROM `voters_data` WHERE leader_id=".$_SESSION['user_id']." AND GENDER='M'";
      $r1 = mysqli_query($conn,$q1);
      $dashboardData->totalMaleVoters=mysqli_num_rows($r1);
      //total female voters :
-     $q1 = "SELECT * FROM `voters_data` WHERE AC_NO='$AC_NO' AND PART_NO='$PART_NO' AND GENDER='F'";
+     $q1 = "SELECT * FROM `voters_data` WHERE leader_id=".$_SESSION['user_id']." AND GENDER='F'";
      $r1 = mysqli_query($conn,$q1);
      $dashboardData->totalFemaleVoters=mysqli_num_rows($r1);
 }  

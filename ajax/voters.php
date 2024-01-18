@@ -4,6 +4,7 @@ include ('../config/conn.php');
 
  $record_per_page = $_POST["total_records"];  
  $search_str = $_POST["search_str"];  
+ $user_id = $_POST["user_id"];  
  $page = '';  
  $slNo = '';  
  $output = '';  
@@ -19,9 +20,9 @@ include ('../config/conn.php');
  $slNo = (($page*$record_per_page)-$record_per_page)+1;
  $start_from = ($page - 1)*$record_per_page;  
  if($search_str==''){
-    $query = "SELECT * FROM voters_data ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM voters_data WHERE leader_id='$user_id' ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }else{
-    $query = "SELECT * FROM voters_data WHERE FM_NAME_EN LIKE '%".$search_str."%' OR LASTNAME_EN LIKE '%".$search_str."%' OR EPIC_NO LIKE '%".$search_str."%' ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM voters_data WHERE leader_id='$user_id' AND FM_NAME_EN LIKE '%".$search_str."%' OR LASTNAME_EN LIKE '%".$search_str."%' OR EPIC_NO LIKE '%".$search_str."%' ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }
  $result = mysqli_query($conn, $query);  
  $output .= "  
@@ -174,9 +175,9 @@ include ('../config/conn.php');
 //  $output .= '<nav aria-label="Page navigation example">';
 //  $output .= ' <ul class="pagination">';
 if($search_str==''){
- $page_query = "SELECT * FROM voters_data ORDER BY id DESC";  
+ $page_query = "SELECT * FROM voters_data WHERE leader_id='$user_id' ORDER BY id DESC";  
 }else{
- $page_query = "SELECT * FROM voters_data WHERE FM_NAME_EN LIKE '%".$search_str."%' OR LASTNAME_EN LIKE '%".$search_str."%' OR EPIC_NO LIKE '%".$search_str."%' ORDER BY id DESC";  
+ $page_query = "SELECT * FROM voters_data WHERE leader_id='$user_id' AND FM_NAME_EN LIKE '%".$search_str."%' OR LASTNAME_EN LIKE '%".$search_str."%' OR EPIC_NO LIKE '%".$search_str."%' ORDER BY id DESC";  
 }
  $page_result = mysqli_query($conn, $page_query);  
  $total_records = mysqli_num_rows($page_result);  

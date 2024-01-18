@@ -15,25 +15,29 @@ $breadCrumbName = "Leaders";
           <div class="card ">
             <div class="card-header pb-0 p-3">
               <div class="row">
-                <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Leader List</h6>
+                <div class="col-lg-6 d-flex justify-content-between">
+                    <h6 class="mb-2">Leader List</h6>
                 </div>
-                <div class="col-lg-4 d-flex justify-content-between">
-                   <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by First Name, Last Name, Email or Phone No." />
-                </div>
-                <div class="col-lg-2 justify-content-between">
-                    <p style="float:right;margin-top:5%">Show Result :</p>
-                </div>
-                <div class="col-lg-2 d-flex justify-content-between">
-                        <select id="total_records" onchange="load_data()" class="form-select">
-                            <option value="50" selected>50</option>
-                            <option value="100">100</option>
-                            <option value="200">200</option>
-                        </select>    
-                </div>
-                <div class="col-lg-2 d-flex justify-content-between">
-                    <a class="btn btn-primary" href="add-leaders.php">Add Leader</a>
-                </div>    
+                <div class="col-lg-6">
+                    <a style="float:right;" class="btn btn-primary" href="add-leaders.php">Add Leader</a>
+                </div> 
+                <div class="col-lg-12">
+                        <div class="row">
+                          <div class="col-lg-4 d-flex justify-content-between">
+                              <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by First Name, Last Name, Email or Phone No." />
+                            </div>
+                            <div class="col-lg-2 justify-content-between">
+                                <p style="float:right;margin-top:5%">Show Result :</p>
+                            </div>
+                            <div class="col-lg-2 d-flex justify-content-between">
+                                    <select id="total_records" onchange="load_data()" class="form-select">
+                                        <option value="50" selected>50</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                    </select>    
+                            </div> 
+                        </div>
+                </div> 
               </div>
             </div>
             <div class="card-body p-3">
@@ -73,6 +77,7 @@ $breadCrumbName = "Leaders";
   </body>
 <?php include('../common/local/footer-links.php') ?>
 <script>
+  
  $(document).ready(function(){  
       load_data();  
        
@@ -145,5 +150,5 @@ $breadCrumbName = "Leaders";
                 }  
            }) 
       }
-      
+
 </script>
