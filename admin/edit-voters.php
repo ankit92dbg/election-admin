@@ -263,11 +263,18 @@ $breadCrumbName = "Edit Voter";
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
+                            <label class="label">Political Party Associated</label>
+                            <select id="political_party" name="political_party" class="form-select">
+                                <option value="" selected="">Please Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
                             <label class="label">Profile Image</label>
                             <input type="file" name="profile_image" class="form-control form-control-lg" placeholder="" aria-label="Password">
                         </div>
                     </div>
-                    <div class="col-4"></div>
                     <div class="col-4">
                         <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Submit</button>
                     </div>
@@ -371,7 +378,15 @@ $breadCrumbName = "Edit Voter";
                         option_voter_label += `<option value="${data.voter_label[i].id}">${data.voter_label[i].label}</option>`
                     }
 
+                    //voter_label
+                    let option_political_party = [];
+                    option_political_party += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.political_party.length; i++){
+                        option_political_party += `<option value="${data.political_party[i].id}">${data.political_party[i].name}</option>`
+                    }
+
                   
+                    $('#political_party').html(option_political_party)
                     $('#voter_label').html(option_voter_label)
                     $('#SLNOINPART').html(option_SLNOINPART_no)
                     $('#SECTION_NO').html(option_section_no)
@@ -414,6 +429,7 @@ $breadCrumbName = "Edit Voter";
                     $('#caste option[value="'+data.voterData.caste+'"]').attr("selected", "selected");
                     $('#isMarried option[value="'+data.voterData.isMarried+'"]').attr("selected", "selected");
                     $('#voter_label option[value="'+data.voterData.voter_label+'"]').attr("selected", "selected");
+                    $('#political_party option[value="'+data.voterData.political_party+'"]').attr("selected", "selected");
 
 
                     $('#overlay').hide()

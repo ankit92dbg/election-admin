@@ -7,6 +7,7 @@ include ('../config/conn.php');
 
 //fetch voter_label
 $voter_label = [];
+$political_party=[];
 if(isset($_POST) && $_POST['voter_label']!=''){
     $q1 = "SELECT * from voters_label WHERE leader_id=".$_POST['user_id'];
     $r1 = mysqli_query($conn,$q1);
@@ -257,6 +258,12 @@ if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='voter_data'){
         $voter_label[] = $row1;
     }
 
+    $q1 = "SELECT * from political_party";
+    $r1 = mysqli_query($conn,$q1);
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $political_party[] = $row1;
+    }
+
      $output = new stdClass();
      $output->voterData = $voterData;
      
@@ -292,5 +299,6 @@ $output->leader_list= $leader_list;
 $output->dashboardData= $dashboardData;
 $output->voter_label= $voter_label;
 $output->voterData= $voterData;
+$output->political_party= $political_party;
 echo json_encode($output);
 ?>
