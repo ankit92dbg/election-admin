@@ -50,21 +50,21 @@ $endPart = explode('.',$endPart);
           </ul>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link <?php echo ($endPart[0]=='leaders' || $endPart[0]=='add-leaders' || $endPart[0]=='edit-leaders') ? 'active' : ''; ?>" href="leaders.php">
+          <a class="nav-link <?php echo ($endPart[0]=='leaders' || $endPart[0]=='add-leaders' || $endPart[0]=='edit-leaders'|| $endPart[0]=='subleaders'|| $endPart[0]=='edit-subleaders'|| $endPart[0]=='add-subleaders'|| $endPart[0]=='voter-labels'|| $endPart[0]=='add-voter-label'|| $endPart[0]=='edit-voter-labels') ? 'active' : ''; ?>" href="leaders.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-user-secret text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Leader</span>
+            <span class="nav-link-text ms-1">Candidate</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link <?php echo ($endPart[0]=='subleaders' || $endPart[0]=='add-subleaders' || $endPart[0]=='edit-subleaders') ? 'active' : ''; ?>" href="subleaders.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-users text-success text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Subleader</span>
+            <span class="nav-link-text ms-1">Cader</span>
           </a>
-        </li>
+        </li> -->
         <!-- <li class="nav-item">
           <a class="nav-link <?php echo ($endPart[0]=='voters') ? 'active' : ''; ?>" href="voters.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

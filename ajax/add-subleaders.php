@@ -6,6 +6,7 @@ $error = '';
 $leader_id = $_POST['leader_id'];
 $f_name = $_POST['f_name'];
 $l_name = $_POST['l_name'];
+$SECTION_NO = $_POST['SECTION_NO'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 $password = md5($_POST['password']);
@@ -43,10 +44,21 @@ if(mysqli_num_rows($result)==0){
             ";
             $result = mysqli_query($conn,$query);
 
+            //insert booth
+            $queryCheck = "select * from user_tbl order by id desc";
+            $resultCheck = mysqli_query($conn,$queryCheck);
+            $rowsCheck = mysqli_fetch_assoc($resultCheck);
+            $insert_id = $rowsCheck['id'];
+            for($i=0;$i<count($SECTION_NO);$i++){
+                $newSec = $SECTION_NO[$i];
+                $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
+                mysqli_query($conn,$boothQuery);
+            }
+
 
 
             $response->error = "";
-            $response->message = "SubLeader added successfully.";
+            $response->message = "Cader added successfully.";
         }else{
             $response->error = 'Not a valid image file.';
         }
@@ -56,9 +68,20 @@ if(mysqli_num_rows($result)==0){
             ";
         $result = mysqli_query($conn,$query);
 
+        //insert booth
+        $queryCheck = "select * from user_tbl order by id desc";
+        $resultCheck = mysqli_query($conn,$queryCheck);
+        $rowsCheck = mysqli_fetch_assoc($resultCheck);
+        $insert_id = $rowsCheck['id'];
+        for($i=0;$i<count($SECTION_NO);$i++){
+            $newSec = $SECTION_NO[$i];
+            $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
+            mysqli_query($conn,$boothQuery);
+        }
+
 
         $response->error = "";
-        $response->message = "SubLeader added successfully.";
+        $response->message = "Cader added successfully.";
     }
 
 

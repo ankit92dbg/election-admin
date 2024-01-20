@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "SubLeaders";
+$breadCrumbName = "Caders";
 ?>
 <?php include('../common/local/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,7 +16,7 @@ $breadCrumbName = "SubLeaders";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">SubLeader List</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Cader List</h6>
                 </div>
                 <div class="col-lg-4 d-flex justify-content-between">
                    <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by First Name, Last Name, Email or Phone No." />
@@ -32,7 +32,7 @@ $breadCrumbName = "SubLeaders";
                         </select>    
                 </div>
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <a class="btn btn-primary" href="add-subleaders.php">Add SubLeader</a>
+                    <a class="btn btn-primary" href="add-subleaders.php?id=<?php echo $_GET['id']; ?>">Add Cader</a>
                 </div>    
               </div>
             </div>
@@ -105,7 +105,7 @@ $breadCrumbName = "SubLeaders";
             $.ajax({  
                   url:"../ajax/subleaders.php",  
                   method:"POST",  
-                  data:{page:page,total_records:total_records,search_str:search_str},  
+                  data:{page:page,total_records:total_records,search_str:search_str,cader_id:"<?php echo $_GET['id']; ?>"},  
                   success:function(data){  
                       $('#dataTbl').html(data);  
                       $('#overlay').hide()

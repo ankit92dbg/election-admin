@@ -74,48 +74,48 @@ $breadCrumbName = "Voter List";
                           <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">Part From</label>
-                                  <input type="text" id="PART_NO_FROM" class="form-control searchTab form-control-lg" placeholder="">
+                                  <input type="number" id="PART_NO_FROM" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">Part To</label>
-                                  <input type="text" id="PART_NO_TO" class="form-control searchTab form-control-lg" placeholder="">
+                                  <input type="number" id="PART_NO_TO" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-1">
+                          <!-- <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">SrNo </label>
                                   <input type="text" id="SECTION_NO" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
-                          </div>
-                          <div class="col-1">
+                          </div> -->
+                          <!-- <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">HNo </label>
                                   <input type="text" id="C_HOUSE_NO" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
-                          </div>
-                          <div class="col-2">
+                          </div> -->
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Surname </label>
                                   <input type="text" id="LASTNAME_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
-                          </div>
-                          <div class="col-2">
+                          </div> -->
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Name </label>
                                   <input type="text" id="FM_NAME_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
-                          </div>
-                          <div class="col-2">
+                          </div> -->
+                          <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">Relative </label>
                                   <input type="text" id="RLN_FM_NM_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <div class="col-1">
                               <div class="mb-3">
-                                  <label class="label">EPIC ID </label>
+                                  <label class="label">Voter ID </label>
                                   <input type="text" id="EPIC_NO" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
@@ -137,7 +137,7 @@ $breadCrumbName = "Voter List";
                                   <input type="text" id="SECTION_NAME_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Filter </label>
                                   <select id="filter_searchTab" class="form-select searchTab">
@@ -147,7 +147,7 @@ $breadCrumbName = "Voter List";
                                       <option value="caste">Caste</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('searchTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -158,11 +158,16 @@ $breadCrumbName = "Voter List";
                       <div id="alpha" class="inner-tab-data" style="display:none">
                         <h5>Alphabetical List</h5>
                         <div class="row">
-                          <div class="col-2"></div>
-                          <div class="col-6">
+                          <div class="col-1">
                               <div class="mb-3">
-                                  <label class="label">Enter Part No. here...(Seperated by comma Example : 1,2,3)</label>
-                                  <input type="text" id="PART_NO_COMMA" class="form-control alphaTab form-control-lg" placeholder="">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_ALPHA" class="form-control alphaTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_ALPHA" class="form-control alphaTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-2">
@@ -178,13 +183,13 @@ $breadCrumbName = "Voter List";
                           <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">Part From</label>
-                                  <input type="text" id="PART_NO_AGE_FROM" class="form-control agewiseTab form-control-lg" placeholder="">
+                                  <input type="number" id="PART_NO_AGE_FROM" class="form-control agewiseTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">Part To</label>
-                                  <input type="text" id="PART_NO_AGE_TO" class="form-control agewiseTab form-control-lg" placeholder="">
+                                  <input type="number" id="PART_NO_AGE_TO" class="form-control agewiseTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-1">
@@ -229,10 +234,22 @@ $breadCrumbName = "Voter List";
                       <div id="family" class="inner-tab-data" style="display:none">
                         <h5>Family Report</h5>
                         <div class="row">
-                          <div class="col-4">
+                          <!-- <div class="col-4">
                               <div class="mb-3">
                                   <label class="label">Part No. (Seperated by comma Example : 1,2,3)</label>
                                   <input type="text" id="PART_NO_FAMILY_FROM" class="form-control familyTab form-control-lg" placeholder="">
+                              </div>
+                          </div> -->
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_FAMILY" class="form-control familyTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_FAMILY" class="form-control familyTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-2">
@@ -247,12 +264,12 @@ $breadCrumbName = "Voter List";
                                   <input type="number" id="FAMILY_SIZE_TO" class="form-control familyTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Surname</label>
                                   <input type="text" id="SURNAME_FAMILY" class="form-control familyTab form-control-lg" placeholder="">
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('familyTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -263,10 +280,22 @@ $breadCrumbName = "Voter List";
                       <div id="familyHead" class="inner-tab-data" style="display:none">
                         <h5>Family Head Report</h5>
                         <div class="row">
-                          <div class="col-4">
+                          <!-- <div class="col-4">
                               <div class="mb-3">
                                   <label class="label">Part No. (Seperated by comma Example : 1,2,3)</label>
                                   <input type="text" id="PART_NO_FAMILY_HEAD" class="form-control familyHeadTab form-control-lg" placeholder="">
+                              </div>
+                          </div> -->
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_FAMILY_HEAD" class="form-control familyHeadTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_FAMILY_HEAD" class="form-control familyHeadTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-2">
@@ -281,19 +310,19 @@ $breadCrumbName = "Voter List";
                                   <input type="number" id="FAMILY_HEAD_SIZE_TO" class="form-control familyHeadTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">Age From</label>
                                   <input type="number" id="FAMILY_HEAD_AGE_FROM" class="form-control familyHeadTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">Age To</label>
                                   <input type="number" id="FAMILY_HEAD_AGE_TO" class="form-control familyHeadTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Family Head Gender</label>
                                   <select id="FAMILY_HEAD_GENDER" class="form-select familyHeadTab">
@@ -312,7 +341,7 @@ $breadCrumbName = "Voter List";
                                       <option value="1">Muslim</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('familyHeadTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -323,10 +352,22 @@ $breadCrumbName = "Voter List";
                       <div id="doubleName" class="inner-tab-data" style="display:none">
                         <h5>Double Voter List</h5>
                         <div class="row">
-                          <div class="col-4">
+                          <!-- <div class="col-4">
                               <div class="mb-3">
                                   <label class="label">Part No. (Seperated by comma Example : 1,2,3)</label>
                                   <input type="text" id="PART_NO_DOUBLE" class="form-control doubleNameTab form-control-lg" placeholder="">
+                              </div>
+                          </div> -->
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_DOUBLE" class="form-control doubleNameTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_DOUBLE" class="form-control doubleNameTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-2">
@@ -421,10 +462,22 @@ $breadCrumbName = "Voter List";
                       <div id="address" class="inner-tab-data" style="display:none">
                         <h5>Addresswise List</h5>
                         <div class="row">
-                          <div class="col-4">
+                          <!-- <div class="col-4">
                               <div class="mb-3">
                                   <label class="label">Part No. (Seperated by comma Example : 1,2,3)</label>
                                   <input type="text" id="PART_NO_ADDRESS" class="form-control addressTab form-control-lg" placeholder="">
+                              </div>
+                          </div> -->
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_ADDRESS" class="form-control addressTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_ADDRESS" class="form-control addressTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-4">
@@ -443,10 +496,22 @@ $breadCrumbName = "Voter List";
                       <div id="surname" class="inner-tab-data" style="display:none">
                         <h5>Surname List</h5>
                         <div class="row">
-                          <div class="col-4">
+                          <!-- <div class="col-4">
                               <div class="mb-3">
                                   <label class="label">Part No. (Seperated by comma Example : 1,2,3)</label>
                                   <input type="text" id="PART_NO_SURNAME" class="form-control surnameTab form-control-lg" placeholder="">
+                              </div>
+                          </div> -->
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_SURNAME" class="form-control surnameTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_SURNAME" class="form-control surnameTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-4">
@@ -497,7 +562,7 @@ $breadCrumbName = "Voter List";
                         </div> 
                       </div>
                       <div id="sms" class="inner-tab-data" style="display:none">
-                        <h5>Family Labels</h5>
+                        <h5>SMS Panel</h5>
                         <div class="row">
                           <div class="col-1">
                               <div class="mb-3">
@@ -627,6 +692,8 @@ $breadCrumbName = "Voter List";
                     RLN_FM_NM_EN: $('#RLN_FM_NM_EN').val(),
                     EPIC_NO: $('#EPIC_NO').val(),
                     MOBILE_NO: $('#MOBILE_NO').val(),
+                    PART_NO_FROM_ALPHA: $('#PART_NO_FROM_ALPHA').val(),
+                    PART_NO_TO_ALPHA: $('#PART_NO_TO_ALPHA').val(),
                     fullName: $('#fullName').val(),
                     SECTION_NAME_EN: $('#SECTION_NAME_EN').val(),
                     filter_searchTab: $('#filter_searchTab').val(),
@@ -636,18 +703,21 @@ $breadCrumbName = "Voter List";
                     AGE_TO: $('#AGE_TO').val(),
                     GENDER_AGE: $('#GENDER_AGE').val(),
                     SORT_AGE: $('#SORT_AGE').val(),         
-                    PART_NO_FAMILY_FROM: $('#PART_NO_FAMILY_FROM').val(),         
+                    PART_NO_FROM_FAMILY: $('#PART_NO_FROM_FAMILY').val(),         
+                    PART_NO_TO_FAMILY: $('#PART_NO_TO_FAMILY').val(),         
                     FAMILY_SIZE_FROM: $('#FAMILY_SIZE_FROM').val(),         
                     FAMILY_SIZE_TO: $('#FAMILY_SIZE_TO').val(),         
                     SURNAME_FAMILY: $('#SURNAME_FAMILY').val(),         
-                    PART_NO_FAMILY_HEAD: $('#PART_NO_FAMILY_HEAD').val(),         
+                    PART_NO_FROM_FAMILY_HEAD: $('#PART_NO_FROM_FAMILY_HEAD').val(),         
+                    PART_NO_TO_FAMILY_HEAD: $('#PART_NO_TO_FAMILY_HEAD').val(),         
                     FAMILY_HEAD_SIZE_FROM: $('#FAMILY_HEAD_SIZE_FROM').val(),         
                     FAMILY_HEAD_SIZE_TO: $('#FAMILY_HEAD_SIZE_TO').val(),         
                     FAMILY_HEAD_AGE_FROM: $('#FAMILY_HEAD_AGE_FROM').val(),         
                     FAMILY_HEAD_AGE_TO: $('#FAMILY_HEAD_AGE_TO').val(),         
                     FAMILY_HEAD_GENDER: $('#FAMILY_HEAD_GENDER').val(),         
                     FAMILY_HEAD_CASTE: $('#FAMILY_HEAD_CASTE').val(),         
-                    PART_NO_DOUBLE: $('#PART_NO_DOUBLE').val(),         
+                    PART_NO_FROM_DOUBLE: $('#PART_NO_FROM_DOUBLE').val(),         
+                    PART_NO_TO_DOUBLE: $('#PART_NO_TO_DOUBLE').val(),         
                     AGE_MARRIED: $('#AGE_MARRIED').val(),         
                     PART_NO_MARRIED_FROM: $('#PART_NO_MARRIED_FROM').val(),         
                     PART_NO_MARRIED_TO: $('#PART_NO_MARRIED_TO').val(),         
@@ -657,9 +727,11 @@ $breadCrumbName = "Voter List";
                     PART_NO_SINGLE_FROM: $('#PART_NO_SINGLE_FROM').val(),         
                     PART_NO_SINGLE_TO: $('#PART_NO_SINGLE_TO').val(),         
                     SORT_GENDER_SINGLE: $('#SORT_GENDER_SINGLE').val(),         
-                    PART_NO_ADDRESS: $('#PART_NO_ADDRESS').val(),         
+                    PART_NO_FROM_ADDRESS: $('#PART_NO_FROM_ADDRESS').val(),         
+                    PART_NO_TO_ADDRESS: $('#PART_NO_TO_ADDRESS').val(),         
                     SEARCH_ADDRESS: $('#SEARCH_ADDRESS').val(),         
-                    PART_NO_SURNAME: $('#PART_NO_SURNAME').val(),         
+                    PART_NO_FROM_SURNAME: $('#PART_NO_FROM_SURNAME').val(),         
+                    PART_NO_TO_SURNAME: $('#PART_NO_TO_SURNAME').val(),         
                     SEARCH_SURNAME: $('#SEARCH_SURNAME').val(),         
                     PART_NO_FROM_LABEL: $('#PART_NO_FROM_LABEL').val(),         
                     PART_NO_TO_LABEL: $('#PART_NO_TO_LABEL').val(),         

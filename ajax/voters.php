@@ -162,7 +162,7 @@ include ('../config/conn.php');
                     </svg>
                 </a>
                 <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
-                    <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'">Edit</a></li>
+                    <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
                 </ul>
             </div>
         </td>

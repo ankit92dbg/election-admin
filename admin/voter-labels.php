@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Candidate";
+$breadCrumbName = "Label Value";
 ?>
 <?php include('../common/local/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,15 +16,15 @@ $breadCrumbName = "Candidate";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-6 d-flex justify-content-between">
-                    <h6 class="mb-2">Candidate List</h6>
+                    <h6 class="mb-2">Label Value List</h6>
                 </div>
                 <div class="col-lg-6">
-                    <a style="float:right;" class="btn btn-primary" href="add-leaders.php">Add Candidate</a>
+                    <a style="float:right;" class="btn btn-primary" href="add-voter-label.php?id=<?php echo $_GET['id']; ?>">Add Label Value</a>
                 </div> 
                 <div class="col-lg-12">
                         <div class="row">
                           <div class="col-lg-4 d-flex justify-content-between">
-                              <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by First Name, Last Name, Email or Phone No." />
+                              <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by Label or Value" />
                             </div>
                             <div class="col-lg-2 justify-content-between">
                                 <p style="float:right;margin-top:5%">Show Result :</p>
@@ -60,8 +60,7 @@ $breadCrumbName = "Candidate";
                   </div>
                   <div class="modal-body">
                     <input type="hidden" id="delete_id" value="" />
-                    <p><strong>Are you sure, you want to delete this leader?</strong></p>
-                    <p>If you delete this leader then the subleader of the respective leader will be also deleted.</p>
+                    <p><strong>Are you sure, you want to delete this label?</strong></p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
@@ -109,9 +108,9 @@ $breadCrumbName = "Candidate";
           let total_records = $('#total_records').val()
           let search_str = $('#search_str').val()
             $.ajax({  
-                  url:"../ajax/leaders.php",  
+                  url:"../ajax/voter-labels.php",  
                   method:"POST",  
-                  data:{page:page,total_records:total_records,search_str:search_str},  
+                  data:{page:page,total_records:total_records,search_str:search_str,user_id:"<?php echo $_GET['id']; ?>"},  
                   success:function(data){  
                       $('#dataTbl').html(data);  
                       $('#overlay').hide()
@@ -120,23 +119,7 @@ $breadCrumbName = "Candidate";
         }   
       } 
 
- function changeStatus(val)  
-      {  
-        $('#overlay').show()
-           $.ajax({  
-                url:"../ajax/master-data.php",  
-                method:"POST",  
-                data:{user_id:val,action:"change_status"},  
-                success:function(data){  
-                    load_data()
-                }  
-           })  
-      }
 
-      function deleteUser(id){
-        $('#delete_id').val(id)
-        $('#exampleModal').modal('show');          
-      }
 
       function delUser(){
         $('#overlay').show()
@@ -144,11 +127,16 @@ $breadCrumbName = "Candidate";
         $.ajax({  
                 url:"../ajax/master-data.php",  
                 method:"POST",  
-                data:{user_id:$('#delete_id').val(),action:"delete_user"},  
+                data:{id:$('#delete_id').val(),action:"delete_label"},  
                 success:function(data){  
                     load_data()
                 }  
            }) 
+      }
+
+      function deleteUser(id){
+        $('#delete_id').val(id)
+        $('#exampleModal').modal('show');          
       }
 
 </script>

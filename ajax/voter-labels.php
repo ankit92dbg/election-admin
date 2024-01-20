@@ -8,7 +8,7 @@ include ('../config/conn.php');
  $slNo = '';  
  $output = '';  
  $first=1;
- $cader_id = $_POST['cader_id'];
+ $leader_id = $_POST['user_id'];
  if(isset($_POST["page"]))  
  {  
       $page = $_POST["page"]; 
@@ -20,9 +20,9 @@ include ('../config/conn.php');
  $slNo = (($page*$record_per_page)-$record_per_page)+1;
  $start_from = ($page - 1)*$record_per_page;  
  if($search_str==''){
-    $query = "SELECT * FROM user_tbl WHERE user_type=2 and leader_id=$cader_id ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM voters_label WHERE leader_id=$leader_id ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }else{
-    $query = "SELECT * FROM user_tbl WHERE user_type=2 and leader_id=$cader_id AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC LIMIT $start_from, $record_per_page";  
+    $query = "SELECT * FROM voters_label WHERE leader_id=$leader_id AND (label LIKE '%".$search_str."%' OR value LIKE '%".$search_str."%') ORDER BY id DESC LIMIT $start_from, $record_per_page";  
  }
  $result = mysqli_query($conn, $query);  
  $output .= "  
@@ -30,17 +30,8 @@ include ('../config/conn.php');
         <thead>
             <tr>
                 <th>Sl No.</th>
-                <th>Candidate Name</th>
-                <th>Cader Name</th>
-                <th>Email</th>
-                <th>Designation</th>
-                <th>Phone</th>
-                <th>Age</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Status</th>
-                <th>Created On</th>
+                <th>Label</th>
+                <th>Value</th>
                 <th>Action</th>
             </tr>
         </thead> 
@@ -48,10 +39,13 @@ include ('../config/conn.php');
  ";  
  while($row = mysqli_fetch_array($result))  
  {  
-    $leaderQuery = "select * from user_tbl where id=".$row['leader_id'];
-    $leaderResult = mysqli_query($conn,$leaderQuery);
-	$leaderRow = mysqli_fetch_assoc($leaderResult);
-	$leaderName = $leaderRow['f_name'].' '.$leaderRow['l_name'];
+    $boothQuery = "select * from user_assigned_booth where user_id=".$row['id'];
+    $boothRes = mysqli_query($conn,$boothQuery);
+    $boothId = [];
+    while($boothRow = mysqli_fetch_array($boothRes))  
+    { 
+        array_push($boothId,$boothRow['SECTION_NO']);
+    }
 	$profile_image = $row['profile_image'];
 
       $output .= '  
@@ -60,43 +54,10 @@ include ('../config/conn.php');
             '.$slNo.'
         </td>
         <td class="align-middle text-center">
-            <a href="edit-leaders.php?id='.$row['leader_id'].'">'.$leaderName.'</a>
+            '.$row['label'].'
         </td>
         <td class="align-middle text-center">
-            <img style="width: 50px;
-            height: 50px;
-            border-radius: 50%;" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
-            <p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].' '.$row['l_name'].'</p>
-        </td>
-        <td class="align-middle text-center">
-            '.$row['email'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['designation'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['phone'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['age'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['address'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['city'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['state'].'
-        </td>';
-        if($row['isActive']=='1'){
-            $output .= '<td class="align-middle text-center"><span class="btn btn-sm btn-success">Active</span></td>';
-        }
-        if($row['isActive']=='0'){
-            $output .= '<td class="align-middle text-center"><span class="btn btn-sm btn-danger">Inactive</span></td>';
-        }
-        $output .=  '<td class="align-middle text-center">
-            '.$row['created_at'].'
+            '.$row['value'].'
         </td>
         <td class="align-middle text-center">
             <div class="dp">
@@ -106,8 +67,7 @@ include ('../config/conn.php');
                     </svg>
                 </a>
                 <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
-                    <li><a class="dropdown-item" href="edit-subleaders.php?id='.$row['id'].'&cader_id='.$leader=$cader_id.'">Edit</a></li>
-                    <li><a class="dropdown-item" onclick="changeStatus('.$row['id'].');" href="javascript:void(0);">'.($row['isActive']==0 ? "Enable" : "Disable").'</a></li>
+                    <li><a class="dropdown-item" href="edit-voter-labels.php?id='.$row['id'].'&leader_id='.$leader_id.'">Edit</a></li>
                     <li><a class="dropdown-item text-danger" onclick="deleteUser('.$row['id'].');" href="javascript:void(0);">Delete</a></li>
                 </ul>
             </div>
@@ -121,9 +81,9 @@ include ('../config/conn.php');
 //  $output .= '<nav aria-label="Page navigation example">';
 //  $output .= ' <ul class="pagination">';
 if($search_str==''){
- $page_query = "SELECT * FROM user_tbl WHERE user_type=2 ORDER BY id DESC";  
+ $page_query = "SELECT * FROM user_tbl WHERE user_type=1 ORDER BY id DESC";  
 }else{
- $page_query = "SELECT * FROM  user_tbl WHERE user_type=2 AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC";  
+ $page_query = "SELECT * FROM  user_tbl WHERE user_type=1 AND (f_name LIKE '%".$search_str."%' OR l_name LIKE '%".$search_str."%' OR email LIKE '%".$search_str."%' OR phone LIKE '%".$search_str."%') ORDER BY id DESC";  
 }
  $page_result = mysqli_query($conn, $page_query);  
  $total_records = mysqli_num_rows($page_result);  

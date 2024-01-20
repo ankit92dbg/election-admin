@@ -28,7 +28,9 @@ if(mysqli_num_rows($result)==1){
     }else{
         $password = $row['password'];
     }
-
+ //delete old booth
+    $boothQuery = "DELETE from user_assigned_booth WHERE user_id='$user_id'";
+    mysqli_query($conn,$boothQuery);
 
     if($_FILES['profile_image']['name'] != '')
     {
@@ -51,11 +53,17 @@ if(mysqli_num_rows($result)==1){
             WHERE `id`='$user_id'";
             $result = mysqli_query($conn,$query);
 
+            //insert booth
+            for($i=0;$i<count($SECTION_NO);$i++){
+                $newSec = $SECTION_NO[$i];
+                $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$user_id','$newSec')";
+                mysqli_query($conn,$boothQuery);
+            }
 
 
 
             $response->error = "";
-            $response->message = "SubLeader updated successfully.";
+            $response->message = "Cader updated successfully.";
         }else{
             $response->error = 'Not a valid image file.';
         }
@@ -65,16 +73,22 @@ if(mysqli_num_rows($result)==1){
             WHERE `id`='$user_id'";
         $result = mysqli_query($conn,$query);
 
+         //insert booth
+         for($i=0;$i<count($SECTION_NO);$i++){
+             $newSec = $SECTION_NO[$i];
+             $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$user_id','$newSec')";
+             mysqli_query($conn,$boothQuery);
+         }
     
 
         $response->error = "";
-        $response->message = "SubLeader updated successfully.";
+        $response->message = "Cader updated successfully.";
     }
 
 
     
 }else{
-    $response->error = "SubLeader not found!";
+    $response->error = "Cader not found!";
 }
 echo json_encode($response);
 ?>

@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Add Leaders";
+$breadCrumbName = "Update Candidate";
 ?>
 <?php include('../common/local/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,7 +16,7 @@ $breadCrumbName = "Add Leaders";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Update Leader</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Update Candidate</h6>
                 </div>   
               </div>
             </div>
@@ -43,14 +43,14 @@ $breadCrumbName = "Add Leaders";
                             </select>   
                         </div>
                     </div>
-                    <div class="col-4">
+                    <!-- <div class="col-4">
                         <div class="mb-3">
                             <label class="label">SECTION_NO</label>
                             <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;" required>
                                 <option value="" selected>Please Select</option>
                             </select>   
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">First Name</label>

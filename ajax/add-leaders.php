@@ -47,15 +47,15 @@ if(mysqli_num_rows($result)==0){
 
 
             //insert booth
-            $queryCheck = "select * from user_tbl order by id desc";
-            $resultCheck = mysqli_query($conn,$queryCheck);
-            $rowsCheck = mysqli_fetch_assoc($resultCheck);
-            $insert_id = $rowsCheck['id'];
-            for($i=0;$i<count($SECTION_NO);$i++){
-                $newSec = $SECTION_NO[$i];
-                $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
-                mysqli_query($conn,$boothQuery);
-            }
+            // $queryCheck = "select * from user_tbl order by id desc";
+            // $resultCheck = mysqli_query($conn,$queryCheck);
+            // $rowsCheck = mysqli_fetch_assoc($resultCheck);
+            // $insert_id = $rowsCheck['id'];
+            // for($i=0;$i<count($SECTION_NO);$i++){
+            //     $newSec = $SECTION_NO[$i];
+            //     $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
+            //     mysqli_query($conn,$boothQuery);
+            // }
 
 
 

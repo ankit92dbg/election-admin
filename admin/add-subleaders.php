@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Add SubLeaders";
+$breadCrumbName = "Add Cader";
 ?>
 <?php include('../common/local/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,20 +16,27 @@ $breadCrumbName = "Add SubLeaders";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-3 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Create New SubLeader</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Create New Cader</h6>
                 </div>   
               </div>
             </div>
             <div class="card-body p-3">
               <form  id="userForm" enctype="multipart/form-data" role="form" method="post">
+                <input type="hidden" name="leader_id" value="<?php echo $_GET['id']; ?>" />
                 <div class="row">
                     <div class="col-12">
                         <span id="message"></span>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
-                            <label class="label">Select Leader</label>
-                            <select id="leader_id" name="leader_id" class="form-select" required>
+                            <label class="label">Candidate Name</label>
+                            <input type="text" id="leader_id" class="form-control form-control-lg" placeholder="First Name" aria-label="Email" disabled>  
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label class="label">SECTION_NO</label>
+                            <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;" required>
                                 <option value="" selected>Please Select</option>
                             </select>   
                         </div>
@@ -108,7 +115,7 @@ $breadCrumbName = "Add SubLeaders";
                         <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Submit</button>
                     </div>
                     <div class="col-4">
-                        <a href="subleaders.php" class="btn btn-lg btn-secondary btn-lg w-100 mt-4 mb-0">Back</a>
+                        <a href="subleaders.php?id=<?php echo $_GET['id']; ?>" class="btn btn-lg btn-secondary btn-lg w-100 mt-4 mb-0">Back</a>
                     </div>
                 </div>
               </form>
@@ -173,15 +180,23 @@ $breadCrumbName = "Add SubLeaders";
                 success:function(data){  
                     let option = [];
                     let optionState = [];
+                    let leader_id="<?php echo $_GET['id']; ?>";
                     optionState += '<option value="" selected>Please Select</option>'
                     option += '<option value="" selected>Please Select</option>'
                     for(let i=0; i < data.leader_list.length; i++){
-                        option += `<option value="${data.leader_list[i].id}">${data.leader_list[i].f_name} ${data.leader_list[i].l_name}</option>`
+                        // option += `<option value="${data.leader_list[i].id}">${data.leader_list[i].f_name} ${data.leader_list[i].l_name}</option>`
+                        if(data.leader_list[i].id==leader_id){
+                            $('#leader_id').val(data.leader_list[i].f_name)
+                        }
                     }
                     for(let j=0; i < data.state.length; i++){
                         optionState += `<option value="${data.state[i].id}">${data.state[i].name}</option>`
                     }
-                    $('#leader_id').html(option)
+                    let leaderData = data.leader_list.filter(function(item){
+                                        return item.id == "<?php echo $_GET['id']; ?>";         
+                                    });
+                    load_section_no(leaderData[0].AC_NO,leaderData[0].PART_NO);              
+                    // $('#leader_id').html(option)
                     $('#state').html(optionState)
                     $('#overlay').hide()
                 }  
@@ -207,5 +222,21 @@ $breadCrumbName = "Add SubLeaders";
                 }  
            })  
       } 
-      
+      function load_section_no(AC_NO,val)  
+      {  
+        $('#overlay').show()
+           $.ajax({  
+                url:"../ajax/master-data.php",  
+                method:"POST",  
+                data:{AC_NO:AC_NO, PART_NO:val},  
+                success:function(data){  
+                    let option = [];
+                    for(let i=0; i < data.SECTION_NO.length; i++){
+                        option += `<option value="${data.SECTION_NO[i].SECTION_NO}">${data.SECTION_NO[i].SECTION_NO}</option>`
+                    }
+                    $('#SECTION_NO').html(option)
+                    $('#overlay').hide()
+                }  
+           }) 
+      } 
 </script>

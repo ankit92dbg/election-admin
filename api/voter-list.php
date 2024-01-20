@@ -80,9 +80,13 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='alphaTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$user_id'";
-    $PART_NO_COMMA = $_POST['PART_NO_COMMA'];
-    if($PART_NO_COMMA!=''){
-        $WHERE .= " AND PART_NO IN ($PART_NO_COMMA)";
+    $PART_NO_FROM_ALPHA = $_POST['PART_NO_FROM_ALPHA'];
+    $PART_NO_TO_ALPHA = $_POST['PART_NO_TO_ALPHA'];
+    if($PART_NO_FROM_ALPHA!='' && $PART_NO_TO_ALPHA!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_ALPHA AND $PART_NO_TO_ALPHA";
+    }
+    if($PART_NO_FROM_ALPHA!='' && $PART_NO_TO_ALPHA==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_ALPHA";
     }
     $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
     $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
@@ -124,43 +128,60 @@ $page_query = "";
     $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY $SORT";
  }else if(isset($_POST['action']) && $_POST['action']=='familyTab'){
     $WHERE = "";
+    $HAVING = "";
     $WHERE .= "leader_id='$user_id'";
-    $PART_NO_FAMILY_FROM = $_POST['PART_NO_FAMILY_FROM'];
+    $PART_NO_FROM_FAMILY = $_POST['PART_NO_FROM_FAMILY'];
+    $PART_NO_TO_FAMILY = $_POST['PART_NO_TO_FAMILY'];
     $FAMILY_SIZE_FROM = $_POST['FAMILY_SIZE_FROM'];
     $FAMILY_SIZE_TO = $_POST['FAMILY_SIZE_TO'];
     $SURNAME_FAMILY = $_POST['SURNAME_FAMILY'];
-    if($PART_NO_FAMILY_FROM!=''){
-        $WHERE .= " AND PART_NO IN ($PART_NO_FAMILY_FROM)";
+    if($PART_NO_FROM_FAMILY!='' && $PART_NO_TO_FAMILY!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_FAMILY AND $PART_NO_TO_FAMILY";
+    }
+    if($PART_NO_FROM_FAMILY!='' && $PART_NO_TO_FAMILY==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_FAMILY";
     }
     if($FAMILY_SIZE_FROM!='' && $FAMILY_SIZE_TO!=''){
-        $WHERE .= " AND family_size BETWEEN $FAMILY_SIZE_FROM AND $FAMILY_SIZE_TO";
+        $HAVING .= " HAVING COUNT(voters_data.id) BETWEEN $FAMILY_SIZE_FROM AND $FAMILY_SIZE_TO";
     }
     if($FAMILY_SIZE_FROM!='' && $FAMILY_SIZE_TO==''){
-        $WHERE .= " AND family_size=$FAMILY_SIZE_FROM";
+        $HAVING .= " HAVING COUNT(voters_data.id)=$FAMILY_SIZE_FROM";
     }
     if($SURNAME_FAMILY!=''){
         $WHERE .= " AND LASTNAME_EN LIKE '%$SURNAME_FAMILY%'";
     }
-    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
-    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+    $query = "SELECT voters_data.*, COUNT(voters_data.id) as family_count FROM voters_data WHERE $WHERE GROUP BY voters_data.C_HOUSE_NO, voters_data.SECTION_NAME_EN $HAVING  ORDER BY voters_data.FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT voters_data.*, COUNT(voters_data.id) as family_count FROM voters_data WHERE $WHERE GROUP BY voters_data.C_HOUSE_NO, voters_data.SECTION_NAME_EN $HAVING ORDER BY voters_data.FM_NAME_EN ASC";
  }else if(isset($_POST['action']) && $_POST['action']=='familyHeadTab'){
     $WHERE = "";
+    $HAVING = "";
     $WHERE .= "leader_id='$user_id'";
-    $PART_NO_FAMILY_HEAD = $_POST['PART_NO_FAMILY_HEAD'];
+    $PART_NO_FROM_FAMILY_HEAD = $_POST['PART_NO_FROM_FAMILY_HEAD'];
+    $PART_NO_TO_FAMILY_HEAD = $_POST['PART_NO_TO_FAMILY_HEAD'];
     $FAMILY_HEAD_SIZE_FROM = $_POST['FAMILY_HEAD_SIZE_FROM'];
     $FAMILY_HEAD_SIZE_TO = $_POST['FAMILY_HEAD_SIZE_TO'];
     $FAMILY_HEAD_AGE_FROM = $_POST['FAMILY_HEAD_AGE_FROM'];
     $FAMILY_HEAD_AGE_TO = $_POST['FAMILY_HEAD_AGE_TO'];
     $FAMILY_HEAD_GENDER = $_POST['FAMILY_HEAD_GENDER'];
     $FAMILY_HEAD_CASTE = $_POST['FAMILY_HEAD_CASTE'];
+
+    if($PART_NO_FROM_FAMILY_HEAD!='' && $PART_NO_TO_FAMILY_HEAD!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_FAMILY_HEAD AND $PART_NO_TO_FAMILY_HEAD";
+    }
+    if($PART_NO_FROM_FAMILY_HEAD!='' && $PART_NO_TO_FAMILY_HEAD==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_FAMILY_HEAD";
+    }
+
     if($PART_NO_FAMILY_HEAD!=''){
         $WHERE .= " AND PART_NO IN ($PART_NO_FAMILY_HEAD)";
     }
     if($FAMILY_HEAD_SIZE_FROM!='' && $FAMILY_HEAD_SIZE_TO!=''){
-        $WHERE .= " AND family_size BETWEEN $FAMILY_HEAD_SIZE_FROM AND $FAMILY_HEAD_SIZE_TO";
+        // $WHERE .= " AND family_size BETWEEN $FAMILY_HEAD_SIZE_FROM AND $FAMILY_HEAD_SIZE_TO";
+        $HAVING .= " HAVING COUNT(voters_data.id) BETWEEN $FAMILY_HEAD_SIZE_FROM AND $FAMILY_HEAD_SIZE_TO";
     }
     if($FAMILY_HEAD_SIZE_FROM!='' && $FAMILY_HEAD_SIZE_TO==''){
-        $WHERE .= " AND family_size=$FAMILY_HEAD_SIZE_FROM";
+        // $WHERE .= " AND family_size=$FAMILY_HEAD_SIZE_FROM";
+        $HAVING .= " HAVING COUNT(voters_data.id)=$FAMILY_HEAD_SIZE_FROM";
     }
     if($FAMILY_HEAD_AGE_FROM!='' && $FAMILY_HEAD_AGE_TO!=''){
         $WHERE .= " AND AGE BETWEEN $FAMILY_HEAD_AGE_FROM AND $FAMILY_HEAD_AGE_TO";
@@ -174,15 +195,24 @@ $page_query = "";
     if($FAMILY_HEAD_CASTE!=''){
         $WHERE .= " AND caste = '$FAMILY_HEAD_CASTE'";
     }
-    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
-    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+    // $query = "SELECT voters_data.*, COUNT(voters_data.id) as family_count FROM voters_data WHERE $WHERE GROUP BY voters_data.C_HOUSE_NO, voters_data.SECTION_NAME_EN $HAVING ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    // echo $page_query = "SELECT voters_data.*, COUNT(voters_data.id) as family_count FROM voters_data WHERE $WHERE GROUP BY voters_data.C_HOUSE_NO, voters_data.SECTION_NAME_EN $HAVING ORDER BY FM_NAME_EN ASC";
+    $query = "SELECT v1.*,v2.* FROM voters_data as v1 JOIN (select C_HOUSE_NO,SECTION_NAME_EN, max(AGE) as maxAge,COUNT(*) as family_count from voters_data  group by C_HOUSE_NO,SECTION_NAME_EN ORDER BY `voters_data`.`C_HOUSE_NO` ASC) v2 ON V1.C_HOUSE_NO = v2.C_HOUSE_NO AND v1.SECTION_NAME_EN=v2.SECTION_NAME_EN AND v1.AGE=v2.maxAge WHERE $WHERE ORDER BY v1.FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT v1.*,v2.* FROM voters_data as v1 JOIN (select C_HOUSE_NO,SECTION_NAME_EN, max(AGE) as maxAge,COUNT(*) as family_count from voters_data  group by C_HOUSE_NO,SECTION_NAME_EN ORDER BY `voters_data`.`C_HOUSE_NO` ASC) v2 ON V1.C_HOUSE_NO = v2.C_HOUSE_NO AND v1.SECTION_NAME_EN=v2.SECTION_NAME_EN AND v1.AGE=v2.maxAge WHERE $WHERE ORDER BY v1.FM_NAME_EN ASC";
  }else if(isset($_POST['action']) && $_POST['action']=='doubleNameTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$user_id'";
-    $PART_NO_DOUBLE = $_POST['PART_NO_DOUBLE'];
-    if($PART_NO_DOUBLE!=''){
-        $WHERE .= " AND PART_NO IN ($PART_NO_DOUBLE)";
+    $PART_NO_FROM_DOUBLE = $_POST['PART_NO_FROM_DOUBLE'];
+    $PART_NO_TO_DOUBLE = $_POST['PART_NO_TO_DOUBLE'];
+
+
+    if($PART_NO_FROM_DOUBLE!='' && $PART_NO_TO_DOUBLE!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_DOUBLE AND $PART_NO_TO_DOUBLE";
     }
+    if($PART_NO_FROM_DOUBLE!='' && $PART_NO_TO_DOUBLE==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_DOUBLE";
+    }
+
     $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
     $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
  }else if(isset($_POST['action']) && $_POST['action']=='marriedTab'){
@@ -242,11 +272,18 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='addressTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$user_id'";
-    $PART_NO_ADDRESS = $_POST['PART_NO_ADDRESS'];
+    $PART_NO_FROM_ADDRESS = $_POST['PART_NO_FROM_ADDRESS'];
+    $PART_NO_TO_ADDRESS = $_POST['PART_NO_TO_ADDRESS'];
     $SEARCH_ADDRESS = $_POST['SEARCH_ADDRESS'];
-    if($PART_NO_ADDRESS!=''){
-        $WHERE .= " AND voters_data.PART_NO IN ($PART_NO_ADDRESS)";
+
+
+    if($PART_NO_FROM_ADDRESS!='' && $PART_NO_TO_ADDRESS!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_ADDRESS AND $PART_NO_TO_ADDRESS";
     }
+    if($PART_NO_FROM_ADDRESS!='' && $PART_NO_TO_ADDRESS==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_ADDRESS";
+    }
+    
     if($SEARCH_ADDRESS!=''){
         $WHERE .= " AND voters_data.PSBUILDING_NAME_EN LIKE '%$SEARCH_ADDRESS%'";
     }
@@ -255,10 +292,16 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='surnameTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$user_id'";
-    $PART_NO_SURNAME = $_POST['PART_NO_SURNAME'];
+    $PART_NO_FROM_SURNAME = $_POST['PART_NO_FROM_SURNAME'];
+    $PART_NO_TO_SURNAME = $_POST['PART_NO_TO_SURNAME'];
     $SEARCH_ADDRESS = $_POST['SEARCH_ADDRESS'];
-    if($PART_NO_SURNAME!=''){
-        $WHERE .= " AND voters_data.PART_NO IN ($PART_NO_SURNAME)";
+
+
+    if($PART_NO_FROM_SURNAME!='' && $PART_NO_TO_SURNAME!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_SURNAME AND $PART_NO_TO_SURNAME";
+    }
+    if($PART_NO_FROM_SURNAME!='' && $PART_NO_TO_SURNAME==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_SURNAME";
     }
     if($SEARCH_SURNAME!=''){
         $WHERE .= " AND voters_data.LASTNAME_EN LIKE '%$SEARCH_SURNAME%'";
@@ -406,40 +449,40 @@ $page_query = "";
       </thead> 
       <tbody>
 "; 
+}else if(isset($_POST['action']) && $_POST['action']=='familyHeadTab') {
+    $output .= "  
+    <table class='table align-items-center mb-0'>  
+      <thead>
+          <tr>
+            <th>Sl No.</th>
+            <th>Name</th>
+            <th>Father/Husband Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Mobile No.</th>
+            <th>Voter ID</th>
+            <th>Part No.</th>
+            <th>Address</th>
+            <th>Total Family Member</th>
+            <th>Action</th>
+          </tr>
+      </thead> 
+      <tbody>
+"; 
  }else{
  $output .= "  
       <table class='table align-items-center mb-0'>  
         <thead>
             <tr>
                 <th>Sl No.</th>
-                <th>AC_NO</th>
-                <th>PART_NO</th>
-                <th>SECTION_NO</th>
-                <th>SLNOINPART</th>
-                <th>C_HOUSE_NO</th>
-                <th>C_HOUSE_NO_V1</th>
-                <th>FM_NAME_EN</th>
-                <th>LASTNAME_EN</th>
-                <th>FM_NAME_V1</th>
-                <th>LASTNAME_V1</th>
-                <th>RLN_TYPE</th>
-                <th>RLN_FM_NM_EN</th>
-                <th>RLN_L_NM_EN</th>
-                <th>RLN_FM_NM_V1</th>
-                <th>RLN_L_NM_V1</th>
-                <th>EPIC_NO</th>
-                <th>GENDER</th>
-                <th>AGE</th>
-                <th>DOB</th>
-                <th>MOBILE_NO</th>
-                <th>AC_NAME_EN</th>
-                <th>AC_NAME_V1</th>
-                <th>SECTION_NAME_EN</th>
-                <th>SECTION_NAME_V1</th>
-                <th>PSBUILDING_NAME_EN</th>
-                <th>PSBUILDING_NAME_V1</th>
-                <th>PART_NAME_EN</th>
-                <th>PART_NAME_V1</th>
+                <th>Name</th>
+                <th>Father/Husband Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Mobile No.</th>
+                <th>Voter ID</th>
+                <th>Part No.</th>
+                <th>Address</th>
                 <th>Action</th>
             </tr>
         </thead> 
@@ -487,7 +530,7 @@ $page_query = "";
                       </svg>
                   </a>
                   <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
-                      <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'">Edit</a></li>
+                      <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
                   </ul>
               </div>
           </td>
@@ -594,6 +637,53 @@ $page_query = "";
           </td>
       </tr>
         ';  
+    }else if(isset($_POST['action']) && $_POST['action']=='familyHeadTab') {
+        $output .= '  
+        <tr>
+            <td class="align-middle text-center">
+                '.$slNo.'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
+            </td>
+            <td class="align-middle text-center">
+                '.$row['GENDER'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['AGE'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['MOBILE_NO'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['EPIC_NO'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['PART_NO'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['SECTION_NAME_EN'].'
+            </td> 
+            <td class="align-middle text-center">
+                '.$row['family_count'].'
+            </td> 
+            <td class="align-middle text-center">
+                <div class="dp">
+                    <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                        <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                    </ul>
+                </div>
+            </td>
+      </tr>
+        ';  
     }else{
       $output .= '  
       <tr>
@@ -601,52 +691,10 @@ $page_query = "";
             '.$slNo.'
         </td>
         <td class="align-middle text-center">
-            '.$row['AC_NO'].'
+            '.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['PART_NO'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['SECTION_NO'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['SLNOINPART'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['C_HOUSE_NO'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['C_HOUSE_NO_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['FM_NAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['LASTNAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['FM_NAME_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['LASTNAME_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['RLN_TYPE'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['RLN_FM_NM_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['RLN_L_NM_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['RLN_FM_NM_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['RLN_L_NM_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['EPIC_NO'].'
+            '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
         </td>
         <td class="align-middle text-center">
             '.$row['GENDER'].'
@@ -655,35 +703,17 @@ $page_query = "";
             '.$row['AGE'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['DOB'].'
-        </td>
-        <td class="align-middle text-center">
             '.$row['MOBILE_NO'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['AC_NAME_EN'].'
+            '.$row['EPIC_NO'].'
         </td>
         <td class="align-middle text-center">
-            '.$row['AC_NAME_V1'].'
+            '.$row['PART_NO'].'
         </td>
         <td class="align-middle text-center">
             '.$row['SECTION_NAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['SECTION_NAME_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PSBUILDING_NAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PSBUILDING_NAME_V1'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PART_NAME_EN'].'
-        </td>
-        <td class="align-middle text-center">
-            '.$row['PART_NAME_V1'].'
-        </td>
+        </td> 
         <td class="align-middle text-center">
             <div class="dp">
                 <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -692,7 +722,7 @@ $page_query = "";
                     </svg>
                 </a>
                 <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
-                    <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'">Edit</a></li>
+                    <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
                 </ul>
             </div>
         </td>
@@ -724,7 +754,7 @@ $output .= '
 	$page_link = '';
     $page_array = []; 
 
-	if($total_links > 4)
+	if($total_links > 4 && $total_links!=5)
 	{
 		if($page < 5)
 		{
@@ -802,7 +832,7 @@ $output .= '
 
 			$next_id = $page_array[$count] + 1;
 
-			if($next_id >= $total_links)
+			if($next_id > $total_links)
 			{
 				$next_link = '
 				<li class="page-item disabled">
