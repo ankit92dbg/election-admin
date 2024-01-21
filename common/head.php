@@ -1,16 +1,16 @@
 <?php
 session_start();
-// if(isset($_SESSION)){
-//   if($_SESSION['user_type']==0){
-//     header('Location: admin/dashboard.php');
-//   }
-//   if($_SESSION['user_type']==1){
-//     header('Location: leader/dashboard.php');
-//   }
-//   if($_SESSION['user_type']==2){
-//     header('Location: subleader/dashboard.php');
-//   }
-// }
+if(isset($_SESSION) && $_SESSION['user_type']!=''){
+  if($_SESSION['user_type']==0){
+    header('Location: admin/dashboard.php');
+  }
+  if($_SESSION['user_type']==1){
+    header('Location: leader/dashboard.php');
+  }
+  if($_SESSION['user_type']==2){
+    header('Location: subleader/dashboard.php');
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

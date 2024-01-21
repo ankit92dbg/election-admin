@@ -607,7 +607,7 @@ $breadCrumbName = "Voter List";
                         </div> 
                       </div>
                     </div>
-                    <div id="report_2" class="tab-data">
+                    <div id="report_2" class="tab-data" style="display:none">
                       <ul class="nav nav-underline">
                         <li class="nav-item" onclick="showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Caste Wise List</a>

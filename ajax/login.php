@@ -20,9 +20,9 @@ if($row){
         if($row['user_type']==0){
             $_SESSION['title'] = "Admin Panel";
         } else if($row['user_type']==1){
-            $_SESSION['title'] = "Leader Panel";
+            $_SESSION['title'] = "Candidate Panel";
         } else {
-            $_SESSION['title'] = "Sub Leader Panel";
+            $_SESSION['title'] = "Cader Panel";
         }
         $response->message = "success";
         $response->user_type = $row['user_type'];

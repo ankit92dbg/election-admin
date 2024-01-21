@@ -3,6 +3,12 @@ session_start();
 if(!isset($_SESSION['user_type'])){
   header("Location: ../index.php");
 }
+if($_SESSION['user_type']==1){
+  header('Location: ../leader/dashboard.php');
+}
+if($_SESSION['user_type']==2){
+  header('Location: ../subleader/dashboard.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
