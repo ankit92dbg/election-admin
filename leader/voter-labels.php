@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Caders";
+$breadCrumbName = "Label Value";
 ?>
 <?php include('../common/leader/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -15,25 +15,29 @@ $breadCrumbName = "Caders";
           <div class="card ">
             <div class="card-header pb-0 p-3">
               <div class="row">
-                <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Cader List</h6>
+                <div class="col-lg-6 d-flex justify-content-between">
+                    <h6 class="mb-2">Label Value List</h6>
                 </div>
-                <div class="col-lg-4 d-flex justify-content-between">
-                   <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by First Name, Last Name, Email or Phone No." />
-                </div>
-                <div class="col-lg-2 justify-content-between">
-                    <p style="float:right;margin-top:5%">Show Result :</p>
-                </div>
-                <div class="col-lg-2 d-flex justify-content-between">
-                        <select id="total_records" onchange="load_data()" class="form-select">
-                            <option value="50" selected>50</option>
-                            <option value="100">100</option>
-                            <option value="200">200</option>
-                        </select>    
-                </div>
-                <div class="col-lg-2 d-flex justify-content-between">
-                    <a class="btn btn-primary" href="add-subleaders.php">Add Cader</a>
-                </div>    
+                <div class="col-lg-6">
+                    <a style="float:right;" class="btn btn-primary" href="add-voter-label.php">Add Label Value</a>
+                </div> 
+                <div class="col-lg-12">
+                        <div class="row">
+                          <div class="col-lg-4 d-flex justify-content-between">
+                              <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by Label or Value" />
+                            </div>
+                            <div class="col-lg-2 justify-content-between">
+                                <p style="float:right;margin-top:5%">Show Result :</p>
+                            </div>
+                            <div class="col-lg-2 d-flex justify-content-between">
+                                    <select id="total_records" onchange="load_data()" class="form-select">
+                                        <option value="50" selected>50</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                    </select>    
+                            </div> 
+                        </div>
+                </div> 
               </div>
             </div>
             <div class="card-body p-3">
@@ -56,7 +60,7 @@ $breadCrumbName = "Caders";
                   </div>
                   <div class="modal-body">
                     <input type="hidden" id="delete_id" value="" />
-                    <p><strong>Are you sure, you want to delete this leader?</strong></p>
+                    <p><strong>Are you sure, you want to delete this label?</strong></p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
@@ -72,6 +76,7 @@ $breadCrumbName = "Caders";
   </body>
 <?php include('../common/leader/footer-links.php') ?>
 <script>
+  
  $(document).ready(function(){  
       load_data();  
        
@@ -103,34 +108,18 @@ $breadCrumbName = "Caders";
           let total_records = $('#total_records').val()
           let search_str = $('#search_str').val()
             $.ajax({  
-                  url:"../ajax/subleaders.php",  
+                  url:"../ajax/voter-labels.php",  
                   method:"POST",  
-                  data:{page:page,total_records:total_records,search_str:search_str,cader_id:"<?php echo $_SESSION['user_id']; ?>"},  
+                  data:{page:page,total_records:total_records,search_str:search_str,user_id:"<?php echo $_SESSION['user_id']; ?>"},  
                   success:function(data){  
                       $('#dataTbl').html(data);  
                       $('#overlay').hide()
                   }  
             })  
-          }   
+        }   
       } 
 
- function changeStatus(val)  
-      {  
-        $('#overlay').show()
-           $.ajax({  
-                url:"../ajax/master-data.php",  
-                method:"POST",  
-                data:{user_id:val,action:"change_status"},  
-                success:function(data){  
-                    load_data()
-                }  
-           })  
-      }
 
-      function deleteUser(id){
-        $('#delete_id').val(id)
-        $('#exampleModal').modal('show');          
-      }
 
       function delUser(){
         $('#overlay').show()
@@ -138,11 +127,16 @@ $breadCrumbName = "Caders";
         $.ajax({  
                 url:"../ajax/master-data.php",  
                 method:"POST",  
-                data:{user_id:$('#delete_id').val(),action:"delete_user"},  
+                data:{id:$('#delete_id').val(),action:"delete_label"},  
                 success:function(data){  
                     load_data()
                 }  
            }) 
       }
-      
+
+      function deleteUser(id){
+        $('#delete_id').val(id)
+        $('#exampleModal').modal('show');          
+      }
+
 </script>

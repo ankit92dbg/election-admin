@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Add SubLeaders";
+$breadCrumbName = "Update Cader";
 ?>
 <?php include('../common/leader/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,7 +16,7 @@ $breadCrumbName = "Add SubLeaders";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Update SubLeader</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Update Cader</h6>
                 </div>   
               </div>
             </div>
@@ -37,6 +37,14 @@ $breadCrumbName = "Add SubLeaders";
                         <div class="mb-3">
                             <label class="label">Last Name</label>
                             <input type="text" id="l_name" name="l_name" class="form-control form-control-lg" placeholder="Last Name" aria-label="Password" required>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label class="label">SECTION_NO</label>
+                            <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;" required>
+                                <option value="" selected>Please Select</option>
+                            </select>   
                         </div>
                     </div>
                     <div class="col-4">
@@ -97,7 +105,6 @@ $breadCrumbName = "Add SubLeaders";
                             <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" >
                         </div>
                     </div>
-                    <div class="col-4"></div>
                     <div class="col-4">
                         <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Submit</button>
                     </div>
@@ -142,7 +149,7 @@ $breadCrumbName = "Add SubLeaders";
                     if(!data.error)
                     {
                         $('#total_data').text(data.total_line);
-                        $('#message').html('<div class="alert alert-success" style="color:#fff">SubLeader Updated Successfully.</div>');
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">Cader Updated Successfully.</div>');
                     }
                     if(data.error)
                     {
@@ -213,10 +220,37 @@ $breadCrumbName = "Add SubLeaders";
                     $('#leader_id').html(option)
                     $('#overlay').hide()
                     load_data();
+                    load__edit_data();
                 }  
            })  
       } 
 
+      function load__edit_data(page)  
+      {  
+        $('#overlay').show()
+           $.ajax({  
+                url:"../ajax/master-data.php",  
+                method:"POST",  
+                data:{action:"edit_user_data",user_id:"<?php echo $_GET['id']; ?>"},  
+                success:function(data){  
+                
+
+                    //SECTION_NO
+                    let option_section_no = [];
+                    for(let i=0; i < data.SECTION_NO.length; i++){
+                        option_section_no += `<option value="${data.SECTION_NO[i].SECTION_NO}">${data.SECTION_NO[i].SECTION_NO}</option>`
+                    }
+
+                   
+                    $('#SECTION_NO').html(option_section_no)
+                    for(let i=0; i<data.userData.selectedBooth.length;i++){
+                        $('#SECTION_NO option[value="'+data.userData.selectedBooth[i].SECTION_NO+'"]').attr("selected", "selected");
+                    }
+
+                    $('#overlay').hide()
+                }  
+           })  
+      } 
 
       function load_city(val)  
       {  

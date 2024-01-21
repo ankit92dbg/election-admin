@@ -54,7 +54,7 @@ $endPart = explode('.',$endPart);
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-users text-success text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Subleader</span>
+            <span class="nav-link-text ms-1">Cader</span>
           </a>
         </li>
         <li class="nav-item">
@@ -73,14 +73,14 @@ $endPart = explode('.',$endPart);
             <span class="nav-link-text ms-1">Upload CSV</span>
           </a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link " href="./pages/rtl.html">
+        <li class="nav-item">
+          <a class="nav-link " href="voter-labels.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">RTL</span>
+            <span class="nav-link-text ms-1">Label Value</span>
           </a>
-        </li> -->
+        </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
