@@ -8,12 +8,33 @@ include ('../config/conn.php');
 //fetch voter_label
 $voter_label = [];
 $political_party=[];
+$area_list=[];
 if(isset($_POST) && $_POST['voter_label']!=''){
     $q1 = "SELECT * from voters_label WHERE leader_id=".$_POST['user_id'];
     $r1 = mysqli_query($conn,$q1);
     $output = new stdClass();
     while($row1 = mysqli_fetch_assoc($r1)){
         $voter_label[] = $row1;
+    }
+}
+
+if(isset($_POST) && $_POST['action']=='voter_political'){
+    $q1 = "SELECT * from voters_label WHERE leader_id=".$_POST['leader_id'];
+    $r1 = mysqli_query($conn,$q1);
+    $output = new stdClass();
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $voter_label[] = $row1;
+    }
+    $q1 = "SELECT * from political_party";
+    $r1 = mysqli_query($conn,$q1);
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $political_party[] = $row1;
+    }
+
+    $q1 = "SELECT DISTINCT AC_NAME_EN from voters_data";
+    $r1 = mysqli_query($conn,$q1);
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $area_list[] = $row1;
     }
 }
 
@@ -300,5 +321,6 @@ $output->dashboardData= $dashboardData;
 $output->voter_label= $voter_label;
 $output->voterData= $voterData;
 $output->political_party= $political_party;
+$output->area_list= $area_list;
 echo json_encode($output);
 ?>

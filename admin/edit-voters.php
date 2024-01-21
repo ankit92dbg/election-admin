@@ -271,6 +271,16 @@ $breadCrumbName = "Edit Voter";
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
+                            <label class="label">Dead/Alive</label>
+                            <select id="isDead" name="isDead" class="form-select">
+                                <option value="" selected="">Please Select</option>
+                                <option value="0">Alive</option>
+                                <option value="1">Dead</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
                             <label class="label">Profile Image</label>
                             <input type="file" name="profile_image" class="form-control form-control-lg" placeholder="" aria-label="Password">
                         </div>
@@ -430,6 +440,7 @@ $breadCrumbName = "Edit Voter";
                     $('#isMarried option[value="'+data.voterData.isMarried+'"]').attr("selected", "selected");
                     $('#voter_label option[value="'+data.voterData.voter_label+'"]').attr("selected", "selected");
                     $('#political_party option[value="'+data.voterData.political_party+'"]').attr("selected", "selected");
+                    $('#isDead option[value="'+data.voterData.isDead+'"]').attr("selected", "selected");
 
 
                     $('#overlay').hide()

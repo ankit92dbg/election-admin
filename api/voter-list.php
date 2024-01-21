@@ -355,6 +355,121 @@ $page_query = "";
     
     $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
     $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='casteTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_CASTE = $_POST['PART_NO_FROM_CASTE'];
+    $PART_NO_TO_CASTE = $_POST['PART_NO_TO_CASTE'];
+    $RELIGION_CASTE = $_POST['RELIGION_CASTE'];
+    if($PART_NO_FROM_CASTE!='' && $PART_NO_TO_CASTE!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_CASTE AND $PART_NO_TO_CASTE";
+    }
+    if($PART_NO_FROM_CASTE!='' && $PART_NO_TO_CASTE==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_CASTE";
+    }
+    if($RELIGION_CASTE!=''){
+        $WHERE .= " AND voters_data.caste ='$RELIGION_CASTE'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='labelValueTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_LABEL_VALUE = $_POST['PART_NO_FROM_LABEL_VALUE'];
+    $PART_NO_TO_LABEL_VALUE = $_POST['PART_NO_TO_LABEL_VALUE'];
+    $LABEL_VALUE = $_POST['LABEL_VALUE'];
+    if($PART_NO_FROM_LABEL_VALUE!='' && $PART_NO_TO_LABEL_VALUE!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_LABEL_VALUE AND $PART_NO_TO_LABEL_VALUE";
+    }
+    if($PART_NO_FROM_LABEL_VALUE!='' && $PART_NO_TO_LABEL_VALUE==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_LABEL_VALUE";
+    }
+    if($LABEL_VALUE!=''){
+        $WHERE .= " AND voter_label ='$LABEL_VALUE'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='areaWiseTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_AREA = $_POST['PART_NO_FROM_AREA'];
+    $PART_NO_TO_AREA = $_POST['PART_NO_TO_AREA'];
+    $LABEL_VALUE = $_POST['LABEL_VALUE'];
+    if($PART_NO_FROM_AREA!='' && $PART_NO_TO_AREA!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_AREA AND $PART_NO_TO_AREA";
+    }
+    if($PART_NO_FROM_AREA!='' && $PART_NO_TO_AREA==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_AREA";
+    }
+    if($AREA_LIST!=''){
+        $WHERE .= " AND AC_NAME_EN ='$AREA_LIST'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='partyWiseTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_PARTY = $_POST['PART_NO_FROM_PARTY'];
+    $PART_NO_TO_PARTY = $_POST['PART_NO_TO_PARTY'];
+    $PARTY_LIST = $_POST['PARTY_LIST'];
+    if($PART_NO_FROM_PARTY!='' && $PART_NO_TO_PARTY!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_PARTY AND $PART_NO_TO_PARTY";
+    }
+    if($PART_NO_FROM_PARTY!='' && $PART_NO_TO_PARTY==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_PARTY";
+    }
+    if($PARTY_LIST!=''){
+        $WHERE .= " AND political_party ='$PARTY_LIST'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='deadListTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_DEAD = $_POST['PART_NO_FROM_DEAD'];
+    $PART_NO_TO_DEAD = $_POST['PART_NO_TO_DEAD'];
+    $DEAD_LIST = $_POST['DEAD_LIST'];
+    if($PART_NO_FROM_DEAD!='' && $PART_NO_TO_DEAD!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_DEAD AND $PART_NO_TO_DEAD";
+    }
+    if($PART_NO_FROM_DEAD!='' && $PART_NO_TO_DEAD==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_DEAD";
+    }
+    if($DEAD_LIST!=''){
+        $WHERE .= " AND isDead ='$DEAD_LIST'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='birthdayTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_BIRTHDAY = $_POST['PART_NO_FROM_BIRTHDAY'];
+    $PART_NO_TO_BIRTHDAY = $_POST['PART_NO_TO_BIRTHDAY'];
+    $DATE_FROM_BIRTHDAY = (strlen($_POST['DATE_FROM_BIRTHDAY'])==1) ? sprintf("%02d", $_POST['DATE_FROM_BIRTHDAY']) : $_POST['DATE_FROM_BIRTHDAY'];
+    $DATE_TO_BIRTHDAY = (strlen($_POST['DATE_TO_BIRTHDAY'])==1) ? sprintf("%02d", $_POST['DATE_TO_BIRTHDAY']) : $_POST['DATE_TO_BIRTHDAY'];
+    $MONTH_LIST = $_POST['MONTH_LIST'];
+    $FROM_DATE = $_POST['MONTH_LIST'].'-'.$DATE_FROM_BIRTHDAY;
+    $TO_DATE = $_POST['MONTH_LIST'].'-'.$DATE_TO_BIRTHDAY;
+    if($PART_NO_FROM_BIRTHDAY!='' && $PART_NO_TO_BIRTHDAY!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_BIRTHDAY AND $PART_NO_TO_BIRTHDAY";
+    }
+    if($PART_NO_FROM_BIRTHDAY!='' && $PART_NO_TO_BIRTHDAY==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_BIRTHDAY";
+    }
+    if($DATE_FROM_BIRTHDAY!='' && $DATE_TO_BIRTHDAY!=''){
+        $WHERE .= " AND DATE_FORMAT(DOB, '%m-%d') BETWEEN '$FROM_DATE' AND '$TO_DATE'";
+    }
+    if($DATE_FROM_BIRTHDAY!='' && $DATE_TO_BIRTHDAY==''){
+        $WHERE .= " AND DATE_FORMAT(DOB, '%m-%d')='$FROM_DATE'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
  }else{
     $query = "SELECT * FROM voters_data WHERE leader_id='$user_id' ORDER BY id ASC LIMIT $start_from, $record_per_page";  
     $page_query = "SELECT * FROM voters_data WHERE leader_id='$user_id' ORDER BY id ASC";  
@@ -464,6 +579,26 @@ $page_query = "";
             <th>Part No.</th>
             <th>Address</th>
             <th>Total Family Member</th>
+            <th>Action</th>
+          </tr>
+      </thead> 
+      <tbody>
+"; 
+ }else if(isset($_POST['action']) && $_POST['action']=='birthdayTab') {
+    $output .= "  
+    <table class='table align-items-center mb-0'>  
+      <thead>
+          <tr>
+            <th>Sl No.</th>
+            <th>Name</th>
+            <th>Father/Husband Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Mobile No.</th>
+            <th>Voter ID</th>
+            <th>Part No.</th>
+            <th>Address</th>
+            <th>DOB</th>
             <th>Action</th>
           </tr>
       </thead> 
@@ -666,6 +801,56 @@ $page_query = "";
             </td>
             <td class="align-middle text-center">
                 '.$row['SECTION_NAME_EN'].'
+            </td> 
+            <td class="align-middle text-center">
+                '.$row['family_count'].'
+            </td> 
+            <td class="align-middle text-center">
+                <div class="dp">
+                    <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                        <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                    </ul>
+                </div>
+            </td>
+      </tr>
+        ';  
+    }else if(isset($_POST['action']) && $_POST['action']=='birthdayTab') {
+        $output .= '  
+        <tr>
+            <td class="align-middle text-center">
+                '.$slNo.'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
+            </td>
+            <td class="align-middle text-center">
+                '.$row['GENDER'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['AGE'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['MOBILE_NO'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['EPIC_NO'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['PART_NO'].'
+            </td>
+            <td class="align-middle text-center">
+                '.$row['SECTION_NAME_EN'].'
+            </td> 
+            <td class="align-middle text-center">
+                '.$row['DOB'].'
             </td> 
             <td class="align-middle text-center">
                 '.$row['family_count'].'

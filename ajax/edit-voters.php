@@ -38,6 +38,7 @@ $caste = ($_POST['caste']=='')  ? NULL : $_POST['caste'];
 $isMarried = ($_POST['isMarried']=='') ? NULL : $_POST['isMarried'];
 $voter_label = ($_POST['voter_label'] == '') ? NULL : $_POST['voter_label'];
 $political_party = ($_POST['political_party'] == '') ? NULL : $_POST['political_party'];
+$isDead = ($_POST['isDead'] == '') ? NULL : $_POST['isDead'];
 $profile_image = $_POST['profile_image'];
 $user_type = 1;
 $query = "select * from voters_data where id='$voter_id'";
@@ -74,7 +75,8 @@ if(mysqli_num_rows($result)==1){
             `RELATION_SLNOINPART`='$RELATION_SLNOINPART',
             `isMarried`='$isMarried',
             `voter_label`='$voter_label',
-            `political_party`='$political_party'
+            `political_party`='$political_party',
+            `isDead`='$isDead'
             WHERE `id`='$voter_id'";
             $result = mysqli_query($conn,$query);
 
@@ -97,7 +99,8 @@ if(mysqli_num_rows($result)==1){
             `RELATION_SLNOINPART`='$RELATION_SLNOINPART',
             `isMarried`='$isMarried',
             `voter_label`='$voter_label',
-            `political_party`='$political_party'
+            `political_party`='$political_party',
+            `isDead`='$isDead'
             WHERE `id`='$voter_id'";
         $result = mysqli_query($conn,$query);
 

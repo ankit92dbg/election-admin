@@ -607,7 +607,227 @@ $breadCrumbName = "Voter List";
                         </div> 
                       </div>
                     </div>
-                   
+                    <div id="report_2" class="tab-data">
+                      <ul class="nav nav-underline">
+                        <li class="nav-item" onclick="showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');load_data()">
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Caste Wise List</a>
+                        </li>
+                        <li class="nav-item" onclick="showTab('#labelValue','.inner-tab-data','.labelValueTab');$('#action').val('labelValueTab');load_data()">
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Label Value Filter</a>
+                        </li>
+                        <li class="nav-item" onclick="showTab('#areaWise','.inner-tab-data','.areaWiseTab');$('#action').val('areaWiseTab');load_data()">
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Area Wise List</a>
+                        </li>
+                        <!-- <li class="nav-item" onclick="showTab('#wardWise','.inner-tab-data','.wardWiseTab');$('#action').val('wardWiseTab');load_data()">
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Ward Wise List</a>
+                        </li> -->
+                        <li class="nav-item" onclick="showTab('#partyWise','.inner-tab-data','.partyWiseTab');$('#action').val('partyWiseTab');load_data()">
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Party Wise List</a>
+                        </li>
+                        <li class="nav-item" onclick="showTab('#deadList','.inner-tab-data','.deadListTab');$('#action').val('deadListTab');load_data()">
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Dead List</a>
+                        </li>
+                        <li class="nav-item" onclick="showTab('#birthday','.inner-tab-data','.birthdayTab');$('#action').val('birthdayTab');load_data()">
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Birthday List</a>
+                        </li>
+                      </ul>
+                      <div id="caste" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Caste Wise List</h5>
+                        <div class="row">
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_CASTE " class="form-control casteTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_CASTE" class="form-control casteTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Caste</label>
+                            <select id="RELIGION_CASTE" class="form-select casteTab">
+                                <option value="" selected>Select</option>
+                                <option value="0">Hindu</option>
+                                <option value="1">Muslim</option>
+                            </select> 
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('casteTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="labelValue" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Lable Value Wise List</h5>
+                        <div class="row">
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_LABEL_VALUE" class="form-control labelValueTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_LABEL_VALUE" class="form-control labelValueTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Lable Value</label>
+                            <select id="LABEL_VALUE" class="form-select labelValueTab">
+                                <option value="" selected>Select</option>
+                            </select> 
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('labelValueTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="areaWise" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Area Wise List</h5>
+                        <div class="row">
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_AREA" class="form-control areaWiseTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_AREA" class="form-control areaWiseTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Area</label>
+                            <select id="AREA_LIST" class="form-select areaWiseTab">
+                                <option value="" selected>Select</option>
+                            </select> 
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('areaWiseTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="partyWise" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Party Wise List</h5>
+                        <div class="row">
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_PARTY" class="form-control partyWiseTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_PARTY" class="form-control partyWiseTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Area</label>
+                            <select id="PARTY_LIST" class="form-select partyWiseTab">
+                                <option value="" selected>Select</option>
+                            </select> 
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('partyWiseTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="deadList" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Dead/Alive Voter List</h5>
+                        <div class="row">
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_DEAD" class="form-control deadListTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_DEAD" class="form-control deadListTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Dead/Alive</label>
+                            <select id="DEAD_LIST" class="form-select deadListTab">
+                                <option value="" selected>Select</option>
+                                <option value="0">Alive</option>
+                                <option value="1">Dead</option>
+                            </select> 
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('deadListTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="birthday" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Birthday Wise List</h5>
+                        <div class="row">
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_BIRTHDAY" class="form-control birthdayTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_BIRTHDAY" class="form-control birthdayTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Date From</label>
+                                  <input type="number" id="DATE_FROM_BIRTHDAY" class="form-control birthdayTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Date To</label>
+                                  <input type="number" id="DATE_TO_BIRTHDAY" class="form-control birthdayTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Month</label>
+                            <select id="MONTH_LIST" class="form-select birthdayTab">
+                                <option value="" selected>Select</option>
+                                <option value="01">JANUARY</option>
+                                <option value="02">FEBRUARY</option>
+                                <option value="03">MARCH</option>
+                                <option value="04">APRIL</option>
+                                <option value="05">MAY</option>
+                                <option value="06">JUNE</option>
+                                <option value="07">JULY</option>
+                                <option value="08">AUGUST</option>
+                                <option value="09">SEPTEMBER</option>
+                                <option value="10">OCTOBER</option>
+                                <option value="11">NOVEMBER</option>
+                                <option value="12">DECEMBER</option>
+                            </select> 
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('birthdayTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>    
                   </div>
                 </div> 
               </div>
@@ -659,6 +879,7 @@ $breadCrumbName = "Voter List";
 <script>
  $(document).ready(function(){  
       load_data();  
+      load_other_data();  
        
       $(document).on('click', '.pagination_link', function(){  
            var page = $(this).attr("id");  
@@ -742,6 +963,26 @@ $breadCrumbName = "Voter List";
                     NAME_SMS: $('#NAME_SMS').val(),         
                     SURNAME_SMS: $('#SURNAME_SMS').val(),         
                     RELATIVE_SMS: $('#RELATIVE_SMS').val(),         
+                    PART_NO_FROM_CASTE: $('#PART_NO_FROM_CASTE').val(),         
+                    PART_NO_TO_CASTE: $('#PART_NO_TO_CASTE').val(),         
+                    RELIGION_CASTE: $('#RELIGION_CASTE').val(),         
+                    PART_NO_FROM_LABEL_VALUE : $('#PART_NO_FROM_LABEL_VALUE').val(),         
+                    PART_NO_TO_LABEL_VALUE: $('#PART_NO_TO_LABEL_VALUE').val(),         
+                    LABEL_VALUE: $('#LABEL_VALUE').val(),         
+                    PART_NO_FROM_AREA: $('#PART_NO_FROM_AREA').val(),         
+                    PART_NO_TO_AREA: $('#PART_NO_TO_AREA').val(),         
+                    AREA_LIST: $('#AREA_LIST').val(),         
+                    PART_NO_FROM_PARTY: $('#PART_NO_FROM_PARTY').val(),         
+                    PART_NO_TO_PARTY: $('#PART_NO_TO_PARTY').val(),         
+                    PARTY_LIST: $('#PARTY_LIST').val(),         
+                    PART_NO_FROM_DEAD: $('#PART_NO_FROM_DEAD').val(),         
+                    PART_NO_TO_DEAD: $('#PART_NO_TO_DEAD').val(),         
+                    DEAD_LIST: $('#DEAD_LIST').val(),         
+                    PART_NO_FROM_BIRTHDAY: $('#PART_NO_FROM_BIRTHDAY').val(),         
+                    PART_NO_TO_BIRTHDAY: $('#PART_NO_TO_BIRTHDAY').val(),         
+                    DATE_FROM_BIRTHDAY: $('#DATE_FROM_BIRTHDAY').val(),         
+                    DATE_TO_BIRTHDAY: $('#DATE_TO_BIRTHDAY').val(),         
+                    MONTH_LIST: $('#MONTH_LIST').val(),         
                     action: $('#action').val()
                   },  
                   success:function(data){  
@@ -753,7 +994,45 @@ $breadCrumbName = "Voter List";
        
       }
 
+function load_other_data(){
+   
+        // $('#overlay').show()
+           $.ajax({  
+                url:"../ajax/master-data.php",  
+                method:"POST",  
+                data:{action:"voter_political",leader_id:"<?php echo $_GET['id']; ?>"},  
+                success:function(data){  
+                   
+                    //voter_label
+                    let option_voter_label = [];
+                    option_voter_label += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.voter_label.length; i++){
+                        option_voter_label += `<option value="${data.voter_label[i].id}">${data.voter_label[i].label}</option>`
+                    }
 
+                    //political_party
+                    let option_political_party = [];
+                    option_political_party += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.political_party.length; i++){
+                        option_political_party += `<option value="${data.political_party[i].id}">${data.political_party[i].name}</option>`
+                    }
+
+                     //area
+                     let option_area_list = [];
+                    option_area_list += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.area_list.length; i++){
+                      option_area_list += `<option value="${data.area_list[i].AC_NAME_EN}">${data.area_list[i].AC_NAME_EN}</option>`
+                    }
+
+                  
+                    $('#PARTY_LIST').html(option_political_party)
+                    $('#LABEL_VALUE').html(option_voter_label)
+                    $('#AREA_LIST').html(option_area_list)
+                    $('#overlay').hide()
+                }  
+           })  
+      
+}
       function delUser(){
         $('#overlay').show()
         $('#exampleModal').modal('hide');          
@@ -770,7 +1049,10 @@ $breadCrumbName = "Voter List";
       function showTab(id,className,tabClass){
         let tab = ['.searchTab','.alphaTab','.agewiseTab','.familyTab',
         '.familyHeadTab','.doubleNameTab','.marriedTab','.singleTab',
-        '.addressTab','.surnameTab','.familyLabelsTab','.smsTab']
+        '.addressTab','.surnameTab','.familyLabelsTab','.smsTab',
+        '.casteTab','.labelValueTab','.areaWiseTab','.wardWiseTab',
+        '.partyWiseTab','.deadListTab','.birthdayTab'
+        ]
         const index = tab.indexOf(tabClass);
         if (index > -1) { // only splice array when item is found
           tab.splice(index, 1); // 2nd parameter means remove one item only
