@@ -435,10 +435,8 @@ $breadCrumbName = "Edit Voter";
                     $('#GENDER option[value="'+data.voterData.GENDER+'"]').attr("selected", "selected");
                     $('#RLN_TYPE option[value="'+data.voterData.RLN_TYPE+'"]').attr("selected", "selected");
                     $('#voter_label option[value="'+data.voterData.voter_label+'"]').attr("selected", "selected");
-                    $('#voter_label option[value="'+data.voterData.voter_label+'"]').attr("selected", "selected");
                     $('#caste option[value="'+data.voterData.caste+'"]').attr("selected", "selected");
                     $('#isMarried option[value="'+data.voterData.isMarried+'"]').attr("selected", "selected");
-                    $('#voter_label option[value="'+data.voterData.voter_label+'"]').attr("selected", "selected");
                     $('#political_party option[value="'+data.voterData.political_party+'"]').attr("selected", "selected");
                     $('#isDead option[value="'+data.voterData.isDead+'"]').attr("selected", "selected");
 
