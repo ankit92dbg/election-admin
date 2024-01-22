@@ -76,7 +76,7 @@ include ('../config/conn.php');
 		<img style="width: 50px;
 		height: 50px;
 		border-radius: 50%;" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
-            <p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].' '.$row['l_name'].'</p>
+		<a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'"><p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].' '.$row['l_name'].'</p></a>
         </td>
         <td class="align-middle">
             '.$row['email'].'
