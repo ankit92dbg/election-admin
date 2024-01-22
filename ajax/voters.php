@@ -67,94 +67,94 @@ include ('../config/conn.php');
  {  
       $output .= '  
       <tr>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$slNo.'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['AC_NO'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['PART_NO'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['SECTION_NO'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['SLNOINPART'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['C_HOUSE_NO'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['C_HOUSE_NO_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['FM_NAME_EN'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['LASTNAME_EN'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['FM_NAME_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['LASTNAME_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['RLN_TYPE'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['RLN_FM_NM_EN'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['RLN_L_NM_EN'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['RLN_FM_NM_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['RLN_L_NM_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['EPIC_NO'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['GENDER'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['AGE'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['DOB'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['MOBILE_NO'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['AC_NAME_EN'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['AC_NAME_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['SECTION_NAME_EN'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['SECTION_NAME_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['PSBUILDING_NAME_EN'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['PSBUILDING_NAME_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['PART_NAME_EN'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['PART_NAME_V1'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             <div class="dp">
                 <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                     <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">

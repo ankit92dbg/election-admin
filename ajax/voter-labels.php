@@ -50,16 +50,16 @@ include ('../config/conn.php');
 
       $output .= '  
       <tr>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$slNo.'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['label'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['value'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             <div class="dp">
                 <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                     <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">

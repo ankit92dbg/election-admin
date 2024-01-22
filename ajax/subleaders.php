@@ -56,49 +56,49 @@ include ('../config/conn.php');
 
       $output .= '  
       <tr>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$slNo.'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             <a href="edit-leaders.php?id='.$row['leader_id'].'">'.$leaderName.'</a>
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             <img style="width: 50px;
             height: 50px;
             border-radius: 50%;" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
             <p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].' '.$row['l_name'].'</p>
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['email'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['designation'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['phone'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['age'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['address'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['city'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             '.$row['state'].'
         </td>';
         if($row['isActive']=='1'){
-            $output .= '<td class="align-middle text-center"><span class="btn btn-sm btn-success">Active</span></td>';
+            $output .= '<td class="align-middle"><span class="btn btn-sm btn-success">Active</span></td>';
         }
         if($row['isActive']=='0'){
-            $output .= '<td class="align-middle text-center"><span class="btn btn-sm btn-danger">Inactive</span></td>';
+            $output .= '<td class="align-middle"><span class="btn btn-sm btn-danger">Inactive</span></td>';
         }
-        $output .=  '<td class="align-middle text-center">
+        $output .=  '<td class="align-middle">
             '.$row['created_at'].'
         </td>
-        <td class="align-middle text-center">
+        <td class="align-middle">
             <div class="dp">
                 <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                     <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">

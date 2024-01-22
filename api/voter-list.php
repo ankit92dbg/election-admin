@@ -685,34 +685,34 @@ $page_query = "";
         if($language_doubleNameTab=='english'){
             $output .= '  
             <tr>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$slNo.'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['PART_NO'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['SLNOINPART'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['FM_NAME_EN'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['GENDER'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['AGE'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['RLN_FM_NM_EN'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['RELATION_PART_NO'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['RELATION_SLNOINPART'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 <div class="dp">
                     <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                         <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -729,34 +729,34 @@ $page_query = "";
         }else{
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['SLNOINPART'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['FM_NAME_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['GENDER'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['AGE'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['RLN_FM_NM_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['RELATION_PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['RELATION_SLNOINPART'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     <div class="dp">
                         <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                             <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -775,22 +775,22 @@ $page_query = "";
         if($language_addressTab=='english'){
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PSBUILDING_NAME_EN'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['males'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['females'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['Total'].'
                 </td>
             </tr>
@@ -798,22 +798,22 @@ $page_query = "";
         }else{
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PSBUILDING_NAME_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['males'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['females'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['Total'].'
                 </td>
             </tr>
@@ -823,16 +823,16 @@ $page_query = "";
         if($language_surnameTab=='english'){
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['LASTNAME_EN'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['Total'].'
                 </td>
             </tr>
@@ -840,16 +840,16 @@ $page_query = "";
         }else{
                 $output .= '  
                 <tr>
-                    <td class="align-middle text-center">
+                    <td class="align-middle">
                         '.$slNo.'
                     </td>
-                    <td class="align-middle text-center">
+                    <td class="align-middle">
                         '.$row['PART_NO'].'
                     </td>
-                    <td class="align-middle text-center">
+                    <td class="align-middle">
                         '.$row['LASTNAME_V1'].'
                     </td>
-                    <td class="align-middle text-center">
+                    <td class="align-middle">
                             '.$row['Total'].'
                     </td>
                 </tr>
@@ -859,19 +859,19 @@ $page_query = "";
         if($language_familyLabelsTab=='english'){
             $output .= '  
             <tr>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$slNo.'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['PART_NO'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['FM_NAME_EN'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['C_HOUSE_NO'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['SECTION_NAME_EN'].'
             </td>
             </tr>
@@ -879,19 +879,19 @@ $page_query = "";
         }else{
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['FM_NAME_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['C_HOUSE_NO_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['SECTION_NAME_V1'].'
                 </td>
             </tr>
@@ -901,40 +901,40 @@ $page_query = "";
         if($language_smsTab=='english'){
             $output .= '  
             <tr>
-            <td class="align-middle text-center">
+            <td class="align-middle">
             <input class="" type="checkbox" value="" id="flexCheckDefault"> '.$slNo.'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['PART_NO'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                 '.$row['SLNOINPART'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['C_HOUSE_NO'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['RLN_TYPE'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['RLN_L_NM_EN'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['GENDER'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['AGE'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['EPIC_NO'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['PSBUILDING_NAME_EN'].'
             </td>
-            <td class="align-middle text-center">
+            <td class="align-middle">
                     '.$row['MOBILE_NO'].'
             </td>
             </tr>
@@ -942,40 +942,40 @@ $page_query = "";
         }else{
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                 <input class="" type="checkbox" value="" id="flexCheckDefault"> '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['SLNOINPART'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['C_HOUSE_NO_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['RLN_TYPE'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['RLN_FM_NM_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['GENDER'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['AGE'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['EPIC_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['PSBUILDING_NAME_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                         '.$row['MOBILE_NO'].'
                 </td>
             </tr>
@@ -985,37 +985,37 @@ $page_query = "";
         if($language_familyHeadTab=='english'){
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['GENDER'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['AGE'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['MOBILE_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['EPIC_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['SECTION_NAME_EN'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['family_count'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     <div class="dp">
                         <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                             <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -1032,37 +1032,37 @@ $page_query = "";
         }else{
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['GENDER'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['AGE'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['MOBILE_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['EPIC_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['SECTION_NAME_V1'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['family_count'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     <div class="dp">
                         <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                             <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -1081,40 +1081,40 @@ $page_query = "";
         if($language_birthdayTab=='english'){
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['GENDER'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['AGE'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['MOBILE_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['EPIC_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['SECTION_NAME_EN'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['DOB'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['family_count'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     <div class="dp">
                         <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                             <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -1131,40 +1131,40 @@ $page_query = "";
         }else{
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['GENDER'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['AGE'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['MOBILE_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['EPIC_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['SECTION_NAME_V1'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['DOB'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['family_count'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     <div class="dp">
                         <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                             <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -1188,34 +1188,34 @@ $page_query = "";
         ){
             $output .= '  
             <tr>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$slNo.'
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$row['GENDER'].'
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$row['AGE'].'
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$row['MOBILE_NO'].'
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$row['EPIC_NO'].'
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$row['PART_NO'].'
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   '.$row['SECTION_NAME_EN'].'
               </td> 
-              <td class="align-middle text-center">
+              <td class="align-middle">
                   <div class="dp">
                       <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                           <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -1232,34 +1232,34 @@ $page_query = "";
         }else{
             $output .= '  
             <tr>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$slNo.'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['GENDER'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['AGE'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['MOBILE_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['EPIC_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['PART_NO'].'
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     '.$row['SECTION_NAME_V1'].'
                 </td> 
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     <div class="dp">
                         <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                             <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
