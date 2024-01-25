@@ -18,8 +18,21 @@ $breadCrumbName = "Voter List";
                 <div class="col-lg-6 d-flex justify-content-between">
                     <h6 class="mb-2">Voter List</h6>
                 </div>
+                <div class="col-lg-6 d-flex justify-content-between">
+                  <select class="" style="float: right;
+    right: 58px;
+    width: 120px;
+    padding: 6px 1px;
+    font-size: 12px;
+    position: absolute;">
+                    <option>Select Language</option>
+                    <option>English</option>
+                    <option>Regional</option>
+                  </select>
+                </div>
                 <div class="col-lg-12">
                   <ul class="nav nav-pills">
+
                     <li class="nav-item" onclick="showTab('#report_1','.tab-data','')">
                       <a class="nav-link active" aria-current="page" href="javascript:void(0);">Report 1</a>
                     </li>

@@ -57,6 +57,40 @@ $endPart = explode('.',$endPart);
             <span class="nav-link-text ms-1">Candidate</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link " href="leaders.php">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-user-secret text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Report 1</span>
+          </a>
+        
+        <ul>
+          <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Alphabetical List</span></li>
+          <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Agewise List</span></li>
+        </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="leaders.php">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-user-secret text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Report 2</span>
+          </a>
+        
+        <ul>
+          <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Caste Wise List</span></li>
+          <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Married Women Report</span></li>
+        </ul>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link"  href="leaders.php">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-user-secret text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Reports</span>
+          </a>
+        </li> -->
         <!-- <li class="nav-item">
           <a class="nav-link <?php echo ($endPart[0]=='subleaders' || $endPart[0]=='add-subleaders' || $endPart[0]=='edit-subleaders') ? 'active' : ''; ?>" href="subleaders.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

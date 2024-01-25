@@ -73,11 +73,12 @@ include ('../config/conn.php');
             '.implode(',',$boothId).'
         </td>
         <td class="align-middle">
-		<img style="width: 50px;
-		height: 50px;
-		border-radius: 50%;" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
-		<a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'"><p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].' '.$row['l_name'].'</p></a>
-        </td>
+		<img  style="width: 12px;
+		height: 12px;
+		margin-top:4px;
+		border-radius: 50%;float:left" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
+		<span style="float:left;margin-left:6px"><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'"><p style="text-transform: capitalize;font-weight: 600;font-size:11px">'.$row['f_name'].' '.$row['l_name'].'</p></a>
+        </span></td>
         <td class="align-middle">
             '.$row['email'].'
         </td>
