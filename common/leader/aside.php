@@ -126,7 +126,7 @@ $endPart = explode('.',$endPart);
                       </ul>
         </li>
         <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab')">
-          <a class="nav-link " href="javascript:void(0);">
+          <a class="nav-link "  href="voters.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i style="color:#67748e" class="fa fa-folder text-sm opacity-10"></i>
             </div>

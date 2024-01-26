@@ -18,6 +18,21 @@ $breadCrumbName = "Edit Voter";
                 <div class="col-lg-2 d-flex justify-content-between">
                     <h6 class="mb-2" style="margin-top:5%;">Update Voter</h6>
                 </div>   
+                <div class="col-lg-2">
+                    <div class="mb-3">
+                        <button type="button" onclick="$('#exampleModal').modal('show'); " id="loginBtn" class="btn btn-primary"><i class="fa fa-whatsapp"></i> Whatsapp</button>
+                    </div>
+                </div> 
+                <div class="col-lg-2">
+                    <div class="mb-3">
+                        <button type="button" onclick="$('#exampleModal').modal('show'); " id="loginBtn" class="btn btn-primary"><i class="fa fa-mail-reply"></i> Email</button>
+                    </div>
+                </div>  
+                <div class="col-lg-2">
+                    <div class="mb-3">
+                        <button type="button" onclick="$('#exampleModal').modal('show'); " id="loginBtn" class="btn btn-primary"><i class="fa fa-send"></i> SMS</button>
+                    </div>
+                </div> 
               </div>
             </div>
             <div class="card-body p-3">

@@ -57,7 +57,7 @@ $endPart = explode('.',$endPart);
             <span class="nav-link-text ms-1">Candidate</span>
           </a>
         </li>
-        <?php if($endPart[0]=='voters' || $endPart[0]=='edit-voters'){ ?>
+        <?php if($endPart[0]=='voters'){ ?>
         <li class="nav-item" onclick="showTab('#report_1','.tab-data','')">
           <a class="nav-link " href="javascript:void(0);">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
