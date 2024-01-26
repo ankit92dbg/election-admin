@@ -17,20 +17,30 @@ $breadCrumbName = "Voter List";
             <div class="row">
                 <div class="col-lg-6 d-flex justify-content-between">
                     <h6 class="mb-2">Voter List</h6>
+                    <div class="col-lg-6 d-flex justify-content-between">
+                        <select class="form-select" name="language" id="language" style="float: right;
+                            right: 58px;
+                            width: 120px;
+                            font-size: 12px;
+                            position: absolute;">
+                            <option value="english">English</option>
+                            <option value="hindi">Hindi</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-lg-12">
-                  <ul class="nav nav-pills">
+                  <!-- <ul class="nav nav-pills">
                     <li class="nav-item" onclick="showTab('#report_1','.tab-data','')">
                       <a class="nav-link active" aria-current="page" href="javascript:void(0);">Report 1</a>
                     </li>
                     <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab')">
                       <a class="nav-link" href="javascript:void(0);">Report 2</a>
                     </li>
-                  </ul>
+                  </ul> -->
                   <div class="tab-content" style="margin-top:2%;">
                     <input type="hidden" id="action" value="" />
                     <div id="report_1" class="tab-data">
-                      <ul class="nav nav-underline">
+                      <!-- <ul class="nav nav-underline">
                         <li class="nav-item" onclick="showTab('#searchVoter','.inner-tab-data','.searchTab');$('#action').val('searchTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Search</a>
                         </li>
@@ -67,7 +77,7 @@ $breadCrumbName = "Voter List";
                         <li class="nav-item" onclick="showTab('#sms','.inner-tab-data','.smsTab');$('#action').val('smsTab');load_data()">
                           <a class="nav-link" href="javascript:void(0);">SMS</a>
                         </li>
-                      </ul>
+                      </ul> -->
                       <div id="searchVoter" class="inner-tab-data" style="display:block;margin-top: 2%;margin-bottom: 2%;">
                         <h5>Search List</h5>
                         <div class="row">
@@ -137,7 +147,7 @@ $breadCrumbName = "Voter List";
                                   <input type="text" id="SECTION_NAME_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_searchTab" class="form-select searchTab commonSearch">
@@ -145,7 +155,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('searchTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -168,7 +178,7 @@ $breadCrumbName = "Voter List";
                                   <input type="number" id="PART_NO_TO_ALPHA" class="form-control alphaTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_alphaTab" class="form-select alphaTab commonSearch">
@@ -176,7 +186,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('alphaTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -231,7 +241,7 @@ $breadCrumbName = "Voter List";
                                   </select> 
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_agewiseTab" class="form-select agewiseTab commonSearch">
@@ -239,7 +249,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('agewiseTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -286,7 +296,7 @@ $breadCrumbName = "Voter List";
                                   <input type="text" id="SURNAME_FAMILY" class="form-control familyTab form-control-lg" placeholder="">
                               </div>
                           </div> -->
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_familyTab" class="form-select familyTab commonSearch">
@@ -294,7 +304,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('familyTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -347,7 +357,7 @@ $breadCrumbName = "Voter List";
                                   <input type="number" id="FAMILY_HEAD_AGE_TO" class="form-control familyHeadTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_familyHeadTab" class="form-select familyHeadTab commonSearch">
@@ -355,7 +365,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Family Head Gender</label>
@@ -404,7 +414,7 @@ $breadCrumbName = "Voter List";
                                   <input type="number" id="PART_NO_TO_DOUBLE" class="form-control doubleNameTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_doubleNameTab" class="form-select doubleNameTab commonSearch">
@@ -412,7 +422,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('doubleNameTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -451,7 +461,7 @@ $breadCrumbName = "Voter List";
                                   </select> 
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_marriedTab" class="form-select marriedTab commonSearch">
@@ -459,7 +469,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('marriedTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -504,7 +514,7 @@ $breadCrumbName = "Voter List";
                                   </select> 
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_singleTab" class="form-select singleTab commonSearch">
@@ -512,7 +522,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('singleTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -547,7 +557,7 @@ $breadCrumbName = "Voter List";
                                   <input type="text" id="SEARCH_ADDRESS" class="form-control addressTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_addressTab" class="form-select addressTab commonSearch">
@@ -555,7 +565,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('addressTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -590,7 +600,7 @@ $breadCrumbName = "Voter List";
                                   <input type="text" id="SEARCH_SURNAME" class="form-control surnameTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_surnameTab" class="form-select surnameTab commonSearch">
@@ -598,7 +608,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('surnameTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -633,7 +643,7 @@ $breadCrumbName = "Voter List";
                                   <input type="number" id="FAMILY_SIZE_TO_LABEL" class="form-control familyLabelsTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_familyLabelsTab" class="form-select familyLabelsTab commonSearch">
@@ -641,7 +651,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('familyLabelsTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -682,7 +692,7 @@ $breadCrumbName = "Voter List";
                                   <input type="text" id="RELATIVE_SMS" class="form-control smsTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_smsTab" class="form-select smsTab commonSearch">
@@ -690,7 +700,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('smsTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -706,7 +716,7 @@ $breadCrumbName = "Voter List";
                       </div>
                     </div>
                     <div id="report_2" class="tab-data" style="display:none">
-                      <ul class="nav nav-underline">
+                      <!-- <ul class="nav nav-underline">
                         <li class="nav-item" onclick="showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Caste Wise List</a>
                         </li>
@@ -716,9 +726,6 @@ $breadCrumbName = "Voter List";
                         <li class="nav-item" onclick="showTab('#areaWise','.inner-tab-data','.areaWiseTab');$('#action').val('areaWiseTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Area Wise List</a>
                         </li>
-                        <!-- <li class="nav-item" onclick="showTab('#wardWise','.inner-tab-data','.wardWiseTab');$('#action').val('wardWiseTab');load_data()">
-                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Ward Wise List</a>
-                        </li> -->
                         <li class="nav-item" onclick="showTab('#partyWise','.inner-tab-data','.partyWiseTab');$('#action').val('partyWiseTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Party Wise List</a>
                         </li>
@@ -728,7 +735,7 @@ $breadCrumbName = "Voter List";
                         <li class="nav-item" onclick="showTab('#birthday','.inner-tab-data','.birthdayTab');$('#action').val('birthdayTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Birthday List</a>
                         </li>
-                      </ul>
+                      </ul> -->
                       <div id="caste" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
                         <h5>Caste Wise List</h5>
                         <div class="row">
@@ -752,7 +759,7 @@ $breadCrumbName = "Voter List";
                                 <option value="1">Muslim</option>
                             </select> 
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_casteTab" class="form-select casteTab commonSearch">
@@ -760,7 +767,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('casteTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -789,7 +796,7 @@ $breadCrumbName = "Voter List";
                                 <option value="" selected>Select</option>
                             </select> 
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_labelValueTab" class="form-select labelValueTab commonSearch">
@@ -797,7 +804,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('labelValueTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -826,7 +833,7 @@ $breadCrumbName = "Voter List";
                                 <option value="" selected>Select</option>
                             </select> 
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_areaWiseTab" class="form-select areaWiseTab commonSearch">
@@ -834,7 +841,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('areaWiseTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -863,7 +870,7 @@ $breadCrumbName = "Voter List";
                                 <option value="" selected>Select</option>
                             </select> 
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_partyWiseTab" class="form-select partyWiseTab commonSearch">
@@ -871,7 +878,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('partyWiseTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -902,7 +909,7 @@ $breadCrumbName = "Voter List";
                                 <option value="1">Dead</option>
                             </select> 
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_deadListTab" class="form-select deadListTab commonSearch">
@@ -910,7 +917,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('deadListTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -963,7 +970,7 @@ $breadCrumbName = "Voter List";
                                 <option value="12">DECEMBER</option>
                             </select> 
                           </div>
-                          <div class="col-2">
+                          <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
                                   <select id="language_birthdayTab" class="form-select birthdayTab commonSearch">
@@ -971,7 +978,7 @@ $breadCrumbName = "Voter List";
                                       <option value="hindi">Hindi</option>
                                   </select> 
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-2">
                               <div class="mb-3">
                                 <button type="button" onclick="$('#action').val('birthdayTab');load_data()" style="margin-top: 20%;" id="loginBtn" class="btn btn-primary">Search</button>
@@ -1048,7 +1055,7 @@ $breadCrumbName = "Voter List";
         if(page!=''){
           $('#overlay').show()
           // let total_records = $('#total_records').val()
-          let search_str = $('#search_str').val()
+          let search_str = $('#search_str').val() 
             $.ajax({  
                   url:"../api/cader-voter-list.php",  
                   method:"POST",  
@@ -1058,24 +1065,7 @@ $breadCrumbName = "Voter List";
                     search_str:search_str,
                     user_id:"<?php echo $_SESSION['user_id']; ?>",
                     leader_id:"<?php echo $_SESSION['leader_id']; ?>",
-                    language_searchTab: $('#language_searchTab').val(),
-                    language_alphaTab: $('#language_alphaTab').val(),
-                    language_agewiseTab: $('#language_agewiseTab').val(),
-                    language_familyTab: $('#language_familyTab').val(),
-                    language_familyHeadTab: $('#language_familyHeadTab').val(),
-                    language_doubleNameTab: $('#language_doubleNameTab').val(),
-                    language_marriedTab: $('#language_marriedTab').val(),
-                    language_singleTab: $('#language_singleTab').val(),
-                    language_addressTab: $('#language_addressTab').val(),
-                    language_surnameTab: $('#language_surnameTab').val(),
-                    language_familyLabelsTab: $('#language_familyLabelsTab').val(),
-                    language_smsTab: $('#language_smsTab').val(),
-                    language_casteTab: $('#language_casteTab').val(),
-                    language_labelValueTab: $('#language_labelValueTab').val(),
-                    language_areaWiseTab: $('#language_areaWiseTab').val(),
-                    language_partyWiseTab: $('#language_partyWiseTab').val(),
-                    language_deadListTab: $('#language_deadListTab').val(),
-                    language_birthdayTab: $('#language_birthdayTab').val(),
+                    language: $('#language').val(),
                     PART_NO_FROM: $('#PART_NO_FROM').val(),
                     PART_NO_TO: $('#PART_NO_TO').val(),
                     SECTION_NO: $('#SECTION_NO').val(),

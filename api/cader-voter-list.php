@@ -6,6 +6,7 @@ include ('../config/conn.php');
  $search_str = $_POST["search_str"];  
  $leader_id = $_POST["leader_id"];  
  $user_id = $_POST["user_id"];  
+ $language = $_POST['language'];
  $page = '';  
  $slNo = '';  
  $output = '';  
@@ -45,7 +46,6 @@ $page_query = "";
     $fullName = $_POST['fullName'];
     $SECTION_NAME_EN = $_POST['SECTION_NAME_EN'];
     $filter_searchTab = $_POST['filter_searchTab'];
-    $language_searchTab = $_POST['language_searchTab'];
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
     $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
@@ -61,7 +61,7 @@ $page_query = "";
     if($C_HOUSE_NO!=''){
         $WHERE .= " AND C_HOUSE_NO =$C_HOUSE_NO";
     }
-    if($language_searchTab=='english'){
+    if($language=='english'){
         if($LASTNAME_EN!=''){
             $WHERE .= " AND LASTNAME_V1 LIKE '%$LASTNAME_EN%'";
         }
@@ -88,7 +88,7 @@ $page_query = "";
     if($MOBILE_NO!=''){
         $WHERE .= " AND MOBILE_NO LIKE '%$MOBILE_NO%'";
     }
-    if($language_searchTab=='english'){
+    if($language=='english'){
         if($fullName!=''){
             $WHERE .= " AND concat(UPPER(FM_NAME_EN),UPPER(LASTNAME_EN)) LIKE UPPER('%$fullName%')";
         }
@@ -113,7 +113,6 @@ $page_query = "";
     $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
     $PART_NO_FROM_ALPHA = $_POST['PART_NO_FROM_ALPHA'];
     $PART_NO_TO_ALPHA = $_POST['PART_NO_TO_ALPHA'];
-    $language_alphaTab = $_POST['language_alphaTab'];
     if($PART_NO_FROM_ALPHA!='' && $PART_NO_TO_ALPHA!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_ALPHA AND $PART_NO_TO_ALPHA";
     }
@@ -133,7 +132,6 @@ $page_query = "";
     $AGE_TO = $_POST['AGE_TO'];
     $GENDER_AGE = $_POST['GENDER_AGE'];
     $SORT_AGE = $_POST['SORT_AGE'];
-    $language_agewiseTab = $_POST['language_agewiseTab'];
     if($PART_NO_AGE_FROM!='' && $PART_NO_AGE_TO!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_AGE_FROM AND $PART_NO_AGE_TO";
     }
@@ -170,7 +168,6 @@ $page_query = "";
     $FAMILY_SIZE_FROM = $_POST['FAMILY_SIZE_FROM'];
     $FAMILY_SIZE_TO = $_POST['FAMILY_SIZE_TO'];
     $SURNAME_FAMILY = $_POST['SURNAME_FAMILY'];
-    $language_familyTab = $_POST['language_familyTab'];
     if($PART_NO_FROM_FAMILY!='' && $PART_NO_TO_FAMILY!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_FAMILY AND $PART_NO_TO_FAMILY";
     }
@@ -201,8 +198,6 @@ $page_query = "";
     $FAMILY_HEAD_AGE_TO = $_POST['FAMILY_HEAD_AGE_TO'];
     $FAMILY_HEAD_GENDER = $_POST['FAMILY_HEAD_GENDER'];
     $FAMILY_HEAD_CASTE = $_POST['FAMILY_HEAD_CASTE'];
-    $language_familyHeadTab = $_POST['language_familyHeadTab'];
-
     if($PART_NO_FROM_FAMILY_HEAD!='' && $PART_NO_TO_FAMILY_HEAD!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_FAMILY_HEAD AND $PART_NO_TO_FAMILY_HEAD";
     }
@@ -243,7 +238,6 @@ $page_query = "";
     $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
     $PART_NO_FROM_DOUBLE = $_POST['PART_NO_FROM_DOUBLE'];
     $PART_NO_TO_DOUBLE = $_POST['PART_NO_TO_DOUBLE'];
-    $language_doubleNameTab = $_POST['language_doubleNameTab'];
 
 
     if($PART_NO_FROM_DOUBLE!='' && $PART_NO_TO_DOUBLE!=''){
@@ -265,7 +259,6 @@ $page_query = "";
     $PART_NO_MARRIED_FROM = $_POST['PART_NO_MARRIED_FROM'];
     $PART_NO_MARRIED_TO = $_POST['PART_NO_MARRIED_TO'];
     $SORT_MARRIED = $_POST['SORT_MARRIED'];
-    $language_marriedTab = $_POST['language_marriedTab'];
     if($PART_NO_MARRIED_FROM!='' && $PART_NO_MARRIED_TO!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_MARRIED_FROM AND $PART_NO_MARRIED_TO";
     }
@@ -295,7 +288,6 @@ $page_query = "";
     $PART_NO_SINGLE_FROM = $_POST['PART_NO_SINGLE_FROM'];
     $PART_NO_SINGLE_TO = $_POST['PART_NO_SINGLE_TO'];
     $SORT_GENDER_SINGLE = $_POST['SORT_GENDER_SINGLE'];
-    $language_singleTab = $_POST['language_singleTab'];
     if($PART_NO_SINGLE_FROM!='' && $PART_NO_SINGLE_TO!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_SINGLE_FROM AND $PART_NO_SINGLE_TO";
     }
@@ -320,7 +312,6 @@ $page_query = "";
     $PART_NO_FROM_ADDRESS = $_POST['PART_NO_FROM_ADDRESS'];
     $PART_NO_TO_ADDRESS = $_POST['PART_NO_TO_ADDRESS'];
     $SEARCH_ADDRESS = $_POST['SEARCH_ADDRESS'];
-    $language_addressTab = $_POST['language_addressTab'];
 
 
     if($PART_NO_FROM_ADDRESS!='' && $PART_NO_TO_ADDRESS!=''){
@@ -331,7 +322,7 @@ $page_query = "";
     }
     
     if($SEARCH_ADDRESS!=''){
-        if($language_addressTab=='english'){
+        if($language=='english'){
             $WHERE .= " AND voters_data.PSBUILDING_NAME_EN LIKE '%$SEARCH_ADDRESS%'";           
         }else{
             $WHERE .= " AND voters_data.PSBUILDING_NAME_V1 LIKE '%$SEARCH_ADDRESS%'";           
@@ -347,7 +338,6 @@ $page_query = "";
     $PART_NO_FROM_SURNAME = $_POST['PART_NO_FROM_SURNAME'];
     $PART_NO_TO_SURNAME = $_POST['PART_NO_TO_SURNAME'];
     $SEARCH_ADDRESS = $_POST['SEARCH_ADDRESS'];
-    $language_surnameTab = $_POST['language_surnameTab'];
 
 
     if($PART_NO_FROM_SURNAME!='' && $PART_NO_TO_SURNAME!=''){
@@ -357,7 +347,7 @@ $page_query = "";
         $WHERE .= " AND PART_NO=$PART_NO_FROM_SURNAME";
     }
     if($SEARCH_SURNAME!=''){
-        if($language_surnameTab=='english'){
+        if($language=='english'){
             $WHERE .= " AND voters_data.LASTNAME_EN LIKE '%$SEARCH_SURNAME%'";       
         }else{
             $WHERE .= " AND voters_data.LASTNAME_V1 LIKE '%$SEARCH_SURNAME%'";         
@@ -374,7 +364,6 @@ $page_query = "";
     $PART_NO_TO_LABEL = $_POST['PART_NO_TO_LABEL'];
     $FAMILY_SIZE_FROM_LABEL = $_POST['FAMILY_SIZE_FROM_LABEL'];
     $FAMILY_SIZE_TO_LABEL = $_POST['FAMILY_SIZE_TO_LABEL'];
-    $language_familyLabelsTab = $_POST['language_familyLabelsTab'];
     if($PART_NO_FROM_LABEL!='' && $PART_NO_TO_LABEL!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_LABEL AND $PART_NO_TO_LABEL";
     }
@@ -398,7 +387,6 @@ $page_query = "";
     $NAME_SMS = $_POST['NAME_SMS'];
     $SURNAME_SMS = $_POST['SURNAME_SMS'];
     $RELATIVE_SMS = $_POST['RELATIVE_SMS'];
-    $language_smsTab = $_POST['language_smsTab'];
 
     if($PART_NO_FROM_SMS!='' && $PART_NO_TO_SMS!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_SMS AND $PART_NO_TO_SMS";
@@ -425,7 +413,6 @@ $page_query = "";
     $PART_NO_FROM_CASTE = $_POST['PART_NO_FROM_CASTE'];
     $PART_NO_TO_CASTE = $_POST['PART_NO_TO_CASTE'];
     $RELIGION_CASTE = $_POST['RELIGION_CASTE'];
-    $language_casteTab = $_POST['language_casteTab'];
     if($PART_NO_FROM_CASTE!='' && $PART_NO_TO_CASTE!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_CASTE AND $PART_NO_TO_CASTE";
     }
@@ -445,7 +432,6 @@ $page_query = "";
     $PART_NO_FROM_LABEL_VALUE = $_POST['PART_NO_FROM_LABEL_VALUE'];
     $PART_NO_TO_LABEL_VALUE = $_POST['PART_NO_TO_LABEL_VALUE'];
     $LABEL_VALUE = $_POST['LABEL_VALUE'];
-    $language_labelValueTab = $_POST['language_labelValueTab'];
     if($PART_NO_FROM_LABEL_VALUE!='' && $PART_NO_TO_LABEL_VALUE!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_LABEL_VALUE AND $PART_NO_TO_LABEL_VALUE";
     }
@@ -465,7 +451,6 @@ $page_query = "";
     $PART_NO_FROM_AREA = $_POST['PART_NO_FROM_AREA'];
     $PART_NO_TO_AREA = $_POST['PART_NO_TO_AREA'];
     $LABEL_VALUE = $_POST['LABEL_VALUE'];
-    $language_areaWiseTab = $_POST['language_areaWiseTab'];
     if($PART_NO_FROM_AREA!='' && $PART_NO_TO_AREA!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_AREA AND $PART_NO_TO_AREA";
     }
@@ -485,7 +470,6 @@ $page_query = "";
     $PART_NO_FROM_PARTY = $_POST['PART_NO_FROM_PARTY'];
     $PART_NO_TO_PARTY = $_POST['PART_NO_TO_PARTY'];
     $PARTY_LIST = $_POST['PARTY_LIST'];
-    $language_partyWiseTab = $_POST['language_partyWiseTab'];
     if($PART_NO_FROM_PARTY!='' && $PART_NO_TO_PARTY!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_PARTY AND $PART_NO_TO_PARTY";
     }
@@ -505,7 +489,6 @@ $page_query = "";
     $PART_NO_FROM_DEAD = $_POST['PART_NO_FROM_DEAD'];
     $PART_NO_TO_DEAD = $_POST['PART_NO_TO_DEAD'];
     $DEAD_LIST = $_POST['DEAD_LIST'];
-    $language_deadListTab = $_POST['language_deadListTab'];
     if($PART_NO_FROM_DEAD!='' && $PART_NO_TO_DEAD!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_DEAD AND $PART_NO_TO_DEAD";
     }
@@ -529,7 +512,6 @@ $page_query = "";
     $MONTH_LIST = $_POST['MONTH_LIST'];
     $FROM_DATE = $_POST['MONTH_LIST'].'-'.$DATE_FROM_BIRTHDAY;
     $TO_DATE = $_POST['MONTH_LIST'].'-'.$DATE_TO_BIRTHDAY;
-    $language_birthdayTab = $_POST['language_birthdayTab'];
     if($PART_NO_FROM_BIRTHDAY!='' && $PART_NO_TO_BIRTHDAY!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_BIRTHDAY AND $PART_NO_TO_BIRTHDAY";
     }
@@ -706,7 +688,7 @@ $page_query = "";
  while($row = mysqli_fetch_array($result))  
  {  
     if(isset($_POST['action']) && $_POST['action']=='doubleNameTab') {
-        if($language_doubleNameTab=='english'){
+        if($language=='english'){
             $output .= '  
             <tr>
             <td class="align-middle">
@@ -796,7 +778,7 @@ $page_query = "";
                 ';  
         }
     }else if(isset($_POST['action']) && $_POST['action']=='addressTab') {
-        if($language_addressTab=='english'){
+        if($language=='english'){
             $output .= '  
             <tr>
                 <td class="align-middle">
@@ -844,7 +826,7 @@ $page_query = "";
                 ';  
         }
     }else if(isset($_POST['action']) && $_POST['action']=='surnameTab') {
-        if($language_surnameTab=='english'){
+        if($language=='english'){
             $output .= '  
             <tr>
                 <td class="align-middle">
@@ -880,7 +862,7 @@ $page_query = "";
                     ';  
         }
     }else if(isset($_POST['action']) && $_POST['action']=='familyLabelsTab') {
-        if($language_familyLabelsTab=='english'){
+        if($language=='english'){
             $output .= '  
             <tr>
             <td class="align-middle">
@@ -922,7 +904,7 @@ $page_query = "";
                 '; 
         }
     }else if(isset($_POST['action']) && $_POST['action']=='smsTab') {
-        if($language_smsTab=='english'){
+        if($language=='english'){
             $output .= '  
             <tr>
             <td class="align-middle">
@@ -1006,7 +988,7 @@ $page_query = "";
                 ';
         }  
     }else if(isset($_POST['action']) && $_POST['action']=='familyHeadTab') {
-        if($language_familyHeadTab=='english'){
+        if($language=='english'){
             $output .= '  
             <tr>
                 <td class="align-middle">
@@ -1102,7 +1084,7 @@ $page_query = "";
                 ';
         }
     }else if(isset($_POST['action']) && $_POST['action']=='birthdayTab') {
-        if($language_birthdayTab=='english'){
+        if($language=='english'){
             $output .= '  
             <tr>
                 <td class="align-middle">
@@ -1205,10 +1187,7 @@ $page_query = "";
         }
     }else{
         if(
-            $language_searchTab=='english' || $language_alphaTab=='english' || $language_agewiseTab=='english' ||
-            $language_familyTab=='english' || $language_marriedTab=='english' || $language_singleTab=='english' ||
-            $language_casteTab=='english' || $language_labelValueTab=='english' || $language_areaWiseTab=='english' ||
-            $language_partyWiseTab=='english' || $language_deadListTab=='english'
+            $language=='english'
         ){
             $output .= '  
             <tr>

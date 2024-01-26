@@ -5,6 +5,7 @@ if(isset($_FILES['file']['name']))
 {
  $error = '';
  $total_line = 0;
+ $leader_id = $_POST['leader_id'];
  if($_FILES['file']['name'] != '')
  {
   $allowed_extension = array('csv');
@@ -97,11 +98,13 @@ if(isset($_FILES['file']['name']))
         AC_NO = '$AC_NO' AND 
         PART_NO = '$PART_NO' AND
         SECTION_NO = '$SECTION_NO' AND
+        leader_id = '$leader_id' AND
         SLNOINPART = '$SLNOINPART'
         ";
     }else{
         $query = "
         INSERT INTO voters_data (
+        leader_id,    
         AC_NO, 
         PART_NO,
         SECTION_NO,
@@ -132,6 +135,7 @@ if(isset($_FILES['file']['name']))
         PART_NAME_V1
         ) 
         VALUES (
+            '$leader_id', 
             '$AC_NO', 
             '$PART_NO',
             '$SECTION_NO',

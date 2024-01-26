@@ -17,20 +17,30 @@ $breadCrumbName = "Voter List";
             <div class="row">
                 <div class="col-lg-6 d-flex justify-content-between">
                     <h6 class="mb-2">Voter List</h6>
+                    <div class="col-lg-6 d-flex justify-content-between">
+                        <select class="form-select" name="language" id="language" style="float: right;
+                            right: 58px;
+                            width: 120px;
+                            font-size: 12px;
+                            position: absolute;">
+                            <option value="english">English</option>
+                            <option value="hindi">Hindi</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-lg-12">
-                  <ul class="nav nav-pills">
+                  <!-- <ul class="nav nav-pills">
                     <li class="nav-item" onclick="showTab('#report_1','.tab-data','')">
                       <a class="nav-link active" aria-current="page" href="javascript:void(0);">Report 1</a>
                     </li>
                     <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab')">
                       <a class="nav-link" href="javascript:void(0);">Report 2</a>
                     </li>
-                  </ul>
+                  </ul> -->
                   <div class="tab-content" style="margin-top:2%;">
                     <input type="hidden" id="action" value="" />
                     <div id="report_1" class="tab-data">
-                      <ul class="nav nav-underline">
+                      <!-- <ul class="nav nav-underline">
                         <li class="nav-item" onclick="showTab('#searchVoter','.inner-tab-data','.searchTab');$('#action').val('searchTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Search</a>
                         </li>
@@ -67,7 +77,7 @@ $breadCrumbName = "Voter List";
                         <li class="nav-item" onclick="showTab('#sms','.inner-tab-data','.smsTab');$('#action').val('smsTab');load_data()">
                           <a class="nav-link" href="javascript:void(0);">SMS</a>
                         </li>
-                      </ul>
+                      </ul> -->
                       <div id="searchVoter" class="inner-tab-data" style="display:block;margin-top: 2%;margin-bottom: 2%;">
                         <h5>Search List</h5>
                         <div class="row">
@@ -1057,24 +1067,7 @@ $breadCrumbName = "Voter List";
                     total_records:50,
                     search_str:search_str,
                     user_id:"<?php echo $_SESSION['user_id']; ?>",
-                    language_searchTab: $('#language_searchTab').val(),
-                    language_alphaTab: $('#language_alphaTab').val(),
-                    language_agewiseTab: $('#language_agewiseTab').val(),
-                    language_familyTab: $('#language_familyTab').val(),
-                    language_familyHeadTab: $('#language_familyHeadTab').val(),
-                    language_doubleNameTab: $('#language_doubleNameTab').val(),
-                    language_marriedTab: $('#language_marriedTab').val(),
-                    language_singleTab: $('#language_singleTab').val(),
-                    language_addressTab: $('#language_addressTab').val(),
-                    language_surnameTab: $('#language_surnameTab').val(),
-                    language_familyLabelsTab: $('#language_familyLabelsTab').val(),
-                    language_smsTab: $('#language_smsTab').val(),
-                    language_casteTab: $('#language_casteTab').val(),
-                    language_labelValueTab: $('#language_labelValueTab').val(),
-                    language_areaWiseTab: $('#language_areaWiseTab').val(),
-                    language_partyWiseTab: $('#language_partyWiseTab').val(),
-                    language_deadListTab: $('#language_deadListTab').val(),
-                    language_birthdayTab: $('#language_birthdayTab').val(),
+                    language: $('#language').val(),
                     PART_NO_FROM: $('#PART_NO_FROM').val(),
                     PART_NO_TO: $('#PART_NO_TO').val(),
                     SECTION_NO: $('#SECTION_NO').val(),

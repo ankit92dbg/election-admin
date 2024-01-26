@@ -119,6 +119,7 @@ include ('../config/conn.php');
                 <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
                     <li><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'">Edit</a></li>
                     <li><a class="dropdown-item" href="voters.php?id='.$row['id'].'">Voters</a></li>
+                    <li><a class="dropdown-item" href="upload-csv.php?id='.$row['id'].'">Upload CSV</a></li>
                     <li><a class="dropdown-item" href="subleaders.php?id='.$row['id'].'">Caders</a></li>
                     <li><a class="dropdown-item" href="voter-labels.php?id='.$row['id'].'">Label Value</a></li>
                     <li><a class="dropdown-item" onclick="changeStatus('.$row['id'].');" href="javascript:void(0);">'.($row['isActive']==0 ? "Enable" : "Disable").'</a></li>

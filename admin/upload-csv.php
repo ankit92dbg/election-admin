@@ -31,6 +31,7 @@ $breadCrumbName = "Upload CSV";
 
                                 <div class="formbold-mb-5 formbold-file-input">
                                     <input type="file" name="file" id="file" />
+                                    <input type="hidden" name="leader_id" value="<?php echo $_GET['id']; ?>" id="leader_id" />
                                     <label for="file">
                                         <div>
                                         <!-- <span class="formbold-drop-file"> Drop files here </span>
