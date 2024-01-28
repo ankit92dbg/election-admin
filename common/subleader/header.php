@@ -23,7 +23,7 @@
             </li> -->
             <div class="dropdown">
   <a class="dropbtn"> <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Hello, <?php echo $_SESSION['f_name'].' '.$_SESSION['l_name'] ?>(Cader)</span></a>
+                <span class="d-sm-inline d-none">Hello, <?php echo $_SESSION['f_name'].' '.$_SESSION['l_name'] ?>(BM)</span></a>
   <div class="dropdown-content">
     <a href="profile.php">My Profile</a>
     <a onClick="logout()" class="nav-link " href="javascript:void(0)">Logout</a>
