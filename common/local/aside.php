@@ -23,32 +23,7 @@ $endPart = explode('.',$endPart);
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link dropdown-btn" href="javascript:void(0)">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Master <i class="fa fa-caret-down"></i></span>
-          </a>
-          <ul class="submenu" style="display:none">
-            <li class="nav-item">
-                <a class="nav-link " href="./pages/tables.html">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-user-circle-o text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Leader</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link " href="./pages/tables.html">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-user-circle-o text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Subleader</span>
-                </a>
-                </li>
-          </ul>
-        </li> -->
+       
         <li class="nav-item">
           <a class="nav-link <?php echo ($endPart[0]=='leaders' || $endPart[0]=='add-leaders' || $endPart[0]=='voters' || $endPart[0]=='edit-leaders'|| $endPart[0]=='subleaders'|| $endPart[0]=='edit-subleaders'|| $endPart[0]=='add-subleaders'|| $endPart[0]=='voter-labels'|| $endPart[0]=='add-voter-label'|| $endPart[0]=='edit-voter-labels') ? 'active' : ''; ?>" href="leaders.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -57,30 +32,45 @@ $endPart = explode('.',$endPart);
             <span class="nav-link-text ms-1">Candidate</span>
           </a>
         </li>
+        
         <?php if($endPart[0]=='voters'){ ?>
-        <li class="nav-item" onclick="showTab('#report_1','.tab-data','')">
-          <a class="nav-link " href="javascript:void(0);">
+          <!-- <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab')">
+          <a class="nav-link dropdown-btn" href="javascript:void(0)">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i style="color:#67748e" class="fa fa-folder text-sm opacity-10"></i>
+              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Report 1</span>
-          </a>        
-          <!-- <ul>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Search</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Alphabetical List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Agewise List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Family Report</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Family Head Report</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Double Name List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Married Women Report</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Single Voter List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Address Wise List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Surname Report</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Family Labels</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">SMS</span></li>
-          </ul> -->
-          <ul class="nav nav-underline">
-                        <li class="nav-item sub-menu" onclick="showTab('#searchVoter','.inner-tab-data','.searchTab');$('#action').val('searchTab');load_data()">
+            <span class="nav-link-text ms-1">Report 112 <i class="fa fa-caret-down"></i></span>
+          </a>
+          <ul class="submenu" style="display:none">
+          <li class="nav-item sub-menu" onclick="showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');load_data()">
+                          <a class="nav-link" aria-current="page" href="javascript:void(0);">Caste Wise List</a>
+                        </li>
+                        <li class="nav-item sub-menu" onclick="showTab('#labelValue','.inner-tab-data','.labelValueTab');$('#action').val('labelValueTab');load_data()">
+                          <a class="nav-link" aria-current="page" href="javascript:void(0);">Label Value Filter</a>
+                        </li>
+                        <li class="nav-item sub-menu" onclick="showTab('#areaWise','.inner-tab-data','.areaWiseTab');$('#action').val('areaWiseTab');load_data()">
+                          <a class="nav-link" aria-current="page" href="javascript:void(0);">Area Wise List</a>
+                        </li>
+                        <li class="nav-item sub-menu" onclick="showTab('#partyWise','.inner-tab-data','.partyWiseTab');$('#action').val('partyWiseTab');load_data()">
+                          <a class="nav-link" aria-current="page" href="javascript:void(0);">Party Wise List</a>
+                        </li>
+                        <li class="nav-item sub-menu" onclick="showTab('#deadList','.inner-tab-data','.deadListTab');$('#action').val('deadListTab');load_data()">
+                          <a class="nav-link" aria-current="page" href="javascript:void(0);">Dead List</a>
+                        </li>
+                        <li class="nav-item sub-menu" onclick="showTab('#birthday','.inner-tab-data','.birthdayTab');$('#action').val('birthdayTab');load_data()">
+                          <a class="nav-link" aria-current="page" href="javascript:void(0);">Birthday List</a>
+                        </li>
+          </ul>
+        </li> -->
+        <li class="nav-item" onclick="showTab('#report_1','.tab-data','')">
+          <a class="nav-link dropdown-btn" href="javascript:void(0)">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Report 1 <i class="fa fa-caret-down"></i></span>
+          </a>
+          <ul class="submenu" style="display:none">
+          <li class="nav-item sub-menu" onclick="showTab('#searchVoter','.inner-tab-data','.searchTab');$('#action').val('searchTab');load_data()">
                           <a class="nav-link" aria-current="page" href="javascript:void(0);">Search</a>
                         </li>
                         <li class="nav-item sub-menu" onclick="showTab('#alpha','.inner-tab-data','.alphaTab');$('#action').val('alphaTab');load_data()">
@@ -116,17 +106,17 @@ $endPart = explode('.',$endPart);
                         <li class="nav-item sub-menu" onclick="showTab('#sms','.inner-tab-data','.smsTab');$('#action').val('smsTab');load_data()">
                           <a class="nav-link" href="javascript:void(0);">SMS</a>
                         </li>
-                      </ul>
+          </ul>
         </li>
         <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab')">
-          <a class="nav-link " href="javascript:void(0);">
+          <a class="nav-link dropdown-btn" href="javascript:void(0)">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i style="color:#67748e" class="fa fa-folder text-sm opacity-10"></i>
+              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Report 2</span>
-          </a>       
-          <ul class="nav nav-underline">
-                        <li class="nav-item sub-menu" onclick="showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');load_data()">
+            <span class="nav-link-text ms-1">Report 2 <i class="fa fa-caret-down"></i></span>
+          </a>
+          <ul class="submenu" style="display:none">
+          <li class="nav-item sub-menu" onclick="showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');load_data()">
                           <a class="nav-link" aria-current="page" href="javascript:void(0);">Caste Wise List</a>
                         </li>
                         <li class="nav-item sub-menu" onclick="showTab('#labelValue','.inner-tab-data','.labelValueTab');$('#action').val('labelValueTab');load_data()">
@@ -144,7 +134,7 @@ $endPart = explode('.',$endPart);
                         <li class="nav-item sub-menu" onclick="showTab('#birthday','.inner-tab-data','.birthdayTab');$('#action').val('birthdayTab');load_data()">
                           <a class="nav-link" aria-current="page" href="javascript:void(0);">Birthday List</a>
                         </li>
-                      </ul>
+          </ul>
         </li>
         <?php } ?>
         <!-- <li class="nav-item">
