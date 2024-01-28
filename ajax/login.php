@@ -17,12 +17,21 @@ if($row){
         $_SESSION['email'] = $row['email'];
         $_SESSION['leader_id'] = $row['leader_id'];
         $_SESSION['user_type'] = $row['user_type'];
+        if($row['user_type']==1){
+        $_SESSION['PART_NO'] = $row['PART_NO'];
+        }
         if($row['user_type']==0){
             $_SESSION['title'] = "Admin Panel";
         } else if($row['user_type']==1){
             $_SESSION['title'] = "Candidate Panel";
         } else {
             $_SESSION['title'] = "Cader Panel";
+        }
+        if($row['user_type']==2){
+            $query2 = "select * from user_tbl where id='".$row['leader_id']."'";
+            $result2 = mysqli_query($conn,$query2);
+            $row2 = mysqli_fetch_assoc($result2);
+            $_SESSION['PART_NO'] = $row2['PART_NO'];
         }
         $response->message = "success";
         $response->user_type = $row['user_type'];

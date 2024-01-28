@@ -8,8 +8,12 @@ $endPart = explode('.',$endPart);
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="dashboard.php">
-        <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Booth Admin</span>
+        <img src="" alt="profile_image" class="navbar-brand-img h-100" id="prof-image">
+        <!-- <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> -->
+        <span class="ms-1 font-weight-bold"><?php echo $_SESSION['f_name'].' '.$_SESSION['l_name']; ?></span><br/>
+        <?php if($_SESSION['user_type']!=0){ ?>
+        <span style="margin-left: 21% !important;" class="ms-1 font-weight-bold">PART NO. <?php echo $_SESSION['PART_NO']; ?></span>
+        <?php } ?>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -62,7 +66,7 @@ $endPart = explode('.',$endPart);
                         </li>
           </ul>
         </li> -->
-        <li class="nav-item" onclick="showTab('#report_1','.tab-data','')">
+        <li class="nav-item" onclick="showTab('#report_1','.tab-data','.searchTab');">
           <a class="nav-link dropdown-btn" href="javascript:void(0)">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
@@ -108,7 +112,7 @@ $endPart = explode('.',$endPart);
                         </li>
           </ul>
         </li>
-        <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab')">
+        <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab');">
           <a class="nav-link dropdown-btn" href="javascript:void(0)">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-address-book text-warning text-sm opacity-10"></i>

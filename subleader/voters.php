@@ -1038,7 +1038,7 @@ $breadCrumbName = "Voter List";
 <script>
  $(document).ready(function(){  
       $('#action').val('searchTab')
-      load_data();  
+    //   load_data()
       load_other_data();  
        
       $(document).on('click', '.pagination_link', function(){  
@@ -1231,4 +1231,19 @@ function load_other_data(){
         $('.commonSearch').val('english')
         $('.commonSearch option[value="english"]').attr("selected", "selected");
       }
+
+      function setType(){
+        const type="<?php echo $_GET['type']; ?>"
+        if(type=="1"){
+            $('#r2Btn').hide()
+        }
+        if(type=="2"){
+            $('#r1Btn').hide()
+            $('#r2Btn').show()
+            $('#action').val('casteTab')
+            showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');
+            load_data()
+        }
+      }
+      setType()
 </script>

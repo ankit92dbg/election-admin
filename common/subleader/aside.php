@@ -8,8 +8,12 @@ $endPart = explode('.',$endPart);
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="dashboard.php">
-        <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Booth Cader</span>
+        <img src="" alt="profile_image" class="navbar-brand-img h-100" id="prof-image">
+        <!-- <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> -->
+        <span class="ms-1 font-weight-bold"><?php echo $_SESSION['f_name'].' '.$_SESSION['l_name']; ?></span><br/>
+        <?php if($_SESSION['user_type']!=0){ ?>
+        <span style="margin-left: 21% !important;" class="ms-1 font-weight-bold">PART NO. <?php echo $_SESSION['PART_NO']; ?></span>
+        <?php } ?>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -65,29 +69,24 @@ $endPart = explode('.',$endPart);
             <span class="nav-link-text ms-1">Voters</span>
           </a>
         </li> -->
-        <li class="nav-item" onclick="showTab('#report_1','.tab-data','')">
-          <a class="nav-link " href="voters.php">
+        <li class="nav-item" onclick="showTab('#report_1','.tab-data','.casteTab');$('#r2Btn').hide();">
+        <?php if($endPart[0]=='voters'){ ?>
+          <a class="nav-link dropdown-btn" href="javascript:void(0)" onclick="$('#r2Btn').hide()">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i style="color:#67748e" class="fa fa-folder text-sm opacity-10"></i>
+              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Report 1</span>
-          </a>        
-          <!-- <ul>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Search</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Alphabetical List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Agewise List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Family Report</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Family Head Report</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Double Name List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Married Women Report</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Single Voter List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Address Wise List</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Surname Report</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">Family Labels</span></li>
-            <li class="nav-item sub-menu"><span class="nav-link-text ms-1">SMS</span></li>
-          </ul> -->
-          <ul class="nav nav-underline">
-                        <li class="nav-item sub-menu" onclick="showTab('#searchVoter','.inner-tab-data','.searchTab');$('#action').val('searchTab');load_data()">
+            <span class="nav-link-text ms-1">Report 1 <i class="fa fa-caret-down"></i></span>
+          </a>
+        <?php }else{ ?>
+          <a class="nav-link dropdown-btn" href="voters.php?type=1" onclick="$('#r2Btn').hide()">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Report 1 <i class="fa fa-caret-down"></i></span>
+          </a>
+        <?php } ?>
+          <ul class="submenu"  <?php if($endPart[0]=='voters'){ ?> id="r1Btn" style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
+                  <li class="nav-item sub-menu" onclick="showTab('#searchVoter','.inner-tab-data','.searchTab');$('#action').val('searchTab');load_data()">
                           <a class="nav-link" aria-current="page" href="javascript:void(0);">Search</a>
                         </li>
                         <li class="nav-item sub-menu" onclick="showTab('#alpha','.inner-tab-data','.alphaTab');$('#action').val('alphaTab');load_data()">
@@ -123,16 +122,25 @@ $endPart = explode('.',$endPart);
                         <li class="nav-item sub-menu" onclick="showTab('#sms','.inner-tab-data','.smsTab');$('#action').val('smsTab');load_data()">
                           <a class="nav-link" href="javascript:void(0);">SMS</a>
                         </li>
-                      </ul>
+          </ul>
         </li>
-        <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab')">
-          <a class="nav-link " href="javascript:void(0);">
+        <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab');$('#r1Btn').hide()">
+        <?php if($endPart[0]=='voters'){ ?>
+          <a class="nav-link dropdown-btn" href="javascript:void(0)" onclick="$('#r1Btn').hide()">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i style="color:#67748e" class="fa fa-folder text-sm opacity-10"></i>
+              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Report 2</span>
-          </a>       
-          <ul class="nav nav-underline">
+            <span class="nav-link-text ms-1">Report 2 <i class="fa fa-caret-down"></i></span>
+          </a>
+        <?php }else{ ?>
+          <a class="nav-link dropdown-btn" href="voters.php?type=2" onclick="$('#r1Btn').hide()">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Report 2 <i class="fa fa-caret-down"></i></span>
+          </a>
+        <?php } ?>
+          <ul class="submenu" style="display:none" id="r2Btn" >
                         <li class="nav-item sub-menu" onclick="showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');load_data()">
                           <a class="nav-link" aria-current="page" href="javascript:void(0);">Caste Wise List</a>
                         </li>
@@ -151,7 +159,7 @@ $endPart = explode('.',$endPart);
                         <li class="nav-item sub-menu" onclick="showTab('#birthday','.inner-tab-data','.birthdayTab');$('#action').val('birthdayTab');load_data()">
                           <a class="nav-link" aria-current="page" href="javascript:void(0);">Birthday List</a>
                         </li>
-                      </ul>
+          </ul>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link <?php echo ($endPart[0]=='upload-csv') ? 'active' : ''; ?>" href="upload-csv.php">

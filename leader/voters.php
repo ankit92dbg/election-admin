@@ -716,7 +716,7 @@ $breadCrumbName = "Voter List";
                       </div>
                     </div>
                     <div id="report_2" class="tab-data" style="display:none">
-                      <ul class="nav nav-underline">
+                      <!-- <ul class="nav nav-underline">
                         <li class="nav-item" onclick="showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Caste Wise List</a>
                         </li>
@@ -726,9 +726,6 @@ $breadCrumbName = "Voter List";
                         <li class="nav-item" onclick="showTab('#areaWise','.inner-tab-data','.areaWiseTab');$('#action').val('areaWiseTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Area Wise List</a>
                         </li>
-                        <!-- <li class="nav-item" onclick="showTab('#wardWise','.inner-tab-data','.wardWiseTab');$('#action').val('wardWiseTab');load_data()">
-                          <a class="nav-link active" aria-current="page" href="javascript:void(0);">Ward Wise List</a>
-                        </li> -->
                         <li class="nav-item" onclick="showTab('#partyWise','.inner-tab-data','.partyWiseTab');$('#action').val('partyWiseTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Party Wise List</a>
                         </li>
@@ -738,7 +735,7 @@ $breadCrumbName = "Voter List";
                         <li class="nav-item" onclick="showTab('#birthday','.inner-tab-data','.birthdayTab');$('#action').val('birthdayTab');load_data()">
                           <a class="nav-link active" aria-current="page" href="javascript:void(0);">Birthday List</a>
                         </li>
-                      </ul>
+                      </ul> -->
                       <div id="caste" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
                         <h5>Caste Wise List</h5>
                         <div class="row">
@@ -1040,8 +1037,8 @@ $breadCrumbName = "Voter List";
 <?php include('../common/leader/footer-links.php') ?>
 <script>
  $(document).ready(function(){  
-      $('#action').val('searchTab')
-      load_data();  
+    //   $('#action').val('searchTab')
+    //   load_data();  
       load_other_data();  
        
       $(document).on('click', '.pagination_link', function(){  
@@ -1164,7 +1161,7 @@ function load_other_data(){
            $.ajax({  
                 url:"../ajax/master-data.php",  
                 method:"POST",  
-                data:{action:"voter_political",leader_id:"<?php echo $_GET['id']; ?>"},  
+                data:{action:"voter_political",leader_id:"<?php echo $_SESSION['user_id']; ?>"},  
                 success:function(data){  
                    
                     //voter_label
@@ -1233,4 +1230,19 @@ function load_other_data(){
         $('.commonSearch').val('english')
         $('.commonSearch option[value="english"]').attr("selected", "selected");
       }
+
+      function setType(){
+        const type="<?php echo $_GET['type']; ?>"
+        if(type=="1"){
+            $('#r2Btn').hide()
+        }
+        if(type=="2"){
+            $('#r1Btn').hide()
+            $('#r2Btn').show()
+            $('#action').val('casteTab')
+            showTab('#caste','.inner-tab-data','.casteTab');$('#action').val('casteTab');
+            load_data()
+        }
+      }
+      setType()
 </script>

@@ -156,4 +156,23 @@ for (i = 0; i < dropdown.length; i++) {
   <!-- <script>
     $('.selectpicker').selectpicker();
   </script> -->
+  <script>
+     function load_profile()  
+      {  
+        $('#overlay').show()
+        $("#prof-image").attr("src","../assets/img/dummy-user.jpg");
+           $.ajax({  
+                url:"../ajax/master-data.php",  
+                method:"POST",  
+                data:{action:"user_data",user_id:"<?php echo $_SESSION['user_id']; ?>"},  
+                success:function(data){  
+                    if(data.userData.profile_image!=null){
+                      // $("#prof-image").attr("src","../uploads/"+data.userData.profile_image);
+                    }
+                    $('#overlay').hide()
+                }  
+           })  
+      } 
+      load_profile()
+  </script>
 </html>
