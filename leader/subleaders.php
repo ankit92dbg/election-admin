@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Caders";
+$breadCrumbName = "Booth Manager";
 ?>
 <?php include('../common/leader/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,7 +16,7 @@ $breadCrumbName = "Caders";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Cader List</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">BM List</h6>
                 </div>
                 <div class="col-lg-4 d-flex justify-content-between">
                    <input type="text" onchange="load_data()" onkeyup="load_data()" onkeydown="load_data()" id="search_str" class="form-control" placeholder="Search by First Name, Last Name, Email or Phone No." />
@@ -32,7 +32,7 @@ $breadCrumbName = "Caders";
                         </select>    
                 </div>
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <a class="btn btn-primary" href="add-subleaders.php">Add Cader</a>
+                    <a class="btn btn-primary" href="add-subleaders.php">Add BM</a>
                 </div>    
               </div>
             </div>
