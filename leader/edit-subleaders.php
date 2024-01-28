@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Update Cader";
+$breadCrumbName = "Update Booth Manager";
 ?>
 <?php include('../common/leader/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,7 +16,7 @@ $breadCrumbName = "Update Cader";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-2 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Update Cader</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Update BM</h6>
                 </div>   
               </div>
             </div>

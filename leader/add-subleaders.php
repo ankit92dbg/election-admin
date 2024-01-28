@@ -1,5 +1,5 @@
 <?php
-$breadCrumbName = "Add Cader";
+$breadCrumbName = "Add Booth Manager";
 ?>
 <?php include('../common/leader/head.php'); ?>
 <body class="g-sidenav-show   bg-gray-100">
@@ -16,7 +16,7 @@ $breadCrumbName = "Add Cader";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-lg-3 d-flex justify-content-between">
-                    <h6 class="mb-2" style="margin-top:5%;">Create New Cader</h6>
+                    <h6 class="mb-2" style="margin-top:5%;">Create New BM</h6>
                 </div>   
               </div>
             </div>
