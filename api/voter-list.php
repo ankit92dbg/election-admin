@@ -677,7 +677,7 @@ $page_query = "";
                 '.$row['SLNOINPART'].'
             </td>
             <td class="align-middle">
-            <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].'</a>
+            <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].'</a>
             </td>
             <td class="align-middle">
                 '.$row['GENDER'].'
@@ -721,7 +721,7 @@ $page_query = "";
                     '.$row['SLNOINPART'].'
                 </td>
                 <td class="align-middle">
-                <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].'</a>
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].'</a>
                 </td>
                 <td class="align-middle">
                     '.$row['GENDER'].'
@@ -812,7 +812,7 @@ $page_query = "";
                     '.$row['PART_NO'].'
                 </td>
                 <td class="align-middle">
-                <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['LASTNAME_EN'].'</a>
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['LASTNAME_EN'].'</a>
                 </td>
                 <td class="align-middle">
                         '.$row['Total'].'
@@ -829,7 +829,7 @@ $page_query = "";
                         '.$row['PART_NO'].'
                     </td>
                     <td class="align-middle">
-                    <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['LASTNAME_V1'].'</a>
+                    <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['LASTNAME_V1'].'</a>
                     </td>
                     <td class="align-middle">
                             '.$row['Total'].'
@@ -848,7 +848,7 @@ $page_query = "";
                 '.$row['PART_NO'].'
             </td>
             <td class="align-middle">
-            <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].'</a>
+            <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].'</a>
             </td>
             <td class="align-middle">
                     '.$row['C_HOUSE_NO'].'
@@ -896,7 +896,7 @@ $page_query = "";
                     '.$row['C_HOUSE_NO'].'
             </td>
             <td class="align-middle">
-            <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+            <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
             </td>
             <td class="align-middle">
                     '.$row['RLN_TYPE'].'
@@ -971,7 +971,7 @@ $page_query = "";
                     '.$slNo.'
                 </td>
                 <td class="align-middle">
-                <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
                 </td>
                 <td class="align-middle">
                     '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
@@ -1018,7 +1018,7 @@ $page_query = "";
                     '.$slNo.'
                 </td>
                 <td class="align-middle">
-                <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
                 </td>
                 <td class="align-middle">
                     '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
@@ -1067,7 +1067,7 @@ $page_query = "";
                     '.$slNo.'
                 </td>
                 <td class="align-middle">
-                <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
                 </td>
                 <td class="align-middle">
                     '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
@@ -1117,7 +1117,7 @@ $page_query = "";
                     '.$slNo.'
                 </td>
                 <td class="align-middle">
-                <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
                 </td>
                 <td class="align-middle">
                     '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
@@ -1171,7 +1171,7 @@ $page_query = "";
                   '.$slNo.'
               </td>
               <td class="align-middle">
-              <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+              <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
               </td>
               <td class="align-middle">
                   '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
@@ -1215,7 +1215,7 @@ $page_query = "";
                     '.$slNo.'
                 </td>
                 <td class="align-middle">
-                <a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
                 </td>
                 <td class="align-middle">
                     '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')

@@ -31,14 +31,12 @@ include ('../config/conn.php');
             <tr>
                 <th>Sl No.</th>
                 <th>Candidate Name</th>
-                <th>Cader Name</th>
+                <th>BM Name</th>
                 <th>Email</th>
                 <th>Designation</th>
                 <th>Phone</th>
                 <th>Age</th>
                 <th>Address</th>
-                <th>City</th>
-                <th>State</th>
                 <th>Status</th>
                 <th>Created On</th>
                 <th>Action</th>
@@ -63,8 +61,8 @@ include ('../config/conn.php');
             <a href="edit-leaders.php?id='.$row['leader_id'].'">'.$leaderName.'</a>
         </td>
         <td class="align-middle">
-            <img style="width: 50px;
-            height: 50px;
+            <img style="width: 30px;
+            height: 30px;
             border-radius: 50%;" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
             <p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].' '.$row['l_name'].'</p>
         </td>
@@ -82,12 +80,6 @@ include ('../config/conn.php');
         </td>
         <td class="align-middle">
             '.$row['address'].'
-        </td>
-        <td class="align-middle">
-            '.$row['city'].'
-        </td>
-        <td class="align-middle">
-            '.$row['state'].'
         </td>';
         if($row['isActive']=='1'){
             $output .= '<td class="align-middle"><span class="btn btn-sm btn-success">Active</span></td>';

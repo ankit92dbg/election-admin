@@ -29,17 +29,14 @@ include ('../config/conn.php');
         <thead>
             <tr>
                 <th>Sl No.</th>
+                <th>Name</th>
                 <th>AC_NO</th>
                 <th>PART_NO</th>
-                <th>SECTION_NO</th>
-                <th>Name</th>
                 <th>Email</th>
                 <th>Designation</th>
                 <th>Phone</th>
                 <th>Age</th>
                 <th>Address</th>
-                <th>City</th>
-                <th>State</th>
                 <th>Status</th>
                 <th>Created On</th>
                 <th>Action</th>
@@ -63,22 +60,22 @@ include ('../config/conn.php');
         <td class="align-middle">
             '.$slNo.'
         </td>
+		<td class="align-middle">
+		<div>
+		<img  style="width: 30px;
+		height: 30px;
+		margin-top:4px;
+		margin-left:9%;
+		border-radius: 50%;float:left" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
+		</div>
+		<span style="float:left;margin-left:6px"><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'"><p style="text-transform: capitalize;font-weight: 600;font-size:14px">'.$row['f_name'].' '.$row['l_name'].'</p></a>
+        </span></td>
         <td class="align-middle">
             '.$row['AC_NO'].'
         </td>
         <td class="align-middle">
             '.$row['PART_NO'].'
         </td>
-        <td class="align-middle">
-            '.implode(',',$boothId).'
-        </td>
-        <td class="align-middle">
-		<img  style="width: 12px;
-		height: 12px;
-		margin-top:4px;
-		border-radius: 50%;float:left" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
-		<span style="float:left;margin-left:6px"><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'"><p style="text-transform: capitalize;font-weight: 600;font-size:11px">'.$row['f_name'].' '.$row['l_name'].'</p></a>
-        </span></td>
         <td class="align-middle">
             '.$row['email'].'
         </td>
@@ -93,12 +90,6 @@ include ('../config/conn.php');
         </td>
         <td class="align-middle">
             '.$row['address'].'
-        </td>
-        <td class="align-middle">
-            '.$row['city'].'
-        </td>
-        <td class="align-middle">
-            '.$row['state'].'
         </td>';
         if($row['isActive']=='1'){
             $output .= '<td class="align-middle"><span class="btn btn-sm btn-success">Active</span></td>';

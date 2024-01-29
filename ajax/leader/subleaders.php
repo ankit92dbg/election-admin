@@ -62,8 +62,8 @@ include ('../../config/conn.php');
             <a href="edit-leaders.php?id='.$row['leader_id'].'">'.$leaderName.'</a>
         </td>
         <td class="align-middle">
-            <img style="width: 50px;
-            height: 50px;
+            <img style="width: 30px;
+            height: 30px;
             border-radius: 50%;" src="'.($profile_image==NULL ? '../assets/img/dummy-user.jpg' : "../uploads/$profile_image").'" />
             <p style="text-transform: capitalize;font-weight: 600;">'.$row['f_name'].' '.$row['l_name'].'</p>
         </td>

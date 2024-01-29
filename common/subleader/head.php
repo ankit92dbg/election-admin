@@ -19,7 +19,7 @@ if($_SESSION['user_type']==1){
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Karyakarta | <?php echo $_SESSION['title']; ?>
+  <?php echo $_SESSION['title']; ?> | <?php echo $breadCrumbName; ?>
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -40,7 +40,7 @@ if($_SESSION['user_type']==1){
  <style>
     .sub-menu {
       width:100%;
-      margin-left:40px;
+      margin-left:10px;
       padding:10px 0px;
       list-style: none;
     }
@@ -79,12 +79,14 @@ if($_SESSION['user_type']==1){
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 .table thead th {
-  padding:2px;
-  font-size:11px;
+  padding:10px;
+  font-size:15px;
+  min-width: 60px;
 }
+
 .table> :not(caption)>*>* {
   padding: 2px;
-  font-size:10px;
+  font-size:14px;
   
 }
 tr td {
