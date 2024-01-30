@@ -25,7 +25,7 @@ if($row){
         } else if($row['user_type']==1){
             $_SESSION['title'] = "Candidate Panel";
         } else {
-            $_SESSION['title'] = "BM";
+            $_SESSION['title'] = "BM Panel";
         }
         if($row['user_type']==2){
             $query2 = "select * from user_tbl where id='".$row['leader_id']."'";
