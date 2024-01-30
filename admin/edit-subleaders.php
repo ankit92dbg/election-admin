@@ -37,7 +37,7 @@ $breadCrumbName = "Update Booth Manager";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">SECTION_NO</label>
-                            <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;" required>
+                            <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;">
                                 <option value="" selected>Please Select</option>
                             </select>   
                         </div>
@@ -156,7 +156,7 @@ $breadCrumbName = "Update Booth Manager";
                     if(!data.error)
                     {
                         $('#total_data').text(data.total_line);
-                        $('#message').html('<div class="alert alert-success" style="color:#fff">Cader Updated Successfully.</div>');
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">BM Updated Successfully.</div>');
                     }
                     if(data.error)
                     {

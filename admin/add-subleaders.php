@@ -36,7 +36,7 @@ $breadCrumbName = "Add Booth Manager";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">SECTION_NO</label>
-                            <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;" required>
+                            <select id="SECTION_NO" name="SECTION_NO[]"  class="form-select" multiple style="max-height: 90px;overflow-x: scroll;">
                                 <option value="" selected>Please Select</option>
                             </select>   
                         </div>
@@ -157,7 +157,7 @@ $breadCrumbName = "Add Booth Manager";
                     if(!data.error)
                     {
                         $('#total_data').text(data.total_line);
-                        $('#message').html('<div class="alert alert-success" style="color:#fff">SubLeader Created Successfully.</div>');
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">BM Created Successfully.</div>');
                     }
                     if(data.error)
                     {
@@ -228,7 +228,7 @@ $breadCrumbName = "Add Booth Manager";
            $.ajax({  
                 url:"../ajax/master-data.php",  
                 method:"POST",  
-                data:{AC_NO:AC_NO, PART_NO:val},  
+                data:{action:"SEC_DISTINCT", user_id:"<?php echo $_GET['id']; ?>"},  
                 success:function(data){  
                     let option = [];
                     for(let i=0; i < data.SECTION_NO.length; i++){

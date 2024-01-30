@@ -98,6 +98,7 @@ include ('../config/conn.php');
                     </svg>
                 </a>
                 <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+					<li><a class="dropdown-item" href="view-profile.php?id='.$row['id'].'">View Profile</a></li>
                     <li><a class="dropdown-item" href="edit-subleaders.php?id='.$row['id'].'&cader_id='.$leader=$cader_id.'">Edit</a></li>
                     <li><a class="dropdown-item" onclick="changeStatus('.$row['id'].');" href="javascript:void(0);">'.($row['isActive']==0 ? "Enable" : "Disable").'</a></li>
                     <li><a class="dropdown-item text-danger" onclick="deleteUser('.$row['id'].');" href="javascript:void(0);">Delete</a></li>

@@ -3,9 +3,10 @@ session_start();
 include ('../config/conn.php');
 $error = '';
 
-$AC_NO = $_POST['AC_NO'];
-$PART_NO = $_POST['PART_NO'];
-$SECTION_NO = $_POST['SECTION_NO'];
+// $AC_NO = $_POST['AC_NO'];
+// $PART_NO = $_POST['PART_NO'];
+// $SECTION_NO = $_POST['SECTION_NO'];
+$assembly_name = $_POST['assembly_name'];
 $f_name = $_POST['f_name'];
 $l_name = $_POST['l_name'];
 $email = $_POST['email'];
@@ -40,8 +41,8 @@ if(mysqli_num_rows($result)==0){
             $file = "../uploads/{$basename}";  
             move_uploaded_file($_FILES['profile_image']['tmp_name'],$file);
 
-            $query = "INSERT INTO user_tbl (AC_NO,PART_NO,f_name,l_name,email,phone,password,age,designation,city,state,address,profile_image,user_type)
-            VALUES ('$AC_NO','$PART_NO','$f_name','$l_name','$email','$phone','$password','$age','$designation','$city','$state','$address','$basename','$user_type')
+            $query = "INSERT INTO user_tbl (assembly_name,f_name,l_name,email,phone,password,age,designation,city,state,address,profile_image,user_type)
+            VALUES ('$assembly_name','$f_name','$l_name','$email','$phone','$password','$age','$designation','$city','$state','$address','$basename','$user_type')
             ";
             $result = mysqli_query($conn,$query);
 
@@ -65,21 +66,21 @@ if(mysqli_num_rows($result)==0){
             $response->error = 'Not a valid image file.';
         }
     }else{
-        $query = "INSERT INTO user_tbl (AC_NO,PART_NO,f_name,l_name,email,phone,password,age,designation,city,state,address,user_type)
-            VALUES ('$AC_NO','$PART_NO','$f_name','$l_name','$email','$phone','$password','$age','$designation','$city','$state','$address','$user_type')
+        $query = "INSERT INTO user_tbl (assembly_name,f_name,l_name,email,phone,password,age,designation,city,state,address,user_type)
+            VALUES ('$assembly_name','$f_name','$l_name','$email','$phone','$password','$age','$designation','$city','$state','$address','$user_type')
             ";
         $result = mysqli_query($conn,$query);
 
          //insert booth
-         $queryCheck = "select * from user_tbl order by id desc";
-         $resultCheck = mysqli_query($conn,$queryCheck);
-         $rowsCheck = mysqli_fetch_assoc($resultCheck);
-         $insert_id = $rowsCheck['id'];
-         for($i=0;$i<count($SECTION_NO);$i++){
-             $newSec = $SECTION_NO[$i];
-             $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
-             mysqli_query($conn,$boothQuery);
-         }
+        //  $queryCheck = "select * from user_tbl order by id desc";
+        //  $resultCheck = mysqli_query($conn,$queryCheck);
+        //  $rowsCheck = mysqli_fetch_assoc($resultCheck);
+        //  $insert_id = $rowsCheck['id'];
+        //  for($i=0;$i<count($SECTION_NO);$i++){
+        //      $newSec = $SECTION_NO[$i];
+        //      $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
+        //      mysqli_query($conn,$boothQuery);
+        //  }
 
         $response->error = "";
         $response->message = "Leader added successfully.";

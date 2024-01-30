@@ -37,7 +37,7 @@ $breadCrumbName = "Add Candidate";
                     <div class="col-4">
                         <div class="mb-3">
                         <label class="label">Assembly Name</label>
-                        <input type="text" name="f_name" class="form-control form-control-lg" placeholder="Assembly Name" aria-label="Email" required="">
+                        <input type="text" name="assembly_name" class="form-control form-control-lg" placeholder="Assembly Name" aria-label="Email" required="">
                         </div>
                     </div>
                     <!-- <div class="col-4">

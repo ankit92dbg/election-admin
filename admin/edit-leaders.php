@@ -29,18 +29,8 @@ $breadCrumbName = "Update Candidate";
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
-                            <label class="label">AC_NO</label>
-                            <select id="AC_NO" onchange="load_part_no(this.value)" name="AC_NO" class="form-select" required>
-                                <option value="" selected>Please Select</option>
-                            </select>   
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="mb-3">
-                            <label class="label">PART_NO</label>
-                            <select id="PART_NO" onchange="load_section_no(this.value)" name="PART_NO" class="form-select" required>
-                                <option value="" selected>Please Select</option>
-                            </select>   
+                        <label class="label">Assembly Name</label>
+                        <input type="text" name="assembly_name" id="assembly_name" class="form-control form-control-lg" placeholder="Assembly Name" aria-label="Email" required="">
                         </div>
                     </div>
                     <!-- <div class="col-4">
@@ -121,7 +111,6 @@ $breadCrumbName = "Update Candidate";
                             <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" >
                         </div>
                     </div>
-                    <div class="col-4"></div>
                     <div class="col-4">
                         <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Submit</button>
                     </div>
@@ -222,9 +211,10 @@ $breadCrumbName = "Update Candidate";
                         option_city += `<option value="${data.city[i].id}">${data.city[i].city}</option>`
                     }
                     $('#city').html(option_city)
-                    $('#SECTION_NO').html(option_section_no)
-                    $('#AC_NO').html(option)
+                    // $('#SECTION_NO').html(option_section_no)
+                    // $('#AC_NO').html(option)
                     $('#state').html(optionState)
+                    $('#assembly_name').val(data.userData.assembly_name)
                     $('#f_name').val(data.userData.f_name)
                     $('#l_name').val(data.userData.l_name)
                     $('#email').val(data.userData.email)

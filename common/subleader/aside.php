@@ -69,18 +69,26 @@ $endPart = explode('.',$endPart);
             <span class="nav-link-text ms-1">Voters</span>
           </a>
         </li> -->
+        <li  class="nav-item">
+        <a class="nav-link " href="voters.php">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-search text-success text-sm opacity-10" style="color:#000 !important"></i>
+            </div>
+            <span class="nav-link-text ms-1">Search Voters</span>
+          </a>
+        </li>
         <li class="nav-item" onclick="showTab('#report_1','.tab-data','.casteTab');$('#r2Btn').hide();">
         <?php if($endPart[0]=='voters'){ ?>
           <a class="nav-link dropdown-btn" href="javascript:void(0)" onclick="$('#r2Btn').hide()">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
+              <i class="fa fa-address-book text-warning text-sm opacity-10" style="color:#196ec2 !important"></i>
             </div>
             <span class="nav-link-text ms-1">Report 1 <i class="fa fa-caret-down"></i></span>
           </a>
         <?php }else{ ?>
           <a class="nav-link dropdown-btn" href="voters.php?type=1" onclick="$('#r2Btn').hide()">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
+              <i class="fa fa-address-book text-warning text-sm opacity-10" style="color:#196ec2 !important"></i>
             </div>
             <span class="nav-link-text ms-1">Report 1 <i class="fa fa-caret-down"></i></span>
           </a>
@@ -130,14 +138,14 @@ $endPart = explode('.',$endPart);
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Report 2 <i class="fa fa-caret-down"></i></span>
+            <span class="nav-link-text ms-1" style="color:#c5b212 !important">Report 2 <i class="fa fa-caret-down"></i></span>
           </a>
         <?php }else{ ?>
           <a class="nav-link dropdown-btn" href="voters.php?type=2" onclick="$('#r1Btn').hide()">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Report 2 <i class="fa fa-caret-down"></i></span>
+            <span class="nav-link-text ms-1" style="color:#c5b212 !important">Report 2 <i class="fa fa-caret-down"></i></span>
           </a>
         <?php } ?>
           <ul class="submenu" style="display:none" id="r2Btn" >

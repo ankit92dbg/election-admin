@@ -30,8 +30,7 @@ include ('../config/conn.php');
             <tr>
                 <th>Sl No.</th>
                 <th>Name</th>
-                <th>AC_NO</th>
-                <th>PART_NO</th>
+                <th>Assembly Name</th>
                 <th>Email</th>
                 <th>Designation</th>
                 <th>Phone</th>
@@ -71,12 +70,9 @@ include ('../config/conn.php');
 		<span style="float:left;margin-left:6px"><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'"><p style="text-transform: capitalize;font-weight: 600;font-size:14px">'.$row['f_name'].' '.$row['l_name'].'</p></a>
         </span></td>
         <td class="align-middle">
-            '.$row['AC_NO'].'
+            '.$row['assembly_name'].'
         </td>
-        <td class="align-middle">
-            '.$row['PART_NO'].'
-        </td>
-        <td class="align-middle">
+		<td class="align-middle">
             '.$row['email'].'
         </td>
         <td class="align-middle">
@@ -108,7 +104,7 @@ include ('../config/conn.php');
                     </svg>
                 </a>
                 <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
-				<li><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'">View Profile</a></li>
+				<li><a class="dropdown-item" href="view-profile.php?id='.$row['id'].'">View Profile</a></li>
                     <li><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'">Edit</a></li>
                     <li><a class="dropdown-item" href="voters.php?id='.$row['id'].'">Voters</a></li>
                     <li><a class="dropdown-item" href="upload-csv.php?id='.$row['id'].'">Upload CSV</a></li>

@@ -19,7 +19,11 @@ while($row = mysqli_fetch_assoc($result)){
 $assigned_booth[] = $row['SECTION_NO'];
 }
 
-$new_assigned_booth = implode(',',$assigned_booth);
+foreach($assigned_booth as $key => $value) {
+    $assigned_booth[$key]="'".$value."'";
+}
+
+$new_assigned_booth = implode(",",$assigned_booth);
 
  if(isset($_POST["page"]))  
  {  
@@ -48,7 +52,7 @@ $page_query = "";
     $filter_searchTab = $_POST['filter_searchTab'];
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     if($PART_NO_FROM!='' && $PART_NO_TO!=''){
         $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM AND $PART_NO_TO";
     }
@@ -110,7 +114,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='alphaTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_ALPHA = $_POST['PART_NO_FROM_ALPHA'];
     $PART_NO_TO_ALPHA = $_POST['PART_NO_TO_ALPHA'];
     if($PART_NO_FROM_ALPHA!='' && $PART_NO_TO_ALPHA!=''){
@@ -125,7 +129,7 @@ $page_query = "";
     $WHERE = "";
     $SORT = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_AGE_FROM = $_POST['PART_NO_AGE_FROM'];
     $PART_NO_AGE_TO = $_POST['PART_NO_AGE_TO'];
     $AGE_FROM = $_POST['AGE_FROM'];
@@ -162,7 +166,7 @@ $page_query = "";
     $WHERE = "";
     $HAVING = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_FAMILY = $_POST['PART_NO_FROM_FAMILY'];
     $PART_NO_TO_FAMILY = $_POST['PART_NO_TO_FAMILY'];
     $FAMILY_SIZE_FROM = $_POST['FAMILY_SIZE_FROM'];
@@ -189,7 +193,7 @@ $page_query = "";
     $WHERE = "";
     $HAVING = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_FAMILY_HEAD = $_POST['PART_NO_FROM_FAMILY_HEAD'];
     $PART_NO_TO_FAMILY_HEAD = $_POST['PART_NO_TO_FAMILY_HEAD'];
     $FAMILY_HEAD_SIZE_FROM = $_POST['FAMILY_HEAD_SIZE_FROM'];
@@ -235,7 +239,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='doubleNameTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_DOUBLE = $_POST['PART_NO_FROM_DOUBLE'];
     $PART_NO_TO_DOUBLE = $_POST['PART_NO_TO_DOUBLE'];
 
@@ -253,7 +257,7 @@ $page_query = "";
     $WHERE = "";
     $SORT = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $WHERE .= " AND isMarried=1 AND GENDER='F'";
     $AGE_MARRIED = $_POST['AGE_MARRIED'];
     $PART_NO_MARRIED_FROM = $_POST['PART_NO_MARRIED_FROM'];
@@ -282,7 +286,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='singleTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $AGE_SINGLE_FROM = $_POST['AGE_SINGLE_FROM'];
     $AGE_SINGLE_TO = $_POST['AGE_SINGLE_TO'];
     $PART_NO_SINGLE_FROM = $_POST['PART_NO_SINGLE_FROM'];
@@ -308,7 +312,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='addressTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_ADDRESS = $_POST['PART_NO_FROM_ADDRESS'];
     $PART_NO_TO_ADDRESS = $_POST['PART_NO_TO_ADDRESS'];
     $SEARCH_ADDRESS = $_POST['SEARCH_ADDRESS'];
@@ -334,7 +338,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='surnameTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_SURNAME = $_POST['PART_NO_FROM_SURNAME'];
     $PART_NO_TO_SURNAME = $_POST['PART_NO_TO_SURNAME'];
     $SEARCH_ADDRESS = $_POST['SEARCH_ADDRESS'];
@@ -359,7 +363,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='familyLabelsTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_LABEL = $_POST['PART_NO_FROM_LABEL'];
     $PART_NO_TO_LABEL = $_POST['PART_NO_TO_LABEL'];
     $FAMILY_SIZE_FROM_LABEL = $_POST['FAMILY_SIZE_FROM_LABEL'];
@@ -381,7 +385,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='smsTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_SMS = $_POST['PART_NO_FROM_SMS'];
     $PART_NO_TO_SMS = $_POST['PART_NO_TO_SMS'];
     $NAME_SMS = $_POST['NAME_SMS'];
@@ -409,7 +413,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='casteTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_CASTE = $_POST['PART_NO_FROM_CASTE'];
     $PART_NO_TO_CASTE = $_POST['PART_NO_TO_CASTE'];
     $RELIGION_CASTE = $_POST['RELIGION_CASTE'];
@@ -428,7 +432,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='labelValueTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_LABEL_VALUE = $_POST['PART_NO_FROM_LABEL_VALUE'];
     $PART_NO_TO_LABEL_VALUE = $_POST['PART_NO_TO_LABEL_VALUE'];
     $LABEL_VALUE = $_POST['LABEL_VALUE'];
@@ -447,7 +451,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='areaWiseTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_AREA = $_POST['PART_NO_FROM_AREA'];
     $PART_NO_TO_AREA = $_POST['PART_NO_TO_AREA'];
     $LABEL_VALUE = $_POST['LABEL_VALUE'];
@@ -466,7 +470,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='partyWiseTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_PARTY = $_POST['PART_NO_FROM_PARTY'];
     $PART_NO_TO_PARTY = $_POST['PART_NO_TO_PARTY'];
     $PARTY_LIST = $_POST['PARTY_LIST'];
@@ -485,7 +489,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='deadListTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_DEAD = $_POST['PART_NO_FROM_DEAD'];
     $PART_NO_TO_DEAD = $_POST['PART_NO_TO_DEAD'];
     $DEAD_LIST = $_POST['DEAD_LIST'];
@@ -504,7 +508,7 @@ $page_query = "";
  }else if(isset($_POST['action']) && $_POST['action']=='birthdayTab'){
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $PART_NO_FROM_BIRTHDAY = $_POST['PART_NO_FROM_BIRTHDAY'];
     $PART_NO_TO_BIRTHDAY = $_POST['PART_NO_TO_BIRTHDAY'];
     $DATE_FROM_BIRTHDAY = (strlen($_POST['DATE_FROM_BIRTHDAY'])==1) ? sprintf("%02d", $_POST['DATE_FROM_BIRTHDAY']) : $_POST['DATE_FROM_BIRTHDAY'];
@@ -530,7 +534,7 @@ $page_query = "";
  }else{
     $WHERE = "";
     $WHERE .= "leader_id='$leader_id'";
-    $WHERE .= " AND SECTION_NO IN ('$new_assigned_booth')";
+    $WHERE .= " AND SECTION_NO IN ($new_assigned_booth)";
     $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY id ASC LIMIT $start_from, $record_per_page";  
     $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY id ASC";  
  }

@@ -4,9 +4,10 @@ include ('../config/conn.php');
 $error = '';
 
 $user_id = $_POST['user_id'];
-$AC_NO = $_POST['AC_NO'];
-$PART_NO = $_POST['PART_NO'];
-$SECTION_NO = $_POST['SECTION_NO'];
+// $AC_NO = $_POST['AC_NO'];
+// $PART_NO = $_POST['PART_NO'];
+$assembly_name = $_POST['assembly_name'];
+// $SECTION_NO = $_POST['SECTION_NO'];
 $f_name = $_POST['f_name'];
 $l_name = $_POST['l_name'];
 $email = $_POST['email'];
@@ -50,7 +51,7 @@ if(mysqli_num_rows($result)==1){
             $file = "../uploads/{$basename}";  
             move_uploaded_file($_FILES['profile_image']['tmp_name'],$file);
 
-            $query = "UPDATE `user_tbl` SET `AC_NO`='$AC_NO',`PART_NO`='$PART_NO',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
+            $query = "UPDATE `user_tbl` SET `assembly_name`='$assembly_name',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
             `age`='$age',`designation`='$designation',`city`='$city',`state`='$state',`address`='$address',`password`='$password',`profile_image`='$basename'
             WHERE `id`='$user_id'";
             $result = mysqli_query($conn,$query);
@@ -71,7 +72,7 @@ if(mysqli_num_rows($result)==1){
             $response->error = 'Not a valid image file.';
         }
     }else{
-        $query = "UPDATE `user_tbl` SET `AC_NO`='$AC_NO',`PART_NO`='$PART_NO',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
+       $query = "UPDATE `user_tbl` SET `assembly_name`='$assembly_name',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
             `age`='$age',`designation`='$designation',`city`='$city',`state`='$state',`address`='$address',`password`='$password'
             WHERE `id`='$user_id'";
         $result = mysqli_query($conn,$query);

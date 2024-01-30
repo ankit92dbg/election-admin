@@ -77,6 +77,16 @@ if(isset($_POST) && $_POST['AC_NO']!='' && $_POST['PART_NO']!=''){
     }
 }
 
+if(isset($_POST) && $_POST['action']=='SEC_DISTINCT'){
+    $q1 = "SELECT DISTINCT SECTION_NO from voters_data WHERE leader_id='".$_POST['user_id']."'";
+    $r1 = mysqli_query($conn,$q1);
+    $output = new stdClass();
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $SECTION_NO[] = $row1;
+    }
+    
+}
+
 
 //fetch state
 $q1 = "SELECT * from states";
@@ -172,7 +182,7 @@ if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='user_data'){
     }
 
     //SECTION_NO query
-    $q1 = "SELECT DISTINCT SECTION_NO from voters_data WHERE AC_NO='".$userData['AC_NOS']."' AND PART_NO='".$userData['PART_NOS']."'";
+    $q1 = "SELECT DISTINCT SECTION_NO from voters_data WHERE leader_id='".$userData['leader_id']."'";
     $r1 = mysqli_query($conn,$q1);
     while($row1 = mysqli_fetch_assoc($r1)){
         $SECTION_NO[] = $row1;
