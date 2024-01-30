@@ -59,7 +59,7 @@ $page_query = "";
             $WHERE .= " AND FM_NAME_V1  LIKE '%$FM_NAME_EN%'";
         }
         if($RLN_FM_NM_EN!=''){
-            $WHERE .= " AND RLN_FM_NM_V1 LIKE '%$RLN_FM_NM_EN%'";
+            $WHERE .= " AND RLN_FM_NM_EN LIKE '%$RLN_FM_NM_EN%'";
         }
     }else{
         if($LASTNAME_EN!=''){
@@ -69,7 +69,7 @@ $page_query = "";
             $WHERE .= " AND FM_NAME_EN  LIKE '%$FM_NAME_EN%'";
         }
         if($RLN_FM_NM_EN!=''){
-            $WHERE .= " AND RLN_FM_NM_EN LIKE '%$RLN_FM_NM_EN%'";
+            $WHERE .= " AND RLN_FM_NM_V1 LIKE '%$RLN_FM_NM_EN%'";
         }
     }
 
@@ -82,11 +82,11 @@ $page_query = "";
     }
     if($language=='english'){
         if($fullName!=''){
-            $WHERE .= " AND concat(UPPER(FM_NAME_EN),UPPER(LASTNAME_EN)) LIKE UPPER('%$fullName%')";
+            $WHERE .= " AND concat(UPPER(FM_NAME_EN),UPPER(LASTNAME_EN)) LIKE UPPER('%$fullName%') OR EPIC_NO LIKE '%$fullName%'";
         }
     }else{
         if($fullName!=''){
-            $WHERE .= " AND concat(UPPER(FM_NAME_V1),UPPER(LASTNAME_V1)) LIKE UPPER('%$fullName%')";
+            $WHERE .= " AND concat(UPPER(FM_NAME_V1),UPPER(LASTNAME_V1)) LIKE UPPER('%$fullName%') OR EPIC_NO LIKE '%$fullName%'";
         }
     }
 
@@ -523,14 +523,14 @@ $page_query = "";
     <table class='table align-items-center mb-0'>  
       <thead>
           <tr>
-              <th>Sl No.</th>
-              <th>Part No.</th>
+              <th>Sl</th>
+              <th>Part</th>
               <th>Number</th>
               <th>Name</th>
               <th>Sex</th>
               <th>Age</th>
               <th>Relative Name</th>
-              <th>Part No. (Relative)</th>
+              <th>Part (Relative)</th>
               <th>Number (Relative)</th>
               <th>Action</th>
           </tr>
@@ -542,8 +542,8 @@ $page_query = "";
     <table class='table align-items-center mb-0'>  
       <thead>
           <tr>
-              <th>Sl No.</th>
-              <th>Part No.</th>
+              <th>Sl</th>
+              <th>Part</th>
               <th>Address</th>
               <th>Male</th>
               <th>Female</th>
@@ -557,8 +557,8 @@ $page_query = "";
     <table class='table align-items-center mb-0'>  
       <thead>
           <tr>
-              <th>Sl No.</th>
-              <th>Part No.</th>
+              <th>Sl</th>
+              <th>Part</th>
               <th>Surname</th>
               <th>Total</th>
           </tr>
@@ -570,8 +570,8 @@ $page_query = "";
     <table class='table align-items-center mb-0'>  
       <thead>
           <tr>
-              <th>Sl No.</th>
-              <th>Part No.</th>
+              <th>Sl</th>
+              <th>Part</th>
               <th>Name</th>
               <th>House No.</th>
               <th>Address</th>
@@ -584,7 +584,7 @@ $page_query = "";
     <table class='table align-items-center mb-0'>  
       <thead>
           <tr>
-              <th>Sl No.</th>
+              <th>Sl</th>
               <th>Part</th>
               <th>Sr No.</th>
               <th>House No.</th>
@@ -605,14 +605,14 @@ $page_query = "";
     <table class='table align-items-center mb-0'>  
       <thead>
           <tr>
-            <th>Sl No.</th>
+            <th>Sl</th>
             <th>Name</th>
             <th>Father/Husband Name</th>
             <th>Gender</th>
             <th>Age</th>
             <th>Mobile No.</th>
             <th>Voter ID</th>
-            <th>Part No.</th>
+            <th>Part</th>
             <th>Address</th>
             <th>Total Family Member</th>
             <th>Action</th>
@@ -625,14 +625,14 @@ $page_query = "";
     <table class='table align-items-center mb-0'>  
       <thead>
           <tr>
-            <th>Sl No.</th>
+            <th>Sl</th>
             <th>Name</th>
             <th>Father/Husband Name</th>
             <th>Gender</th>
             <th>Age</th>
             <th>Mobile No.</th>
             <th>Voter ID</th>
-            <th>Part No.</th>
+            <th>Part</th>
             <th>Address</th>
             <th>DOB</th>
             <th>Action</th>
@@ -645,14 +645,14 @@ $page_query = "";
       <table class='table align-items-center mb-0'>  
         <thead>
             <tr>
-                <th>Sl No.</th>
+                <th>Sl</th>
                 <th>Name</th>
                 <th>Father/Husband Name</th>
                 <th>Gender</th>
                 <th>Age</th>
                 <th>Mobile No.</th>
                 <th>Voter ID</th>
-                <th>Part No.</th>
+                <th>Part</th>
                 <th>Address</th>
                 <th>Action</th>
             </tr>
@@ -1094,9 +1094,6 @@ $page_query = "";
                     '.$row['DOB'].'
                 </td> 
                 <td class="align-middle">
-                    '.$row['family_count'].'
-                </td> 
-                <td class="align-middle">
                     <div class="dp">
                         <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
                             <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -1142,9 +1139,6 @@ $page_query = "";
                 </td> 
                 <td class="align-middle">
                     '.$row['DOB'].'
-                </td> 
-                <td class="align-middle">
-                    '.$row['family_count'].'
                 </td> 
                 <td class="align-middle">
                     <div class="dp">

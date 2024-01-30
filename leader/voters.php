@@ -83,13 +83,13 @@ $breadCrumbName = "Voter List";
                         <div class="row">
                         <div class="col-2">
                               <div class="mb-3">
-                                  <label class="label">Full Name </label>
+                                  <label class="label">Full Name/ Epic Id </label>
                                   <input type="text" id="fullName" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-1">
+                          <div class="col-2">
                               <div class="mb-3">
-                                  <label class="label">Relative </label>
+                                  <label class="label">Father Name </label>
                                   <input type="text" id="RLN_FM_NM_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
@@ -101,18 +101,7 @@ $breadCrumbName = "Voter List";
                               </div>
                           </div>
                          
-                          <div class="col-2">
-                              <div class="mb-3">
-                                  <label class="label">Address </label>
-                                  <input type="text" id="SECTION_NAME_EN" class="form-control searchTab form-control-lg" placeholder="">
-                              </div>
-                          </div>
-                          <div class="col-1">
-                              <div class="mb-3">
-                                  <label class="label">Voter ID </label>
-                                  <input type="text" id="EPIC_NO" class="form-control searchTab form-control-lg" placeholder="">
-                              </div>
-                          </div>
+                          
                           <div class="col-1" style="width:10%">
                               <div class="mb-3">
                                   <label class="label">Part From</label>
@@ -123,6 +112,12 @@ $breadCrumbName = "Voter List";
                               <div class="mb-3">
                                   <label class="label">Part To</label>
                                   <input type="number" id="PART_NO_TO" class="form-control searchTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                  <label class="label">Address </label>
+                                  <input type="text" id="SECTION_NAME_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-1">

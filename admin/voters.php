@@ -94,7 +94,7 @@ $breadCrumbName = "Voter List";
                           <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Father Name </label>
-                                  <input type="text" id="fullName" class="form-control searchTab form-control-lg" placeholder="">
+                                  <input type="text" id="RLN_FM_NM_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
                           <div class="col-2">
@@ -103,12 +103,7 @@ $breadCrumbName = "Voter List";
                                   <input type="text" id="MOBILE_NO" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div>
-                          <div class="col-1">
-                              <div class="mb-3">
-                                  <label class="label">Address </label>
-                                  <input type="text" id="SECTION_NAME_EN" class="form-control searchTab form-control-lg" placeholder="">
-                              </div>
-                          </div>
+                         
                          
                           <!-- <div class="col-1">
                               <div class="mb-3">
@@ -140,12 +135,12 @@ $breadCrumbName = "Voter List";
                                   <input type="text" id="RLN_FM_NM_EN" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
                           </div> -->
-                          <div class="col-1">
+                          <!-- <div class="col-1">
                               <div class="mb-3">
                                   <label class="label">Voter ID </label>
                                   <input type="text" id="EPIC_NO" class="form-control searchTab form-control-lg" placeholder="">
                               </div>
-                          </div>
+                          </div> -->
                           <div class="col-1" style="width:10%">
                               <div class="mb-3">
                                   <label class="label">Part From</label>
@@ -159,7 +154,12 @@ $breadCrumbName = "Voter List";
                               </div>
                           </div>
                          
-                          
+                          <div class="col-2">
+                              <div class="mb-3">
+                                  <label class="label">Address </label>
+                                  <input type="text" id="SECTION_NAME_EN" class="form-control searchTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
                           <!-- <div class="col-2">
                               <div class="mb-3">
                                   <label class="label">Language </label>
