@@ -585,7 +585,7 @@ $page_query = "";
       <thead>
           <tr>
               <th>Sl No.</th>
-              <th>Part No.</th>
+              <th>Part</th>
               <th>Sr No.</th>
               <th>House No.</th>
               <th>Name</th>

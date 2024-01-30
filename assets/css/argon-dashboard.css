@@ -2833,9 +2833,9 @@ progress {
 
 .form-control-lg {
   min-height: unset;
-  padding: 0.75rem 0.75rem;
+  padding: 0.37rem 0.75rem;
   font-size: 0.875rem;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
 }
 
 .form-control-lg::file-selector-button {
@@ -24579,7 +24579,7 @@ hr.horizontal.gray-light {
 }
 
 .table th {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .table td .progress {

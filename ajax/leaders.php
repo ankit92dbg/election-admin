@@ -108,6 +108,7 @@ include ('../config/conn.php');
                     </svg>
                 </a>
                 <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+				<li><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'">View Profile</a></li>
                     <li><a class="dropdown-item" href="edit-leaders.php?id='.$row['id'].'">Edit</a></li>
                     <li><a class="dropdown-item" href="voters.php?id='.$row['id'].'">Voters</a></li>
                     <li><a class="dropdown-item" href="upload-csv.php?id='.$row['id'].'">Upload CSV</a></li>

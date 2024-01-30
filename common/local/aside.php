@@ -37,6 +37,7 @@ $endPart = explode('.',$endPart);
           </a>
         </li>
         
+        
         <?php if($endPart[0]=='voters'){ ?>
           <!-- <li class="nav-item" onclick="showTab('#report_2','.tab-data','.searchTab')">
           <a class="nav-link dropdown-btn" href="javascript:void(0)">
@@ -66,6 +67,13 @@ $endPart = explode('.',$endPart);
                         </li>
           </ul>
         </li> -->
+        <li class="nav-item" onclick="showTab('#report_1','.tab-data','.searchTab');">
+          <a class="nav-link dropdown-btn" href="javascript:void(0)">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-address-book text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Search Voters</span>
+          </a></li>
         <li class="nav-item" onclick="showTab('#report_1','.tab-data','.searchTab');">
           <a class="nav-link dropdown-btn" href="javascript:void(0)">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

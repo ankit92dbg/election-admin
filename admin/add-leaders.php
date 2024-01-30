@@ -26,20 +26,18 @@ $breadCrumbName = "Add Candidate";
                     <div class="col-12">
                         <span id="message"></span>
                     </div>
-                    <div class="col-4">
+                    <!-- <div class="col-4">
                         <div class="mb-3">
                             <label class="label">AC_NO</label>
                             <select id="AC_NO" onchange="load_part_no(this.value)" name="AC_NO" class="form-select" required>
                                 <option value="" selected>Please Select</option>
                             </select>   
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-4">
                         <div class="mb-3">
-                            <label class="label">PART_NO</label>
-                            <select id="PART_NO" onchange="load_section_no(this.value)" name="PART_NO" class="form-select" required>
-                                <option value="" selected>Please Select</option>
-                            </select>   
+                        <label class="label">Assembly Name</label>
+                        <input type="text" name="f_name" class="form-control form-control-lg" placeholder="Assembly Name" aria-label="Email" required="">
                         </div>
                     </div>
                     <!-- <div class="col-4">
