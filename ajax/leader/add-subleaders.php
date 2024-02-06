@@ -4,7 +4,10 @@ include ('../../config/conn.php');
 $error = '';
 
 $leader_id = $_SESSION['user_id'];
-$SECTION_NO = $_POST['SECTION_NO'];
+// $SECTION_NO = $_POST['SECTION_NO'];
+$SECTION_NO_FROM = $_POST['SECTION_NO_FROM'];
+$SECTION_NO_TO = $_POST['SECTION_NO_TO'];
+$SEC_VAL = $_POST['SEC_VAL'];
 $f_name = $_POST['f_name'];
 $l_name = $_POST['l_name'];
 $email = $_POST['email'];
@@ -49,16 +52,33 @@ if(mysqli_num_rows($result)==0){
             $resultCheck = mysqli_query($conn,$queryCheck);
             $rowsCheck = mysqli_fetch_assoc($resultCheck);
             $insert_id = $rowsCheck['id'];
-            for($i=0;$i<count($SECTION_NO);$i++){
-                $newSec = $SECTION_NO[$i];
-                $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
-                mysqli_query($conn,$boothQuery);
+            if($SECTION_NO_FROM!=''){
+                for($i=0;$i<count($SECTION_NO_FROM);$i++){
+                    $SECTION_NO_FROM_DIFF = $SECTION_NO_FROM[$i];
+                    $SECTION_NO_TO_DIFF = $SECTION_NO_TO[$i];
+                    if($SECTION_NO_FROM_DIFF < $SECTION_NO_TO_DIFF){
+                        $arrSec = [];
+                        $l=0;
+                        for($j=$SECTION_NO_FROM_DIFF;$j<= $SECTION_NO_TO_DIFF; $j++){                      
+                            $arrSec[$l] = $j;
+                            $l++;
+                        }
+                        if (array_intersect($arrSec, explode(',',$SEC_VAL[0]))) {
+                            for($j=$SECTION_NO_FROM_DIFF;$j<= $SECTION_NO_TO_DIFF; $j++){                         
+                                    $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$j')";
+                                    mysqli_query($conn,$boothQuery);                        
+                            }
+                        }
+    
+                    }
+                   
+                }
             }
 
 
 
             $response->error = "";
-            $response->message = "Cader added successfully.";
+            $response->message = "BM added successfully.";
         }else{
             $response->error = 'Not a valid image file.';
         }
@@ -73,11 +93,28 @@ if(mysqli_num_rows($result)==0){
          $resultCheck = mysqli_query($conn,$queryCheck);
          $rowsCheck = mysqli_fetch_assoc($resultCheck);
          $insert_id = $rowsCheck['id'];
-         for($i=0;$i<count($SECTION_NO);$i++){
-             $newSec = $SECTION_NO[$i];
-             $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$newSec')";
-             mysqli_query($conn,$boothQuery);
-         }
+         if($SECTION_NO_FROM!=''){
+            for($i=0;$i<count($SECTION_NO_FROM);$i++){
+                $SECTION_NO_FROM_DIFF = $SECTION_NO_FROM[$i];
+                $SECTION_NO_TO_DIFF = $SECTION_NO_TO[$i];
+                if($SECTION_NO_FROM_DIFF < $SECTION_NO_TO_DIFF){
+                    $arrSec = [];
+                    $l=0;
+                    for($j=$SECTION_NO_FROM_DIFF;$j<= $SECTION_NO_TO_DIFF; $j++){                      
+                        $arrSec[$l] = $j;
+                        $l++;
+                    }
+                    if (array_intersect($arrSec, explode(',',$SEC_VAL[0]))) {
+                        for($j=$SECTION_NO_FROM_DIFF;$j<= $SECTION_NO_TO_DIFF; $j++){                         
+                                $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$insert_id','$j')";
+                                mysqli_query($conn,$boothQuery);                        
+                        }
+                    }
+
+                }
+               
+            }
+        }
 
 
         $response->error = "";

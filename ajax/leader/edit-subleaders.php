@@ -5,7 +5,10 @@ $error = '';
 
 $user_id = $_POST['user_id'];
 $leader_id = $_SESSION['user_id'];
-$SECTION_NO = $_POST['SECTION_NO'];
+// $SECTION_NO = $_POST['SECTION_NO'];
+$SECTION_NO_FROM = $_POST['SECTION_NO_FROM'];
+$SECTION_NO_TO = $_POST['SECTION_NO_TO'];
+$SEC_VAL = $_POST['SEC_VAL'];
 $f_name = $_POST['f_name'];
 $l_name = $_POST['l_name'];
 $email = $_POST['email'];
@@ -18,11 +21,14 @@ $state = $_POST['state'];
 $address = $_POST['address'];
 $profile_image = $_POST['profile_image'];
 $user_type = 1;
-$query = "select * from user_tbl where email='$email' or phone='$phone'";
+$query = "select * from user_tbl where email='$email'";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
 $response = new stdClass();
-if(mysqli_num_rows($result)==1){
+if(mysqli_num_rows($result)==1 && $row['id']!=$user_id){
+    $response->error = "Cader email already exists in our system, please try with different EmailId.";
+    $response->message = "Cader email already exists in our system, please try with different EmailId.";
+}else{
     if($_POST['password']!=""){
         $password = md5($_POST['password']);
     }else{
@@ -55,17 +61,34 @@ if(mysqli_num_rows($result)==1){
             $result = mysqli_query($conn,$query);
 
             //insert booth
-            for($i=0;$i<count($SECTION_NO);$i++){
-                $newSec = $SECTION_NO[$i];
-                $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$user_id','$newSec')";
-                mysqli_query($conn,$boothQuery);
+            if($SECTION_NO_FROM!=''){
+                for($i=0;$i<count($SECTION_NO_FROM);$i++){
+                    $SECTION_NO_FROM_DIFF = $SECTION_NO_FROM[$i];
+                    $SECTION_NO_TO_DIFF = $SECTION_NO_TO[$i];
+                    if($SECTION_NO_FROM_DIFF < $SECTION_NO_TO_DIFF){
+                        $arrSec = [];
+                        $l=0;
+                        for($j=$SECTION_NO_FROM_DIFF;$j<= $SECTION_NO_TO_DIFF; $j++){                      
+                            $arrSec[$l] = $j;
+                            $l++;
+                        }
+                        if (array_intersect($arrSec, explode(',',$SEC_VAL[0]))) {
+                            for($j=$SECTION_NO_FROM_DIFF;$j<= $SECTION_NO_TO_DIFF; $j++){                         
+                                    $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$user_id','$j')";
+                                    mysqli_query($conn,$boothQuery);                        
+                            }
+                        }
+    
+                    }
+                   
+                }
             }
 
 
 
 
             $response->error = "";
-            $response->message = "SubLeader updated successfully.";
+            $response->message = "BM updated successfully.";
         }else{
             $response->error = 'Not a valid image file.';
         }
@@ -76,21 +99,36 @@ if(mysqli_num_rows($result)==1){
         $result = mysqli_query($conn,$query);
 
          //insert booth
-         for($i=0;$i<count($SECTION_NO);$i++){
-            $newSec = $SECTION_NO[$i];
-            $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$user_id','$newSec')";
-            mysqli_query($conn,$boothQuery);
+         if($SECTION_NO_FROM!=''){
+            for($i=0;$i<count($SECTION_NO_FROM);$i++){
+                $SECTION_NO_FROM_DIFF = $SECTION_NO_FROM[$i];
+                $SECTION_NO_TO_DIFF = $SECTION_NO_TO[$i];
+                if($SECTION_NO_FROM_DIFF < $SECTION_NO_TO_DIFF){
+                    $arrSec = [];
+                    $l=0;
+                    for($j=$SECTION_NO_FROM_DIFF;$j<= $SECTION_NO_TO_DIFF; $j++){                      
+                        $arrSec[$l] = $j;
+                        $l++;
+                    }
+                    if (array_intersect($arrSec, explode(',',$SEC_VAL[0]))) {
+                        for($j=$SECTION_NO_FROM_DIFF;$j<= $SECTION_NO_TO_DIFF; $j++){                         
+                                $boothQuery = "INSERT INTO user_assigned_booth (user_id,SECTION_NO) VALUES ('$user_id','$j')";
+                                mysqli_query($conn,$boothQuery);                        
+                        }
+                    }
+
+                }
+               
+            }
         }
     
 
         $response->error = "";
-        $response->message = "SubLeader updated successfully.";
+        $response->message = "BM updated successfully.";
     }
 
 
     
-}else{
-    $response->error = "SubLeader not found!";
 }
 echo json_encode($response);
 ?>

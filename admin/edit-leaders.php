@@ -56,13 +56,13 @@ $breadCrumbName = "Update Candidate";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="Password" required readonly>
+                            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="Password" required>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Phone No.</label>
-                            <input type="number" id="phone" name="phone" class="form-control form-control-lg" placeholder="Email" aria-label="Password" required readonly>
+                            <input type="number" id="phone" name="phone" class="form-control form-control-lg" placeholder="Email" aria-label="Password" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -154,7 +154,7 @@ $breadCrumbName = "Update Candidate";
                     if(!data.error)
                     {
                         $('#total_data').text(data.total_line);
-                        $('#message').html('<div class="alert alert-success" style="color:#fff">Leader Updated Successfully.</div>');
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">Candidate Updated Successfully.</div>');
                     }
                     if(data.error)
                     {

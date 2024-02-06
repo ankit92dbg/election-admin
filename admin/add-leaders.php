@@ -164,7 +164,10 @@ $breadCrumbName = "Add Candidate";
                     if(!data.error)
                     {
                         $('#total_data').text(data.total_line);
-                        $('#message').html('<div class="alert alert-success" style="color:#fff">Leader Created Successfully.</div>');
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">Candidate Created Successfully.</div>');
+                        setTimeout(() => {
+                            window.location.href="leaders.php"
+                        }, 2000);
                     }
                     if(data.error)
                     {

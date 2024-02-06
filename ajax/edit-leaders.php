@@ -20,11 +20,14 @@ $state = $_POST['state'];
 $address = $_POST['address'];
 $profile_image = $_POST['profile_image'];
 $user_type = 1;
-$query = "select * from user_tbl where email='$email' or phone='$phone'";
+$query = "select * from user_tbl where email='$email'";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
 $response = new stdClass();
-if(mysqli_num_rows($result)==1){
+if(mysqli_num_rows($result)==1 && $row['id']!=$user_id){
+    $response->error = "Candidate email already exists in our system, please try with different EmailId.";
+    $response->message = "Candidate email already exists in our system, please try with different EmailId.";
+}else{
     if($_POST['password']!=""){
         $password = md5($_POST['password']);
     }else{
@@ -51,7 +54,7 @@ if(mysqli_num_rows($result)==1){
             $file = "../uploads/{$basename}";  
             move_uploaded_file($_FILES['profile_image']['tmp_name'],$file);
 
-            $query = "UPDATE `user_tbl` SET `assembly_name`='$assembly_name',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
+            $query = "UPDATE `user_tbl` SET `assembly_name`='$assembly_name',`email`='$email',`phone`='$phone',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
             `age`='$age',`designation`='$designation',`city`='$city',`state`='$state',`address`='$address',`password`='$password',`profile_image`='$basename'
             WHERE `id`='$user_id'";
             $result = mysqli_query($conn,$query);
@@ -72,7 +75,7 @@ if(mysqli_num_rows($result)==1){
             $response->error = 'Not a valid image file.';
         }
     }else{
-       $query = "UPDATE `user_tbl` SET `assembly_name`='$assembly_name',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
+       $query = "UPDATE `user_tbl` SET `assembly_name`='$assembly_name',`email`='$email',`phone`='$phone',`f_name`='$f_name',`l_name`='$l_name',`email`='$email',
             `age`='$age',`designation`='$designation',`city`='$city',`state`='$state',`address`='$address',`password`='$password'
             WHERE `id`='$user_id'";
         $result = mysqli_query($conn,$query);
@@ -89,13 +92,11 @@ if(mysqli_num_rows($result)==1){
         //  }
 
         $response->error = "";
-        $response->message = "Leader updated successfully.";
+        $response->message = "Candidate updated successfully.";
     }
 
 
     
-}else{
-    $response->error = "Leader not found!";
 }
 echo json_encode($response);
 ?>

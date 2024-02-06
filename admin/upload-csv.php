@@ -15,7 +15,7 @@ $breadCrumbName = "Upload CSV";
           <div class="card ">
             <div class="card-header pb-0 p-3">
               <div class="d-flex justify-content-between">
-                <h6 class="mb-2">Upload file in CSV Format</h6>
+                <h6 class="mb-2">Upload file in CSV Format : <a href="download-sample.php" target="_blank"><i class="fa fa-file"></i> Sample Format</a></h6>
               </div>
             </div>
             <div class="card-body p-3">
@@ -32,6 +32,7 @@ $breadCrumbName = "Upload CSV";
                                 <div class="formbold-mb-5 formbold-file-input">
                                     <input type="file" name="file" id="file" />
                                     <input type="hidden" name="leader_id" value="<?php echo $_GET['id']; ?>" id="leader_id" />
+                                    <input type="hidden" name="job_id" value="<?php echo uniqid(); ?>" id="job_id" />
                                     <label for="file">
                                         <div>
                                         <!-- <span class="formbold-drop-file"> Drop files here </span>
@@ -101,13 +102,14 @@ $breadCrumbName = "Upload CSV";
                                 </div> -->
 
                                 <div class="form-group" id="process" style="display:none;">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <span id="process_data">0</span> - <span id="total_data">0</span>
+                                    <div style="height:20px" class="progress">
+                                        <div style="height:20px" class="progress-bar bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="total_data">0</span>
                                         </div>
                                     </div>    
                                 </div>
-                                <span id="message"></span>
+                                <span id="message1"></span>
+                                <span id="message" style="margin-top:2%"></span>
                             </div>
 
                             <div>
@@ -130,13 +132,61 @@ $breadCrumbName = "Upload CSV";
 <?php include('../common/local/footer-links.php') ?>
 <script>
  $(document).ready(function(){
-    var clear_timer;
+    let timer;
+    let percent=0;
     $('#uploadForm').on('submit', function(event){
-        $('#overlay').show()
+        // $('#overlay').show()
+        $('#process').show()
+        $('.progress-bar').css("width",'0%')
+        $('#message1').html('Please wait while we are uploading your data...')
+        $('#total_data').html('0%')
         $('#uploadMsg').show()
         $('#message').html('');
+        $('#uploadBtn').hide()
         event.preventDefault();
         $.ajax({
+            xhr: function()
+            {
+                var xhr = new window.XMLHttpRequest();
+                //Upload progress
+                xhr.upload.addEventListener("progress", function(evt){
+                if (evt.lengthComputable) {
+                    var percentCompleteUpload = (evt.loaded / evt.total)*1000;
+                    percentCompleteUpload = percentCompleteUpload.toFixed(2)
+                    if(parseFloat(percentCompleteUpload)<=parseFloat(100.00)){
+                        $('.progress-bar').css("width",'0%')
+                        $('#total_data').html('0%')
+                        $('#message1').html('Please do not refresh while we are uploading your file...')
+                    }else{
+                        $('.progress-bar').css("width",'0%')
+                        $('#total_data').html('0%')
+                    }
+                    //Do something with upload progress
+                    console.log("up->",percentCompleteUpload);
+                }
+                }, false);
+                //Download progress
+                xhr.addEventListener("progress", function(evt){
+                    console.log('evt--->',evt,evt.lengthComputable)
+                if (evt.lengthComputable) {
+                    var percentComplete = (evt.loaded / evt.total)*1000
+                    percentComplete = percentComplete.toFixed(2)
+                    if(parseFloat(percentComplete)<=parseFloat(100.00)){
+                        $('.progress-bar').css("width",percentComplete+'%')
+                        $('#total_data').html(percentComplete+'%')
+                        $('#message1').html('Please do not refresh while we are saving your data to database...')
+                    }else{
+                        $('.progress-bar').css("width",'100%')
+                        $('#total_data').html('100%')
+                        $('#message1').html('')
+                        $('#message').html('<div class="alert alert-success" style="color:#fff">CSV File Uploaded Successfully.</div>');
+                    }
+                    //Do something with download progress
+                    console.log('percentComplete--->',percentComplete);
+                }
+                }, false);
+                return xhr;
+            },
             url:"../ajax/upload-csv.php",
             method:"POST",
             data: new FormData(this),
@@ -150,12 +200,14 @@ $breadCrumbName = "Upload CSV";
             },
             success:function(data)
             {
-                $('#overlay').hide()
+                $('.progress-bar').css("width",'100%')
+                $('#total_data').html('100%')
+                $('#message1').html('')
                 $('#uploadMsg').hide()
                 $('#uploadForm')[0].reset();
+                $('#uploadBtn').show()
                 if(data.success)
                 {
-                    $('#total_data').text(data.total_line);
                     $('#message').html('<div class="alert alert-success" style="color:#fff">CSV File Uploaded Successfully.</div>');
                 }
                 if(data.error)
@@ -170,6 +222,37 @@ $breadCrumbName = "Upload CSV";
             }
         })
     });
-
+    function checkUploading(){
+    var formData = {
+                'job_id': $('#job_id').val() //for get email 
+            };
+        $.ajax({
+            url:"../ajax/check-uploading.php",
+            method:"POST",
+            data: formData,
+            beforeSend:function(){
+                $('#import').attr('disabled','disabled');
+                $('#import').val('Importing');
+            },
+            success:function(data)
+            {
+                data = JSON.parse(data)
+                if(data.success)
+                {
+                    let total_line = data.data.total_line
+                    let uploaded_line = data.data.uploaded_line
+                    percent = (uploaded_line/total_line)*100
+                    $('#process').show()
+                    $('.progress-bar').css("width",percent+'%')
+                   if(total_line==total_line){
+                    clearInterval(timer)
+                   }
+                }
+              
+            }
+        })
+}
 });
+
+
 </script>

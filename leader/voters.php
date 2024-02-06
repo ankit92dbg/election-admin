@@ -15,18 +15,21 @@ $breadCrumbName = "Voter List";
           <div class="card ">
             <div class="card-header pb-0 p-3">
             <div class="row">
-                <div class="col-lg-6 d-flex justify-content-between">
+            <div class="col-lg-6 d-flex justify-content-between">
                     <h6 class="mb-2">Voter List</h6>
-                    <div class="col-lg-6 d-flex justify-content-between">
-                        <select class="form-select" name="language" id="language" style="float: right;
-                            right: 58px;
-                            width: 120px;
-                            font-size: 12px;
-                            position: absolute;">
-                            <option value="english">English</option>
-                            <option value="hindi">Hindi</option>
-                        </select>
-                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span style="float: right;
+    margin-right: 167px;
+    margin-top: 7px;">Language Change</span>
+                  <select class="form-select" onchange="setLanguage(this.value);" name="language" id="language" style="float: right;
+    right: 58px;
+    width: 120px;
+    font-size: 12px;
+    position: absolute;">
+                    <option value="english">English</option>
+                    <option value="hindi">Hindi</option>
+                  </select>
                 </div>
                 <div class="col-lg-12">
                   <!-- <ul class="nav nav-pills">
@@ -1216,4 +1219,18 @@ function load_other_data(){
         }
       }
       setType()
+
+      function setLanguage(val){
+        localStorage.setItem('language',val)
+        $('#language option[value="'+val+'"]').attr("selected", "selected");
+        load_data()
+      }
+      function setFirstLanguage(){
+    
+        if(localStorage.getItem('language')==undefined){
+            localStorage.setItem('language','english')
+        }
+        $('#language option[value="'+localStorage.getItem('language')+'"]').attr("selected", "selected");
+      }
+      setFirstLanguage()
 </script>

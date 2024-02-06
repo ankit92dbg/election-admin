@@ -6,6 +6,7 @@ if(isset($_FILES['file']['name']))
  $error = '';
  $total_line = 0;
  $leader_id = $_POST['leader_id'];
+ $job_id = $_POST['job_id'];
  if($_FILES['file']['name'] != '')
  {
   $allowed_extension = array('csv');
@@ -28,12 +29,14 @@ if(isset($_FILES['file']['name']))
    move_uploaded_file($_FILES['file']['tmp_name'],$file);
    $file_content = file('../uploads/'. $file, FILE_SKIP_EMPTY_LINES);
    $total_line = count($file_content);
-
+   $filesize = filesize($file);
+   header('Content-Length: '.$filesize);
+   header("Content-Range: 0-".($filesize-1)."/".$filesize);
    //make db entry :
    $file_data = fopen('../uploads/'.$file, 'r');
 
    fgetcsv($file_data);
-  
+  $i=0;
    while($row = fgetcsv($file_data))
    {
     // print_r(mysqli_real_escape_string($conn,$row[0]));
@@ -168,6 +171,24 @@ if(isset($_FILES['file']['name']))
         ";
     }
         mysqli_query($conn,$query);
+        $output = array(
+            'success'  => true,
+            'line' => $i,
+            'total_line' => ($total_line - 1)
+           );
+        echo json_encode($output);
+        //add uploaded index
+        // $chekQuery = "select * from upload_progress where job_id='$job_id'";
+        // $cRes = mysqli_query($conn,$chekQuery);
+        // if(mysqli_num_rows($cRes) > 0){
+        //     $chekQuery1 = "update upload_progress set `uploaded_line`='$i' where `job_id`='$job_id'";
+        //     $cRes1 = mysqli_query($conn,$chekQuery1);
+        // }else{
+        //     $tl = $total_line-1;
+        //     $chekQuery1 = "insert into upload_progress (job_id,uploaded_line,total_line) values('$job_id','$i','$tl')";
+        //     $cRes1 = mysqli_query($conn,$chekQuery1);
+        // }
+        $i++;
     }
 
 

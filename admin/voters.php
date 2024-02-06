@@ -22,7 +22,7 @@ $breadCrumbName = "Voter List";
                     <span style="float: right;
     margin-right: 167px;
     margin-top: 7px;">Language Change</span>
-                  <select class="form-select" name="language" id="language" style="float: right;
+                  <select class="form-select" onchange="setLanguage(this.value);" name="language" id="language" style="float: right;
     right: 58px;
     width: 120px;
     font-size: 12px;
@@ -1219,7 +1219,21 @@ function load_other_data(){
         }
         $(className).hide()
         $(id).show()
-        $('.commonSearch').val('english')
-        $('.commonSearch option[value="english"]').attr("selected", "selected");
+        // $('.commonSearch').val('english')
+        // $('.commonSearch option[value="english"]').attr("selected", "selected");
       }
+
+      function setLanguage(val){
+        localStorage.setItem('language',val)
+        $('#language option[value="'+val+'"]').attr("selected", "selected");
+        load_data()
+      }
+      function setFirstLanguage(){
+    
+        if(localStorage.getItem('language')==undefined){
+            localStorage.setItem('language','english')
+        }
+        $('#language option[value="'+localStorage.getItem('language')+'"]').attr("selected", "selected");
+      }
+      setFirstLanguage()
 </script>
